@@ -1,6 +1,6 @@
 <?php
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/TODOLIST/src/");
-// define("FILE_HEADER", ROOT."header.php");
+define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
 
 
@@ -15,9 +15,12 @@ require_once(ROOT."lib/lib_db.php");
     <meta name="viewport" content="width=
     , initial-scale=1.0">
     <link rel="stylesheet" href="/TODOLIST/src/css/style.css">
-    <title>리스트페이지</title>
+    <title>상세페이지</title>
 </head>
 <body>
+    <?php
+            require_once(FILE_HEADER);
+    ?>  
     
 </body>
 </html>

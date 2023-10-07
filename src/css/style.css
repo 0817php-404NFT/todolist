@@ -2,11 +2,64 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'DungGeunMo';
+    color: #fff;
 }
-
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
-    margin: 0px auto;
     background-image: url(../img/배경.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* 공통class */
+.center{
+    text-align: center;
+}
+
+
+
+/* header */
+header{
+    width: 100%;
+    height: 370px;
+}
+
+h1{
+    position: absolute;
+    width: 335px;
+    height: 262px;
+    right: 60px;
+    top: 100px;
+}
+
+a {
+    color: #fff;  
+    text-decoration: none;
+    font-size: 100px;
+}
+
+.img_moon{
+    position: absolute;
+    width: 335px;
+    height: 262px;
+    right: -80px;
+    top: -60px;
+}
+
+
+
+/* list */
+/* detail */
+/* insert */
+/* update */
+/* delete */
+
+/* search */
+/* 보류 사유 : 페이징 기능이없는대 서치한값이 12개 이상일경우 표현방법 강구 */
+/* 1008 최정훈 */
