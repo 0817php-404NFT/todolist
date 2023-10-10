@@ -248,7 +248,4 @@ function db_search_boards_cnt(&$conn, &$arr_param)
     }
 }
 
-
-
-
-
+?>
