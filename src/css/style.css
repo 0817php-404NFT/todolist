@@ -256,10 +256,17 @@ h1 a {
     font-size: 1.6rem;
     margin-left: 20px;
  }
+ .delete_span:hover {
+    color: #000;
+ }
+ 
  .delete_sapn2 {
     color: #fff;
     font-size: 1.6rem;
     margin-left: 20px;
+ }
+ .delete_span2:hover{
+    color: #000;
  }
 
  .delete_btn_img {

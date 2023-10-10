@@ -73,7 +73,9 @@ require_once(ROOT."lib/lib_db.php");
             <span class="delete_span">확인</span>
             </button>
             <img src="/TODOLIST/src/img/delete_cancel2.png"  class="delete_btn_img2" alt="">
-            <a class="delete_a" href=""><span class="delete_sapn2">취소</span></a>
+            <a class="delete_a" href="">
+            <span class="delete_span">취소</span>
+            </a>
         </form>
     </section>
 </body>
