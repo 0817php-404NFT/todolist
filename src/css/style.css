@@ -279,6 +279,20 @@ h1 a {
     top: 9px;
     left: 64px;
  }
+ .delete_content {
+    position: relative;
+    border: 2px solid #d9d9d9;
+    display: inline-block;
+    width: 530px;
+    height: 50px;
+    text-align: center;
+    padding: 10px;
+    color: #000;
+    bottom: 120px;
+    left: 710px;
+    font-size: 1.6rem;
+
+ }
 /* search */
 /* 보류 사유 : 페이징 기능이없는대 서치한값이 12개 이상일경우 표현방법 강구 */
 /* 1008 최정훈 */

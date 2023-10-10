@@ -24,8 +24,20 @@ require_once(ROOT."lib/lib_db.php");
 //         $arr_param = [
 //             "id" => $id
 //         ];
-//         $result = 
-//     }
+//         $result = db_select_boards_id($conn,$arr_param);
+//          if($result === false) {
+//              throw new Exception("DB Error : Select id");
+//          } else if(!count($result) === 1) {
+//              throw new Exception("DB Error : Select id count);
+//          }
+//          $item = $result[0];
+//     } else {
+//              $id = isset($_POST["id"]) ? $_POST["id"] : "";
+//              if($id === ""){
+//                      $arr_err_msg[] = sprintf(ERROR_MSG_PARAM,"id");
+//              }
+//}
+
 // }
 
 ?>
@@ -58,10 +70,11 @@ require_once(ROOT."lib/lib_db.php");
                 <br>
                 <br>
             </caption>
-            <tr>
-               <td>자기전에 발 닦고 자기</td>
-            </tr>
-        
+            <div>
+            
+              <input type="hidden"><a href="" class="delete_content">" 자기전에 발 닦고 자기 "</a>
+          
+            </div>
         </table>
     </main>
     <section class="delete_section">
@@ -69,7 +82,7 @@ require_once(ROOT."lib/lib_db.php");
            
             <input type="hidden" name="" value="">
             <img src="/TODOLIST/src/img/delete_chk2.png" class="delete_btn_img"> 
-            <button class="delete_btn" type="submit" value="">
+            <button class="delete_btn" type="submit" value="확인">
             <span class="delete_span">확인</span>
             </button>
             <img src="/TODOLIST/src/img/delete_cancel2.png"  class="delete_btn_img2" alt="">
