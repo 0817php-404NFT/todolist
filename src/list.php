@@ -80,17 +80,22 @@ try {
         // 리스트를 생성
             foreach($result as $item){
         ?>
-            <tr>       
-                <td><a class="" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>"><?php echo $item["content"]; ?></a></td>
+            <tr>
+                <td>
+                    <label>
+                        <input type="checkbox" class="list_chk">
+                        <a class="" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>"><?php echo $item["content"]; ?></a>
+                    </label>
+                </td>
             </tr>
         <?php    
             }
         ?>   
-        <tr>
-            <td>
-                <img src="../src/img/list_paper.svg" alt="" class="list_img_1">
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <img src="../src/img/list_paper.svg" alt="" class="list_img_1">
+                </td>
+            </tr>
         </table>
 </body>
 </html>
