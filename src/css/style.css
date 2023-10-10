@@ -110,6 +110,46 @@ h1 a {
 
 
 /* detail */
+
+.detail-container {
+    background-image: url(../img/Group\ 7.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+    font-size: 50px;
+}
+
+.detail-status-box {
+
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.detail-content {
+
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.detail-transparent-button {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+
+.transparent-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
 /* insert */
 .insert_div1 {
     text-align: center;
@@ -207,6 +247,7 @@ h1 a {
     cursor: pointer;
 }
 /* delete */
+
 .delete_table{
     font-size: 1.6rem;   
  }
@@ -269,7 +310,7 @@ h1 a {
  }
  .delete_btn_img2 {
     position: relative;
-    top: 9px;
+    top: 10px;
     left: 64px;
  }
 /* search */
