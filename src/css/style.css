@@ -112,37 +112,51 @@ h1 a {
 /* detail */
 /* insert */
 .insert_div1 {
-    /* width: auto;
-    margin: 0 auto;
-    height: 400px;
+    text-align: center;
+    margin: 40px auto;
     position: relative;
-    text-align: center; */
 }
 .insert_div2 {
-
+    width: 1400px;
 }
 .insert_input {
     margin: 0 auto;
     border: 1px solid #000;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
-    width: 1000px;
+    width: 1100px;
     height: 50px;
     text-align: center;
     color: #ffffff;
     font-size: 2rem;
 }
+.insert_butt {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 12px;
+    right: 500px;
+}
+.insert_pen {
+    width: 30px;
+    height: 30px;
+}
+.insert_a {
+    position: absolute;
+    top: 4px;
+    right: 450px;
+}
 .insert_sheep {
     position: absolute;
-    bottom: 10px;
-    left: 80px;
+    bottom: 30px;
+    left: 250px;
     width: 300px;
 }
 .insert_cat {
     position: absolute;
-    bottom: 10px;
-    left: 500px;
-    width: 400px;
+    bottom: 40px;
+    left: 700px;
+    width: 520px;
 }
 
 /* update */
