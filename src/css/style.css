@@ -140,6 +140,54 @@ input[type=checkbox]:checked + label {
 
 /* detail */
 /* insert */
+.insert_div1 {
+    text-align: center;
+    margin: 40px auto;
+    position: relative;
+}
+.insert_div2 {
+    width: 1400px;
+}
+.insert_input {
+    margin: 0 auto;
+    border: 1px solid #000;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    width: 1100px;
+    height: 50px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 2rem;
+}
+.insert_butt {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 12px;
+    right: 500px;
+}
+.insert_pen {
+    width: 30px;
+    height: 30px;
+}
+.insert_a {
+    position: absolute;
+    top: 4px;
+    right: 450px;
+}
+.insert_sheep {
+    position: absolute;
+    bottom: 30px;
+    left: 250px;
+    width: 300px;
+}
+.insert_cat {
+    position: absolute;
+    bottom: 40px;
+    left: 700px;
+    width: 520px;
+}
+
 /* update */
 .update_form {
     margin: 0 auto;
@@ -209,7 +257,15 @@ input[type=checkbox]:checked + label {
      left: 480px;
  }
  .delete_a {
+     display: inline-block;
      font-size: 1.6rem;
+     background-color: rgba(240, 240, 240,0.3);
+     color: #000;
+     width: 150px;
+     height: 50px;
+     text-align: center;
+     line-height: 50px;
+    
  }
  .delete_section {
      text-align: center;
@@ -217,8 +273,54 @@ input[type=checkbox]:checked + label {
      right: 900px;
  }
  .delete_btn {
-     color:black;
+     border: none;
+     background-color: rgba(240, 240, 240,0.3);
      font-size: 1.6rem;
+     top:100px;
+     width: 150px;
+     height: 50px;
+ }
+ .delete_span {
+    color: #fff;
+    font-size: 1.6rem;
+    margin-left: 20px;
+ }
+ .delete_span:hover {
+    color: #000;
+ }
+ 
+ .delete_sapn2 {
+    color: #fff;
+    font-size: 1.6rem;
+    margin-left: 20px;
+ }
+ .delete_span2:hover{
+    color: #000;
+ }
+
+ .delete_btn_img {
+    position: relative;
+    top: 14px;
+    left: 68px;
+ }
+ .delete_btn_img2 {
+    position: relative;
+    top: 9px;
+    left: 64px;
+ }
+ .delete_content {
+    position: relative;
+    border: 2px solid #d9d9d9;
+    display: inline-block;
+    width: 530px;
+    height: 50px;
+    text-align: center;
+    padding: 10px;
+    color: #000;
+    bottom: 120px;
+    left: 710px;
+    font-size: 1.6rem;
+
  }
 /* search */
 
