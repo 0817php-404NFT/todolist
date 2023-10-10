@@ -316,4 +316,5 @@ function db_delete_boards_id(&$conn, &$arr_param) {
 	} 
 }
 
+
 ?>
