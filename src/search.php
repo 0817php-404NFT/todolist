@@ -1,5 +1,5 @@
 <?php
-define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/TODOLIST/src/");
+define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
 
