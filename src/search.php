@@ -3,9 +3,10 @@ define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/TODOLIST/src/");
 define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
 
-$conn = null; // DB connection 변수
+$conn = null; // DB connection 변수 초기화
+$search_day = ""; // 변수초기화 
 
-$today = date("Y-m-d");
+$search_day = isset($_GET["date"])? $_GET["date"]:date("Y-m-d");
 $list_cnt = 4; // 한 페이지 최대 표시 수
 $page_num = 1; // 페이지 번호 초기화
 try {
@@ -17,7 +18,10 @@ try {
     // -------------
     // 페이징 처리
     // -------------
-    $boards_cnt = db_select_boards_cnt($conn);
+    $arr_param=[
+        "write_date" => $search_day
+    ];
+    $boards_cnt = db_search_boards_cnt($conn, $arr_param);
     if($boards_cnt === false) {
         throw new Exception("DB Error : SELECT Count"); // 강제 예외 발생 : DB SELECT Count
     }
@@ -31,10 +35,11 @@ try {
     $arr_param = [
         "list_cnt" => $list_cnt
         ,"offset" => $offset
+        ,"write_date" => $search_day
     ];
 
     // 게시글 리스트 조회 
-    $result  = db_select_boards_paging($conn, $arr_param);
+    $result  = db_search_boards($conn, $arr_param);
     if($result === false){
         throw new Exception("DB Error : SELECT boards"); // 강제 예외 발생 : SELECT boards
     }
@@ -56,38 +61,27 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/todolist/src/css/style.css">
-    <title>리스트페이지</title>
+    <title>검색페이지</title>
 </head>
 
 <body>
     <?php
             require_once(FILE_HEADER);
     ?>
-        <table class="list_table">     
-            <div>  
-                <tr>
-                    <td class="list_head_td">오늘의할일                   
-                    <form action="/todolist/src/search.php" method="get">           
-                            <label class="list_label">
-                                <input type="date" name="date" required class="list_search_input" value="<?php echo $today; ?>">
-                                <button type="submit" class="list_search_btn"><img src="../img/lens.png" alt=""></button>
-                            </label>
-                    </form>
-                    </td>
-                </tr>
-            </div>
+        <table class="list_table center">       
+            <tr>
+                <td><?php echo $search_day ?></td>
+                <td><a href="/todolist/src/list.php/?page=1">메인으로</a></td>
+            </tr>
         <?php
         // 리스트를 생성
         foreach ($result as $item) {
         ?>
             <tr>
-                <td>
-                    <input type="checkbox" name="checker[]" id="checker<?php echo $item["id"]; ?>" value="<?php echo $item["id"]; ?>">
-                    <label for="checker<?php echo $item["id"]; ?>">
-                        <a class="list_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
-                            <?php echo $item["content"]; ?>
-                        </a>
-                    </label>
+                <td colspan="2">
+                    <span class="list_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                        <?php echo $item["content"]; ?>
+                    </span>
                 </td>
             </tr>
         <?php
@@ -99,13 +93,13 @@ try {
             </td>
         </tr>
         <tr>
-            <td class="center">
+            <td class="center search_page_btn">
                 <?php                  
                     for ($i = 1; $i <= 3; $i++) {
                             // 삼항연산자 : 조건 ? 참일때처리 : 거짓일때처리
                             $class = ($i == $page_num) ? "list_now_page" : "";
                 ?>
-                <a class="lsit_page <?php echo $class; ?> " href="/todolist/src/list.php/?page=<?php echo $i ?>">●</a>        
+                <a class="lsit_page <?php echo $class; ?> " href="/todolist/src/search.php/?page=<?php echo $i ?>&date=<?php echo $search_day ?>">●</a>        
                 <?php
                     }
                 ?>
