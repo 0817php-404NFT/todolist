@@ -58,6 +58,52 @@ a {
 /* detail */
 /* insert */
 /* update */
+.update_form {
+    margin: 0 auto;
+    position: relative;
+    width: 860px;
+    height: 400px;
+}
+/* .update_table {
+    background-image: url(./img/update_table.svg);
+    width: 860px;
+    height: 400px;
+    ˚✧₊⁎( ˘ω˘ )⁎⁺˳✧༚
+} */
+/* .update_img {
+    margin: auto;
+    display: block; 
+} */
+.update_input {
+    padding: 10px;
+    background: none;
+    position: absolute;
+    bottom: 190px;
+    left: 80px;
+    color: #000;
+    border: none;
+    /* border-radius: 8px; */
+    font-size: 1.6rem;
+    width: 700px;
+    text-align: center;
+}
+.update_div {
+    margin: 20px;
+    text-align: center;
+}
+.update_a {
+    display: inline-block;
+    padding: 0;
+    margin: 0 30px;
+    border: none;
+    width: 110px;
+    height: 35px;
+    line-height: 35px;
+    background-color : rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 /* delete */
 
 /* search */
