@@ -43,6 +43,7 @@ try {
 // 함수명   : db_destroy_conn
 // 기능     : DB Destroy
 // 파라미터 : PDO  &$conn
+//           Array  &$arr_param
 // 리턴     : 없음
 // 제작     : 정훈
 // -------------------------------
@@ -57,6 +58,7 @@ function db_destroy_conn(&$conn){
 // 함수명   : db_select_boards_paging
 // 기능     : boards paging 조회
 // 파라미터 : PDO  &$conn
+//           Array  &$arr_param
 // 리턴     : Array /false
 // 제작     : 정훈
 // -------------------------------
@@ -68,9 +70,11 @@ function db_select_boards_paging(&$conn, &$arr_param){
         ."      ,content "
         ."      ,chk_flg "
         ." FROM "
-                ." boards "
+        ."      boards "
         ." WHERE "
-        ."      del_flg = '0' " 
+        ."      write_date >= CURDATE() " 
+        ." AND " 
+        ."      del_flg = '0' "
         ." ORDER BY "
         ."      chk_flg ASC "
         ."      ,id DESC "
@@ -108,12 +112,13 @@ function db_select_boards_cnt( &$conn ){
         ." FROM "
         ."      boards "
         ." WHERE "
+        ."      write_date >= CURDATE() " 
+        ." AND " 
         ."      del_flg = '0' "
         ;
     try {
         $stmt = $conn->query($sql);
-        $result = $stmt->fetchALL();
-
+        $result = $stmt->fetchAll();
         return (int)$result[0]["cnt"]; //정상 : 쿼리 결과 리턴
     } catch(Exception $e){
         echo $e->getMessage(); // Exception 메세지 출력
@@ -175,17 +180,15 @@ function db_search_boards(&$conn, &$arr_param)
 {
     $sql =
     " SELECT "
-    . "     id "
-    . "     ,title "
-    . "     ,content "
-    . " FROM "
-    . "     boards "
-    . " WHERE "
-    . "     content "
-    . " LIKE "
-    . " :content "
-    . " AND "
-    . "      delete_flg = '0' "
+    ."     id "
+    ."     ,content "
+    ."     ,chk_flg "
+    ." FROM "
+    ."     boards "
+    ." WHERE "
+    ." DATE_FORMAT(write_date, '%Y-%m-%d') = :write_date "
+    ." AND "
+    ."      del_flg = '0' "
     ." ORDER BY "
     ."      chk_flg ASC "
     ."      ,id DESC "
@@ -193,7 +196,7 @@ function db_search_boards(&$conn, &$arr_param)
     ." OFFSET :offset ";
 
     $arr_ps = [
-        "title"  => $arr_param["title"],
+        ":write_date" => $arr_param["write_date"],
         ":list_cnt" => $arr_param["list_cnt"],
         ":offset" => $arr_param["offset"]
     ];
@@ -224,15 +227,13 @@ function db_search_boards_cnt(&$conn, &$arr_param)
         . "      count(id) as cnt "
         . " FROM "
         . "      boards "
-        . " WHERE "
-        . "     content "
-        . " LIKE "
-        . " :content "
-        . " AND "
-        . "      delete_flg = '0' "
+        ." WHERE "
+        ." DATE_FORMAT(write_date, '%Y-%m-%d') = :write_date "
+        ." AND "
+        ."      del_flg = '0' "
         ;
         $arr_ps = [
-            "content"  => $arr_param["content"]
+            ":write_date"  => $arr_param["write_date"]
         ];
 
         

@@ -100,11 +100,40 @@ h1 a {
 
 
 .list_search_btn{
-    right: 0;
-    top: 0;
+    right: 32px;
+    top: 34px;
     position: absolute;
     width: 50px;
     height: 50px;
+    border: none;
+}
+
+.list_search_btn:hover{
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+    display:none;
+}
+
+input[type=checkbox] + label { 
+    cursor: pointer; 
+    padding-left: 55px; 
+    background-repeat: no-repeat;
+    background-image: url('../img/check_b.svg');
+    background-size: 35px;    
+}
+
+input[type=checkbox]:checked + label {
+    background-image: url('../img/check_a.svg');
+}
+
+.lsit_page {
+    margin: 0px 20px;
+    color: #9BA4F8;
+}
+.list_now_page {
+    color: #fff;
 }
 
 
@@ -297,10 +326,17 @@ h1 a {
     font-size: 1.6rem;
     margin-left: 20px;
  }
+ .delete_span:hover {
+    color: #000;
+ }
+ 
  .delete_sapn2 {
     color: #fff;
     font-size: 1.6rem;
     margin-left: 20px;
+ }
+ .delete_span2:hover{
+    color: #000;
  }
 
  .delete_btn_img {
@@ -313,6 +349,25 @@ h1 a {
     top: 10px;
     left: 64px;
  }
+ .delete_content {
+    position: relative;
+    border: 2px solid #d9d9d9;
+    display: inline-block;
+    width: 530px;
+    height: 50px;
+    text-align: center;
+    padding: 10px;
+    color: #000;
+    bottom: 120px;
+    left: 710px;
+    font-size: 1.6rem;
+
+ }
 /* search */
+
+.search_page_btn{
+    
+}
+
 /* 보류 사유 : 페이징 기능이없는대 서치한값이 12개 이상일경우 표현방법 강구 */
 /* 1008 최정훈 */
