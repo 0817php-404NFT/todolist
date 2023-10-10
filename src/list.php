@@ -70,7 +70,7 @@ try {
                     <form action="">           
                             <label class="list_label">
                                 <input type="date" name="date" required class="list_search_input" value="<?php echo $today; ?>">
-                                <button type="submit" class="list_search_btn"><img src="../img/search_btn.png" alt=""></button>
+                                <button type="submit" class="list_search_btn"><img src="../src/img/lens.png" alt=""></button>
                             </label>
                     </form>
                     </td>
@@ -91,11 +91,11 @@ try {
         <?php    
             }
         ?>   
-            <tr>
-                <td>
-                    <img src="../src/img/list_paper.svg" alt="" class="list_img_1">
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <img src="../src/img/list_paper.svg" alt="" class="list_img_1">
+            </td>
+        </tr>
         </table>
 </body>
 </html>
