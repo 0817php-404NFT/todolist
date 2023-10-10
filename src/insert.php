@@ -21,5 +21,12 @@ require_once(ROOT."lib/lib_db.php");
     <?php
             require_once(FILE_HEADER);
     ?>  
+    <div class="insert_div1">
+        <input class="insert_input" type="text" name="content" placeholder="내용을 입력해 주세요.">
+    </div> 
+    <div class="insert_div2">
+        <img class="insert_sheep" src="/TODOLIST/src/img/sheeps.svg" alt="sheeps">
+        <img class="insert_cat" src="/TODOLIST/src/img/cat2.png" alt="눈감은고양이">
+    </div>
 </body>
 </html>
