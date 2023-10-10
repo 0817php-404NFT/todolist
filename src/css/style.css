@@ -221,5 +221,10 @@ input[type=checkbox]:checked + label {
      font-size: 1.6rem;
  }
 /* search */
+
+.search_page_btn{
+    
+}
+
 /* 보류 사유 : 페이징 기능이없는대 서치한값이 12개 이상일경우 표현방법 강구 */
 /* 1008 최정훈 */
