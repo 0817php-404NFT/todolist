@@ -180,7 +180,15 @@ h1 a {
      left: 480px;
  }
  .delete_a {
+     display: inline-block;
      font-size: 1.6rem;
+     background-color: rgba(240, 240, 240,0.3);
+     color: #000;
+     width: 150px;
+     height: 50px;
+     text-align: center;
+     line-height: 50px;
+    
  }
  .delete_section {
      text-align: center;
@@ -188,8 +196,33 @@ h1 a {
      right: 900px;
  }
  .delete_btn {
-     color:black;
+     border: none;
+     background-color: rgba(240, 240, 240,0.3);
      font-size: 1.6rem;
+     top:100px;
+     width: 150px;
+     height: 50px;
+ }
+ .delete_span {
+    color: #fff;
+    font-size: 1.6rem;
+    margin-left: 20px;
+ }
+ .delete_sapn2 {
+    color: #fff;
+    font-size: 1.6rem;
+    margin-left: 20px;
+ }
+
+ .delete_btn_img {
+    position: relative;
+    top: 14px;
+    left: 68px;
+ }
+ .delete_btn_img2 {
+    position: relative;
+    top: 9px;
+    left: 64px;
  }
 /* search */
 /* 보류 사유 : 페이징 기능이없는대 서치한값이 12개 이상일경우 표현방법 강구 */
