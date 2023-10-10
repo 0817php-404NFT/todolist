@@ -1,6 +1,6 @@
-CREATE DATABASE TODOLIST;
+CREATE DATABASE todolist;
 
-USE TODOLIST;
+USE todolist;
 
 
 CREATE TABLE boards(
@@ -13,4 +13,4 @@ CREATE TABLE boards(
 	,chk_date DATETIME DEFAULT NULL
 );
 
-COMMIT;todolist
+COMMIT;

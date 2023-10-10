@@ -21,6 +21,5 @@ require_once(ROOT."lib/lib_db.php");
     <?php
             require_once(FILE_HEADER);
     ?>  
-    
 </body>
 </html>
