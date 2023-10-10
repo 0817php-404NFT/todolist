@@ -46,7 +46,7 @@ require_once(ROOT."lib/lib_db.php");
         </table>
         <div class="update_div">
             <button class="update_a" type="submit">완료</button>
-            <a class="update_a "href="">취소</a>
+            <a class="update_a "href="/TODOLIST/src/detail.php">취소</a>
         </div>
     </form>
 </body>
