@@ -88,7 +88,7 @@ try {
         ?>   
         <tr>
             <td>
-                <img src="../img/list_paper.svg" alt="" class="list_img_1">
+                <img src="../src/img/list_paper.svg" alt="" class="list_img_1">
             </td>
         </tr>
         </table>
