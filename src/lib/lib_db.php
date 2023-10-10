@@ -350,4 +350,41 @@ function db_select_board_id( &$conn, &$arr_param) {
     } 
 }
 
+
+// -------------------------------
+// 함수명   : db_update_chk_flg
+// 기능     : 수행완료된거 chk_flg 변경
+// 파라미터 : PDO       &$conn 
+//           Array      &arr_param 쿼리 작성용 배열
+// 리턴     : boolean
+// -------------------------------
+
+function db_update_chk_flg(&$conn, &$arr_param) {
+    $sql =
+        " UPDATE "
+        ."      boards "
+        ." SET "
+        ."      chk_date = NOW() "
+        ."      ,chk_flg = '1' "
+        ." WHERE "
+        ."      id = :id "
+    ;
+
+    $arr_ps = [
+        ":id" => $arr_param["id"]
+    ];
+
+    try {
+        $stmt = $conn->prepare($sql);
+        $result = $stmt->execute($arr_ps);
+        
+        return $result;  // 정상 : 쿼리 결과 리턴
+    } catch (Exception $e) {
+        echo $e->getMessage(); // Exception 메세지 출력
+        return false; // 예외발생 : false 리턴
+    }
+}
+
+
+
 ?>

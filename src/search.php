@@ -1,5 +1,5 @@
 <?php
-define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/TODOLIST/src/");
+define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
 
@@ -68,7 +68,7 @@ try {
     <?php
             require_once(FILE_HEADER);
     ?>
-        <table class="list_table center">       
+        <table class="list_table">       
             <tr>
                 <td><?php echo $search_day ?></td>
                 <td><a href="/todolist/src/list.php/?page=1">메인으로</a></td>
@@ -93,7 +93,7 @@ try {
             </td>
         </tr>
         <tr>
-            <td class="center search_page_btn">
+            <td class="center">
                 <?php                  
                     for ($i = 1; $i <= 3; $i++) {
                             // 삼항연산자 : 조건 ? 참일때처리 : 거짓일때처리

@@ -1,5 +1,5 @@
 <?php
-define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/TODOLIST/src/");
+define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
 
@@ -38,6 +38,8 @@ try {
     if($result === false){
         throw new Exception("DB Error : SELECT boards"); // 강제 예외 발생 : SELECT boards
     }
+
+
 } catch(Exception $e) {
     echo $e->getMessage(); //예외발생 메세지 출력  //v002 del
     // header("Location: /error.php/?err_msg={$e->getMessage()}");
@@ -70,7 +72,7 @@ try {
                     <form action="/todolist/src/search.php" method="get">           
                             <label class="list_label">
                                 <input type="date" name="date" required class="list_search_input" value="<?php echo $today; ?>">
-                                <button type="submit" class="list_search_btn"><img src="../img/lens.png" alt=""></button>
+                                <button type="submit" class="list_search_btn"><img src="/todolist/src/img/lens.png" alt=""></button>
                             </label>
                     </form>
                     </td>
@@ -82,11 +84,25 @@ try {
         ?>
             <tr>
                 <td>
-                    <input type="checkbox" name="checker[]" id="checker<?php echo $item["id"]; ?>" value="<?php echo $item["id"]; ?>">
-                    <label for="checker<?php echo $item["id"]; ?>">
-                        <a class="list_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
-                            <?php echo $item["content"]; ?>
-                        </a>
+                    <form action="/todolist/src/img/chk_flg.php" method="post">
+                        <input type="checkbox" name="<?php echo $item["id"]; ?>" id="checker<?php echo $item["id"]; ?>" value="<?php echo $item["id"]; ?>">
+                        <label for="checker<?php echo $item["id"]; ?>">
+                        <?php
+                            if($item["chk_flg"] === 0){
+                        ?>
+                            <a class="list_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                                <?php echo $item["content"]; ?>
+                            </a>
+                        <?php
+                            }else {
+                        ?>
+                            <a class="list_content_chk" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                                <?php echo $item["content"]; ?>
+                            </a>
+                        <?php
+                            }
+                        ?>
+                    </form>
                     </label>
                 </td>
             </tr>
