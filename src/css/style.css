@@ -56,10 +56,10 @@ h1 a {
 
 
 
-/* list */
+
 .list_table {
     width: 900px;
-    height: 470px;
+    height: 480px;
     border: 8px solid #9BA4F8;
     border-radius: 30px;
     margin: 0 auto;
@@ -82,6 +82,7 @@ h1 a {
     flex-wrap: nowrap;
     justify-content: space-between;
     padding: 12px 20px 0px 55px;
+    height: 75px;
 }
 
 .list_search_input{
@@ -111,6 +112,12 @@ h1 a {
 .list_search_btn:hover{
     cursor: pointer;
 }
+
+
+.list_content_chk_td{
+    width: 50px;
+}
+
 
 .lsit_page {
     margin: 0px 20px;
@@ -426,12 +433,14 @@ font-size: 1.6rem;
     padding-left: 57px;
     text-decoration: none;
     color: white;
+    display: inline-block;
 }
 
 .search_content_chk{
     padding-left: 57px;
     text-decoration: line-through;
     color: #565656;
+    display: inline-block;
 }
 
 .search_table {
@@ -451,4 +460,5 @@ font-size: 1.6rem;
     flex-wrap: nowrap;
     justify-content: space-between;
     padding: 12px 20px 0px 55px;
+    height: 75px;
 }
