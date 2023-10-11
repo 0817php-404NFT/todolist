@@ -126,6 +126,3 @@ try {
 </body>
 </html>
 
-<?php 
-// echo $item["content"]; 
-?>
