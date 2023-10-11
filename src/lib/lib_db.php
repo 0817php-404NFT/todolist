@@ -324,7 +324,7 @@ function db_delete_boards_id(&$conn, &$arr_param) {
 //			&$arr_param 	
 //  생성일 : 2023-10-10 김민정
 // -----------------------------------------------
-function db_select_board_id( &$conn, &$arr_param) {
+function db_select_boards_id( &$conn, &$arr_param) {
     $sql =
     " SELECT "
     ."      chk_flg "
