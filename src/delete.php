@@ -39,14 +39,14 @@ try {
          
     } else {
              $id = isset($_POST["id"]) ? $_POST["id"] : "";
-             $page = isset($_POST["page"]) ? $_POST["page"] : "";
+            
              $arr_err_msg = [];  
              if($id === ""){
                      $arr_err_msg[] = "Parameter Error : ID";
              }
-             if($page === ""){
-                $arr_err_msg[] = "Parameter Error : page";
-            }
+            //  if($page === ""){
+            //     $arr_err_msg[] = "Parameter Error : page";
+            // }
              if(count($arr_err_msg) >= 1) {
                  throw new Exception(implode("<br",$arr_err_msg));    
                 }
@@ -112,20 +112,21 @@ try {
         </table>
     </main>
     <section class="delete_section">
-        <form action="">
+        <form action="delete.php" method="post">
            
-            <input type="hidden" name="" value="<?php echo $id; ?>">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
 
             <img src="/TODOLIST/src/img/delete_chk2.png" class="delete_btn_img"> 
-            <button class="delete_btn" type="submit" value="확인">
+            <button class="delete_btn" type="submit">
             <span class="delete_span">확인</span>
             </button>
 
-            <img src="/TODOLIST/src/img/delete_cancel2.png"  class="delete_btn_img2" alt="">
+        </form>
+        
+        <img src="/TODOLIST/src/img/delete_cancel2.png"  class="delete_btn_img2" alt="">
             <a class="delete_a" href="/TODOLIST/src/detail.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?> ">
             <span class="delete_span">취소</span>
             </a>
-        </form>
     </section>
 </body>
 </html>

@@ -298,7 +298,7 @@ function db_delete_boards_id(&$conn, &$arr_param) {
 	" UPDATE boards"
 	." SET "
 	." 		del_date = now() "
-	." 		,delete_flg = '1' "
+	." 		,del_flg = '1' "
 	." WHERE "
 	." 		id = :id "
 	;
