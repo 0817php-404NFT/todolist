@@ -7,7 +7,7 @@ try{
 	$id = "";
 	$conn = null;
     $page = "";
-
+	$ox ="";
 	// id확인
 	if(isset($_GET["id"])){
 		$id=$_GET["id"]; //id 셋팅
@@ -37,7 +37,12 @@ try{
 		throw new Exception("DB Error : PDO Select_id count," .count($resilt));
 	} 
 $item=$result[0];
-
+	if($item["chk_flg"] === "0"){
+		$ox = "X";
+	}
+	if($item["chk_flg"] === "1"){
+		$ox = "O";
+	}
 } catch (Exception $e) {
 	echo $e->getMessage(); //예외 메세지 출력
 	exit; //처리종료
@@ -62,25 +67,33 @@ $page=$_GET["page"];
     <?php require_once(FILE_HEADER); ?>
     
     <div class="detail-container">
+        <img class="detail_img" src="/todolist/src/img/Group 7.svg" alt="">
         <table class="detail_table">
+            
             <tr>
-                <th>수행여부</th>
-                <td><?php echo $item["chk_flg"]; ?></td>
+                <td colspan="2" class="detail_head">
+					<span>수행여부: <?php echo $ox; ?></span>
+				</td>
             </tr>
             <tr>
-                <th>작업 내용</th>
-                <td><?php echo $item["content"]; ?></td>
+                <td colspan="2" class="detail_content">
+					<?php echo $item["content"]; ?>
+				</td>
             </tr>
             <tr>
-                <th>날짜</th>
-                <td><?php echo $item["write_date"]; ?></td>
+                <td colspan="2" class="detail_content">
+					<?php echo $item["write_date"]; ?>
+				</td>
             </tr>
+			<tr>
+				<td>
+					<a href="/todolist/src/update.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>">수정</a>
+				</td>
+				<td>
+				<a href="/todolist/src/delete.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>">삭제</a>
+				</td>
+			</tr>
         </table>
-
-        <div class="detail-button-container">
-        <a href="/todolist/src/update.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>">수정</a>
-        <a href="/todolist/src/delete.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>">삭제</a>
-    </div>
-</div>
+	</div>
 </body>
 </html>

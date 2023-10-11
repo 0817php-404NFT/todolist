@@ -1,4 +1,4 @@
-de*{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -142,19 +142,42 @@ h1 a {
 
 
 /* detail */
-.detail_table {
-    background-image: url(../img/Group\ 7.svg);
-    background-position: center 50px;
-    margin: 0 auto;
-    width: 1550px;
-    height: 1100px;
-    background-repeat: no-repeat;
+.detail_img {
+    position: relative;
+    top: -111px;
+    left: 450px;
 }
 
+.detail_table {
+    width: 755px;
+    height: 538px;
+    position: absolute;
+    top: 390px;
+    left: 563px;
+    font-size: 2.0rem;
+    text-align: center;
+    padding: 30px;
 
+}
+.detail-button-container {
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    bottom: 190px;
+    left: 860px;
+    font-size: 2.0rem;
+}
 
-
-
+.detail_head {
+    font-size: 50px;
+    padding: 0px;
+    height: 100px;
+}
+.detail_content {
+    font-size: 35px;
+    padding: 0px;
+    height: 100px;
+}
 
 /* insert */
 .insert_div1 {
