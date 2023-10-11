@@ -15,16 +15,8 @@ try {
     if($http_method === "GET"){
         $id = isset($_GET["id"]) ? $_GET["id"] : "";
         $page = isset($_GET["page"]) ? $_GET["page"] : "";
-        $arr_err_msg = [];
-        if($id === "") {
-            $arr_err_msg[] = "Paramiter Error : ID";
-        }
-        if($page === "") {
-            $arr_err_msg[] = "Paramiter Error : Page";
-        }
-        if(count($arr_err_msg) >= 1) {
-            throw new Exception(implode("<br>",$arr_err_msg));
-        }
+        
+      
         $arr_param = [
             "id" => $id
         ];
@@ -37,19 +29,9 @@ try {
          }
          $item = $result[0];
          
-    } else {
+    } else if($http_method === "POST") {
              $id = isset($_POST["id"]) ? $_POST["id"] : "";
-            
-             $arr_err_msg = [];  
-             if($id === ""){
-                     $arr_err_msg[] = "Parameter Error : ID";
-             }
-            //  if($page === ""){
-            //     $arr_err_msg[] = "Parameter Error : page";
-            // }
-             if(count($arr_err_msg) >= 1) {
-                 throw new Exception(implode("<br",$arr_err_msg));    
-                }
+
              $conn->beginTransaction();
              $arr_param = [
                  "id" => $id    
@@ -115,7 +97,6 @@ try {
         <form action="delete.php" method="post">
            
             <input type="hidden" name="id" value="<?php echo $id; ?>">
-
             <img src="/TODOLIST/src/img/delete_chk2.png" class="delete_btn_img"> 
             <button class="delete_btn" type="submit">
             <span class="delete_span">확인</span>
