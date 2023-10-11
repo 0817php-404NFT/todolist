@@ -88,7 +88,7 @@ try {
                         <input type="checkbox" name="<?php echo $item["id"]; ?>" id="checker<?php echo $item["id"]; ?>" value="<?php echo $item["id"]; ?>">
                         <label for="checker<?php echo $item["id"]; ?>">
                         <?php
-                            if($item["chk_flg"] === 0){
+                            if($item["chk_flg"] == 0){
                         ?>
                             <a class="list_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
                                 <?php echo $item["content"]; ?>
