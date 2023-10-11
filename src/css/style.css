@@ -1,4 +1,4 @@
-*{
+de*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -144,49 +144,8 @@ h1 a {
 /* detail */
 .detail_table {
     background-image: url(../img/Group\ 7.svg);
-    background-position: center 50px;
-    background-size: 1300px 800px;
     margin: 0 auto;
-    width: 1550px;
-    height: 1100px;
-    background-repeat: no-repeat;
-}
-.detail-button-container {
-    display: flex; 
-    justify-content: flex-start; 
-    gap: 20px; 
-} 
 
-
-
-
-
-.detail-table {
-    background-color: rgba(255, 255, 255, 0.7); 
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.detail-button-container {
-    position: absolute;
-    bottom: -90px; 
-    right: 770px; 
-}
-
-.detail-button-container a {
-    text-decoration: none;
-    padding: 10px 20px;
-    border: 1px solid transparent;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: background-color 0.3s ease;
-    display: inline-block;
-    margin: 0 10px;
-}
-
-.detail-button-container a:hover {
-    background-color: rgba(0, 0, 0, 0.7);
 }
 
 
@@ -220,6 +179,7 @@ h1 a {
     position: absolute;
     top: 12px;
     right: 500px;
+    cursor: pointer;
 }
 .insert_pen {
     width: 30px;
