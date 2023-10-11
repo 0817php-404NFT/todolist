@@ -5,7 +5,7 @@ define("ERROR_MSG_PARAM", "%s: 필수 입력 사항입니다.");
 require_once(ROOT."lib/lib_db.php");
 
 $conn = null;
-$http_method = $SERVER["REQUEST_METHOD"];
+$http_method = $_SERVER["REQUEST_METHOD"];
 $arr_err_msg = [];
 $content = "";
 
