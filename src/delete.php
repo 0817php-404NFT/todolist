@@ -4,41 +4,69 @@ define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
 
 
-// try {
+try {
 
-//     $conn = null;
-//     if(!my_db_conn($conn)){
-//         throw new Exception("DB Error : PDO instance");
-//     }
-//     $http_method = $_SETVER["REQUEST_METHOD"];
+    $conn = null;
+    if(!my_db_conn($conn)){
+        throw new Exception("DB Error : PDO instance");
+    }
+    $http_method = $_SERVER["REQUEST_METHOD"];
     
-//     if($http_method === "GET"){
-//         $id = isset($_GET["id"]) ? $_GET["id"] : "";
-//         $arr_err_msg = [];
-//         if($id === "") {
-//             $arr_err_msg[] = "Paramiter Error : ID";
-//         }
-//         if(count($arr_err_msg) >= 1) {
-//             throw new Exception(implode("<br>",$arr_err_msg));
-//         }
-//         $arr_param = [
-//             "id" => $id
-//         ];
-//         $result = db_select_boards_id($conn,$arr_param);
-//          if($result === false) {
-//              throw new Exception("DB Error : Select id");
-//          } else if(!count($result) === 1) {
-//              throw new Exception("DB Error : Select id count);
-//          }
-//          $item = $result[0];
-//     } else {
-//              $id = isset($_POST["id"]) ? $_POST["id"] : "";
-//              if($id === ""){
-//                      $arr_err_msg[] = sprintf(ERROR_MSG_PARAM,"id");
-//              }
-//}
+    if($http_method === "GET"){
+        $id = isset($_GET["id"]) ? $_GET["id"] : "";
+        $page = isset($_GET["page"]) ? $_POST["page"] : "";
+        $arr_err_msg = [];
+        if($id === "") {
+            $arr_err_msg[] = "Paramiter Error : ID";
+        }
+        if($page === "") {
+            $arr_err_msg[] = "Paramiter Error : Page";
+        }
+        if(count($arr_err_msg) >= 1) {
+            throw new Exception(implode("<br>",$arr_err_msg));
+        }
+        $arr_param = [
+            "id" => $id
+        ];
+        $result = db_select_boards_id($conn,$arr_param);
 
-// }
+         if($result === false) {
+             throw new Exception("DB Error : Select id");
+         } else if(!(count($result) === 1)) {
+             throw new Exception("DB Error : Select id count");
+         }
+         $item = $result[0];
+         
+    } else {
+             $id = isset($_POST["id"]) ? $_POST["id"] : "";
+             $arr_err_msg = [];  
+             if($id === ""){
+                     $arr_err_msg[] = "Parameter Error : ID";
+             }
+             if(count($arr_err_msg) >= 1) {
+                 throw new Exception(implode("<br",$arr_err_msg));    
+                }
+             $conn->beginTransaction();
+             $arr_param = [
+                 "id" => $id    
+                ];
+              if(!db_delete_boards_id($conn, $arr_param)) {
+                   throw new Exception("DB Error : Delete Boards id");
+                 }
+               $conn->commit();
+               header("Location: list.php");
+               exit;
+                }
+     } catch (Exception $e) {
+         if($http_method === "POST") {
+             $conn->rollBack();    
+     }
+         echo $e->getMessage();
+         exit; 
+     } finally {
+         db_destroy_conn($conn);
+ }
+
 
 ?>
 <!DOCTYPE html>
@@ -70,23 +98,27 @@ require_once(ROOT."lib/lib_db.php");
                 <br>
                 <br>
             </caption>
-            <div>
-            
-              <input type="hidden"><a href="" class="delete_content">" 자기전에 발 닦고 자기 "</a>
+           
+            <tr>
+                <td><?php echo $item["content"] ?></td>
+            </tr>
+            <!-- <a href="" class="delete_content">" 자기전에 발 닦고 자기 "</a> -->
           
-            </div>
+          
         </table>
     </main>
     <section class="delete_section">
         <form action="">
            
-            <input type="hidden" name="" value="">
+            <input type="hidden" name="" value="<?php echo $id; ?>">
+
             <img src="/TODOLIST/src/img/delete_chk2.png" class="delete_btn_img"> 
             <button class="delete_btn" type="submit" value="확인">
             <span class="delete_span">확인</span>
             </button>
+
             <img src="/TODOLIST/src/img/delete_cancel2.png"  class="delete_btn_img2" alt="">
-            <a class="delete_a" href="">
+            <a class="delete_a" href="/TODOLIST/src/detail.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?> ">
             <span class="delete_span">취소</span>
             </a>
         </form>
