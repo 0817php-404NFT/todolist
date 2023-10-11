@@ -68,10 +68,12 @@ try {
     <?php
             require_once(FILE_HEADER);
     ?>
-        <table class="list_table">       
+        <table class="search_table">       
             <tr>
-                <td><?php echo $search_day ?></td>
-                <td><a href="/todolist/src/list.php/?page=1">메인으로</a></td>
+                <td class="search_head_td">
+                    <?php echo $search_day ?>
+                    <a class="search_out_btn" href="/todolist/src/list.php/?page=1">메인으로</a>
+                </td>
             </tr>
         <?php
         // 리스트를 생성
@@ -79,9 +81,16 @@ try {
         ?>
             <tr>
                 <td colspan="2">
-                    <span class="list_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                <?php if($item["chk_flg"] === "0"){ ?>
+                    <span class="search_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
                         <?php echo $item["content"]; ?>
                     </span>
+                <?php } ?>
+                <?php if($item["chk_flg"] === "1"){ ?>
+                    <span class="search_content_chk" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                        <?php echo $item["content"]; ?>
+                    </span>
+                <?php } ?>
                 </td>
             </tr>
         <?php
