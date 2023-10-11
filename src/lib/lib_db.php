@@ -255,7 +255,7 @@ function db_search_boards_cnt(&$conn, &$arr_param)
 // 파라미터  : PDO    &$conn
 //            Array    &$arr_param 쿼리 작성용 배열
 // 리턴      : boolean
-// 제작      : 민주
+// 제작      : 20231010 민주
 // --------------------------------
 
 function db_update_boards_id(&$conn, &$arr_param) {
