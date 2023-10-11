@@ -38,8 +38,7 @@ if($http_method === "POST") {
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
+    <meta name="viewport" content="width=, initial-scale=1.0">
     <link rel="stylesheet" href="/todolist/src/css/style.css">
     <title>작성페이지</title>
 </head>
