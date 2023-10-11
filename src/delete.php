@@ -14,7 +14,7 @@ try {
     
     if($http_method === "GET"){
         $id = isset($_GET["id"]) ? $_GET["id"] : "";
-        $page = isset($_GET["page"]) ? $_POST["page"] : "";
+        $page = isset($_GET["page"]) ? $_GET["page"] : "";
         $arr_err_msg = [];
         if($id === "") {
             $arr_err_msg[] = "Paramiter Error : ID";
@@ -39,10 +39,14 @@ try {
          
     } else {
              $id = isset($_POST["id"]) ? $_POST["id"] : "";
+             $page = isset($_POST["page"]) ? $_POST["page"] : "";
              $arr_err_msg = [];  
              if($id === ""){
                      $arr_err_msg[] = "Parameter Error : ID";
              }
+             if($page === ""){
+                $arr_err_msg[] = "Parameter Error : page";
+            }
              if(count($arr_err_msg) >= 1) {
                  throw new Exception(implode("<br",$arr_err_msg));    
                 }
@@ -99,8 +103,8 @@ try {
                 <br>
             </caption>
            
-            <tr>
-                <td><?php echo $item["content"] ?></td>
+            <tr class = "delete_tr">
+                <td class = "delete_td"><?php echo $item["content"] ?></td>
             </tr>
             <!-- <a href="" class="delete_content">" 자기전에 발 닦고 자기 "</a> -->
           
