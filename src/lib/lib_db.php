@@ -317,6 +317,38 @@ function db_delete_boards_id(&$conn, &$arr_param) {
 	} 
 }
 
+//  ---------------------------------------------
+//  함수명 db_detail_boards_id
+//  기능 : 디테일 데이터 조회
+//  파라미터 : pdo &$conn
+//			&$arr_param 	
+//  생성일 : 2023-10-10 김민정
+// -----------------------------------------------
+function db_select_board_id( &$conn, &$arr_param) {
+    $sql =
+    " SELECT "
+    ."      chk_flg "
+    ."      ,content "
+    ."      ,write_date"
+    ." FROM "
+    ."      boards "
+    ." WHERE "
+    ."      id = :id "
+    ." AND "
+    ."      del_flg = '0' "
+    ;
+    $arr_ps = [
+    ":id" => $arr_param["id"]
+    ];
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($arr_ps);
+        $result = $stmt->fetchAll();
+        return $result;
+    } catch (Exception $e) {
+        echo $e->getMessage(); //예외 메세지 출력
+    } 
+}
 
 
 // -------------------------------

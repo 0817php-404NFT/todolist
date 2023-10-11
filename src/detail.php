@@ -1,48 +1,78 @@
 <?php
-define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/TODOLIST/src/");
+define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
+// try{
+// 	$id = "";
+// 	$conn = null;
+// 	// id확인
+// 	if(isset($_GET["id"])){
+// 		$id=$_GET["id"]; //id 셋팅
+// 	} else {
+// 		throw new Exception("Parameter ERROR : NO id"); //강제 예외 발생
+// 	}
 
-$status = isset($_POST["status"]) ? ($_POST["status"] == "on" ? "O" : "X") : "O";
+// 	if(!my_db_conn($conn)) {
+// 		throw new Exception("DB Error : PDO Instance");
+// 	}
 
+// 	// 게시글 데이터 조회
+// 	$param_id = [
+// 		"id" => $id
+// 	];
+// 	$result=db_select_board_id($conn, $param_id);
+
+// 	// 게시글 조회 예외 처리
+// 	if(!$result) {
+// 		throw new Exception("DB Error : PDO Select_id");
+// 	} else if(!(count($result) === 1)){
+// 		throw new Exception("DB Error : PDO Select_id count," .count($resilt));
+// 	} 
+// $item=$result[0];
+
+// } catch (Exception $e) {
+// 	echo $e->getMessage(); //예외 메세지 출력
+// 	exit; //처리종료
+// } finally {
+// 	db_destroy_conn($conn);
+// }
+// 	// 게시글 조회 count 에러
+	
+// $page=$_GET["page"];	
 ?>
+
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <link rel="stylesheet" href="/TODOLIST/src/css/style.css">
+    <link rel="stylesheet" href="/todolist/src/css/style.css">
     <title>상세페이지</title>
 </head>
 <body>
     <?php require_once(FILE_HEADER); ?>
     
     <div class="detail-container">
-        <br>
-        <br>
-        <br>
-        <div class="detail-status-box">
-            <p>수행여부: <?php echo $status; ?></p>
-        </div>
-        <br>
-        <div class="detail-content">
-            <p>수행한 내용</p>
-        </div>
-        <br>
-        <div class="detail-todolistwrite">
-            <p>자기전에 발 닦고 자기</p>
-        </div>
-        <br>
-        <div class="detail-todolistdate">
-            <p><?php echo date("Y-m-d"); ?></p>
-        </div>
-        <br>
-        <br>
+        <table class="detail_table">
+            <tr>
+                <th>수행여부</th>
+                <td><?php echo $item["chk_flg"]; ?></td>
+            </tr>
+            <tr>
+                <th>작업 내용</th>
+                <td><?php echo $item["content"]; ?></td>
+            </tr>
+            <tr>
+                <th>날짜</th>
+                <td><?php echo $item["write_date"]; ?></td>
+            </tr>
+        </table>
+
         <div class="detail-button-container">
-            <a href="update.php" class="transparent-button" id="edit-button">수정</a>
-            <a href="delete.php" class="transparent-button">삭제</a>
-        </div>
+        <a href="/todolist/src/update.php/?id=<?php echo $id; ?>">수정</a>
+        <a href="/todolist/src/delete.php/?id=<?php echo $id; ?>">삭제</a>
     </div>
+</div>
 </body>
 </html>
