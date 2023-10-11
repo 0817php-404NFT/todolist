@@ -1,49 +1,35 @@
 <?php
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/TODOLIST/src/");
 define("FILE_HEADER", ROOT."header.php");
-define("ERROR_MSG_PARAM", "%s: 필수 입력 사항입니다.");
+// define("ERROR_MSG_PARAM", "%s: 필수 입력 사항입니다.");
 require_once(ROOT."lib/lib_db.php");
 
-// $conn = null;
-// $http_method = $SERVER["REQUEST_METHOD"];
-// $arr_err_msg = [];
-// $content = "";
+$http_method = $_SERVER["REQUEST_METHOD"];
+if($http_method === "POST") {
+    try {
+        $arr_post = $_POST;
+        $conn = null;
 
-// if($http_method === "POST") {
-//     try {
-//         $content = isset($_POST["content"]) ? $_POST["content"] : "";
-    
-//         if($content === ""){
-//             $arr_err_msg[] = sprintf(ERROR_MSG_PARAM,"내용");
-//             }
-//         if(count($arr_err_msg) === 0) {
-//             if(!my_db_conn($conn)){
-//                 throw new Exception("DB Error : PDO instance");
-//             }
-//             $conn->beginTransaction();
-//             $arr_param = [
-//                 "content" =>$_POST["content"]
-//             ];
+        if(!my_db_conn($conn)) {
+            throw new Exception ("DB Error : PDO instance");
+        }
 
-//             if(!db_insert_boards($conn,$arr_param)){
-//                 throw new Exception("DB Error : Insert Boards");
-//             }
-//             $conn->commit();
-//                 header("Location: list.php");
-//                 exit;
-//         }
-//     } catch (Exception $e){
-//         if($conn !== null) {
-//             $conn->rollBack();
-//         }
-//         header("Location: list.php/?err_msg={$e->getMessage()}");
-//         exit;
-//     } finally {
-//         db_destroy_conn($conn);
-//     }
-// }
+        $conn->beginTransaction();
 
+        if(!db_insert_boards($conn, $arr_post)) {
+            throw new Exception("DB Error : Insert Boards");
+        }
+        $conn->commit();
 
+        header("Location: list.php");
+        exit;
+    } catch (Exception $e) {
+        echo $e->getMessage();
+        exit;
+    } finally {
+        db_destroy_conn($conn);
+    }
+}
 
 
 
