@@ -107,14 +107,14 @@ try {
     <section class="delete_section">
         <form action="/todolist/src/delete.php" method="post">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <button class="delete_btn" type="submit">
-                <img src="/TODOLIST/src/img/delete_chk2.png" class="delete_btn_img"> 
+            <button class="delete_btn" type="submit"> 
+                <img src="/TODOLIST/src/img/delete_chk2.png" class="delete_btn_img">
                 <span class="delete_span">확인</span>
             </button>
 
             <a class="delete_a" href="/TODOLIST/src/detail.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?> ">
                 <img src="/TODOLIST/src/img/delete_cancel2.png"  class="delete_btn_img2" alt="">
-                <span class="delete_span">취소</span>
+                <span class="delete_span2">취소</span>
             </a>
         </form>
     </section>
