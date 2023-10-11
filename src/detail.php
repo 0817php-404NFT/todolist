@@ -76,21 +76,21 @@ $page=$_GET["page"];
 				</td>
             </tr>
             <tr>
-                <td colspan="2" class="detail_content">
+                <td colspan="2" class="detail_content_1">
 					<?php echo $item["content"]; ?>
 				</td>
             </tr>
             <tr>
-                <td colspan="2" class="detail_content">
+                <td colspan="2" class="detail_content_2">
 					<?php echo $item["write_date"]; ?>
 				</td>
             </tr>
 			<tr>
 				<td>
-					<a href="/todolist/src/update.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>">수정</a>
+					<a href="/todolist/src/update.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">수정</a>
 				</td>
 				<td>
-				<a href="/todolist/src/delete.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>">삭제</a>
+				<a href="/todolist/src/delete.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">삭제</a>
 				</td>
 			</tr>
         </table>
