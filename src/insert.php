@@ -47,17 +47,14 @@ if($http_method === "POST") {
     <?php
             require_once(FILE_HEADER);
     ?>  
-    <form action="/todolist/src/insert.php" method="post">
-        <div class="insert_div1">
-            <input class="insert_input" type="text" name="content" placeholder="내용을 입력해 주세요." maxlength='30'>
+    <form action="/todolist/src/insert.php" method="post" class="insert_form">
+            <input class="insert_input" type="text" name="content" placeholder="             내용을 입력해 주세요(최대30글자)." maxlength='30' required>
             <button class="insert_butt" type="submit">
                 <img class="insert_pen" src="/todolist/src/img/흐리멍텅한연필.png" alt="연필">
             </button>
             <a class="insert_a"href="/todolist/src/list.php">
-            <img src="/todolist/src/img/delete_cancel2.png" alt="연필">
+                <img src="/todolist/src/img/delete_cancel2.png" alt="연필">
             </a>
-        </div> 
-        <div class="insert_div2">
             <img class="insert_sheep" src="/todolist/src/img/sheeps.svg" alt="sheeps">
             <img class="insert_cat" src="/todolist/src/img/cat2.png" alt="눈감은고양이">
         </div>
