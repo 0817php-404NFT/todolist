@@ -96,7 +96,8 @@ try {
             <input type="hidden" name="id" value="<?php echo $id ?>">
             <input type="hidden" name="page" value="<?php echo $page ?>">
             <img src="/todolist/src/img/update_table.svg" alt="update_table">
-            <input class="update_input" type="text" name="content" value="<?php echo $item["content"] ?>">
+            <!-- <input class="update_input" type="text" name="content" value="<?php echo $item["content"] ?>"> -->
+            <textarea class="update_text" name="content" id="content" cols="30" rows="2" maxlength="30" required><?php echo $item["content"] ?></textarea>
         </table>
         <div class="update_div">
             <button class="update_a" type="submit">완료</button>

@@ -56,10 +56,10 @@ h1 a {
 
 
 
-/* list */
+
 .list_table {
     width: 900px;
-    height: 470px;
+    height: 480px;
     border: 8px solid #9BA4F8;
     border-radius: 30px;
     margin: 0 auto;
@@ -82,6 +82,7 @@ h1 a {
     flex-wrap: nowrap;
     justify-content: space-between;
     padding: 12px 20px 0px 55px;
+    height: 75px;
 }
 
 .list_search_input{
@@ -111,6 +112,12 @@ h1 a {
 .list_search_btn:hover{
     cursor: pointer;
 }
+
+
+.list_content_chk_td{
+    width: 50px;
+}
+
 
 .lsit_page {
     margin: 0px 20px;
@@ -212,7 +219,7 @@ h1 a {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     width: 1120px;
-    height: 50px;
+    height: 55px;
     text-align: center;
     color: #ffffff;
     font-size: 2rem;
@@ -223,19 +230,19 @@ h1 a {
     border: none;
     background: none;
     position: absolute;
-    top: 10px;
+    top: 13px;
     left:  1025px;
 }
 .insert_butt:hover {
     cursor: pointer;
 }
 .insert_pen {
-    width: 30px;
-    height: 30px;
+    width: 33px;
+    height: 33px;
 }
 .insert_a {
     position: absolute;
-    top: 2px;
+    top: 5px;
     left:  1065px;
 }
 .insert_sheep {
@@ -250,7 +257,9 @@ h1 a {
     left: 300px;
     width: 520px;
 }
-
+input::placeholder {
+    color: rgb(255, 255, 255, 0.4);
+}
 /* update */
 .update_form {
     margin: 0 auto;
@@ -268,18 +277,19 @@ h1 a {
     margin: auto;
     display: block; 
 } */
-.update_input {
+.update_text {
     padding: 10px;
     background: none;
     position: absolute;
-    bottom: 190px;
+    bottom: 165px;
     left: 80px;
     color: #000;
     border: none;
     /* border-radius: 8px; */
-    font-size: 1.6rem;
+    font-size: 35px;
     width: 700px;
     text-align: center;
+    resize: none;
 }
 .update_div {
     margin: 20px;
@@ -288,14 +298,14 @@ h1 a {
 .update_a {
     display: inline-block;
     padding: 0;
-    margin: 0 30px;
+    margin: 0 40px;
     border: none;
-    width: 110px;
-    height: 35px;
-    line-height: 35px;
-    background-color : rgba(255, 255, 255, 0.2);
+    width: 160px;
+    height: 55px;
+    line-height: 55px;
+    background-color : rgba(205, 204, 204, 0.2);
     color: #ffffff;
-    font-size: 1.5rem;
+    font-size: 35px;
     cursor: pointer;
 }
 /* delete */
@@ -426,12 +436,14 @@ font-size: 1.6rem;
     padding-left: 57px;
     text-decoration: none;
     color: white;
+    display: inline-block;
 }
 
 .search_content_chk{
     padding-left: 57px;
     text-decoration: line-through;
     color: #565656;
+    display: inline-block;
 }
 
 .search_table {
@@ -451,4 +463,5 @@ font-size: 1.6rem;
     flex-wrap: nowrap;
     justify-content: space-between;
     padding: 12px 20px 0px 55px;
+    height: 75px;
 }
