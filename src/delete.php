@@ -84,34 +84,36 @@ try {
     ?>  
     <main>
         <table  style="text-align: center;" class="delete_table">
-            <img src="/TODOLIST/src/img/delete_box.png" alt="delete" class="delete_img">
-            <caption class="delete_caption" style="color:black"> 
-                <p class="delete_p"style="color:red">- Warning -</p>
-                <br>
-                <br>
-                한번 삭제한 리스트는 복구가 불가능 합니다.
-                <br>
-                <br>
-                그래도 하시겠습니까?
-                <br>
-                <br>
-            </caption>
-            <tr class = "delete_tr">
-                <td class = "delete_td"><?php echo $item["content"] ?></td>
+            <tr>
+                <td class="delete_p">
+                    - Warning -
+                </td>
             </tr>
-            <!-- <a href="" class="delete_content">" 자기전에 발 닦고 자기 "</a> -->
+            <tr>
+                <td class="delete_msg_1">                 
+                    한번 삭제한 리스트는 복구가 불가능 합니다.
+                </td>
+            </tr>
+            <tr>
+                <td class="delete_msg_2">                 
+                    그래도 하시겠습니까?
+                </td>
+            </tr>      
+            <tr>
+                <td class = "delete_td"><span><?php echo $item["content"] ?></span></td>
+            </tr>
         </table>
     </main>
     <section class="delete_section">
         <form action="/todolist/src/delete.php" method="post">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <img src="/TODOLIST/src/img/delete_chk2.png" class="delete_btn_img"> 
             <button class="delete_btn" type="submit">
+                <img src="/TODOLIST/src/img/delete_chk2.png" class="delete_btn_img"> 
                 <span class="delete_span">확인</span>
             </button>
 
-            <img src="/TODOLIST/src/img/delete_cancel2.png"  class="delete_btn_img2" alt="">
             <a class="delete_a" href="/TODOLIST/src/detail.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?> ">
+                <img src="/TODOLIST/src/img/delete_cancel2.png"  class="delete_btn_img2" alt="">
                 <span class="delete_span">취소</span>
             </a>
         </form>

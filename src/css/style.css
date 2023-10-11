@@ -301,73 +301,88 @@ h1 a {
 /* delete */
 
 .delete_table{
-    font-size: 1.6rem;   
- }
- .delete_p {
-     font-size: 1.6rem;
- }
- .delete_img{
-     position: relative;
-     left: 484px;    
- }
- .delete_caption {
-     text-align: center;
-     position: absolute;
-     top: 497px;
-     left: 723px;
- }
+    font-size: 1.6rem;
+    background-image: url("/TODOLIST/src/img/delete_box.png");
+    width: 1000px;
+    height: 465px;
+    margin: 0 auto;
+}
 
- .delete_td {
-    position: absolute;
-    color: #000;
-    width: 500px;
+.delete_p {
+    font-size: 3rem;
+    color: red;
     height: 50px;
-    padding: 10px;
-    border: 1px solid #d9d9d9;
-    top: 720px;
-    left: 743px;
- }
- .delete_a {
-     display: inline-block;
-     font-size: 1.6rem;
-     background-color: rgba(205, 204, 204, 0.2);
-     color: #000;
-     width: 150px;
-     height: 50px;
-     text-align: center;
-     line-height: 50px;
-    
- }
- .delete_section {
-     text-align: center;
-     top: 500px;
-     right: 900px;
- }
- .delete_btn {
-     border: none;
-     background-color: rgba(205, 204, 204, 0.2);
-     font-size: 1.8rem;
-     top:100px;
-     width: 150px;
-     height: 50px;
- }
- .delete_span {
-    color: #fff;
-    font-size: 1.8rem;
-    margin-left: 20px;
- }
- .delete_span:hover {
+    padding-top: 65px;
+}
+.delete_msg_1 {
+    padding-top: 25px;
+    font-size: 1.7rem;
     color: #000;
- }
- 
- .delete_sapn2 {
-    color: #fff;
-    font-size: 1.8rem;
-    margin-left: 20px;
- }
- .delete_span2:hover{
+    height: 40px;
+}
+.delete_msg_2 {
+    font-size: 1.7rem;
     color: #000;
- }
+    height: 40px;
+}
+
+.delete_td{
+    font-size: 1.7rem;
+    color: #000;
+    height: 150px;
+    padding-bottom: 50px;
+}
+.delete_td span{
+    display: inline-block;
+    border: 5px solid #d9d9d9;
+    color: #000;
+    padding: 20px;
+}
+
+.delete_a {
+    display: inline-block;
+    font-size: 1.6rem;
+    background-color: rgba(240, 240, 240,0.3);
+    color: #000;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+
+}
+.delete_section {
+    text-align: center;
+    top: 500px;
+    right: 900px;
+}
+.delete_btn {
+    border: none;
+    background-color: rgba(240, 240, 240,0.3);
+    font-size: 1.6rem;
+    top:100px;
+    width: 150px;
+    height: 50px;
+}
+.delete_btn:hover {
+    cursor: pointer;
+}
+.delete_span {
+color: #fff;
+font-size: 1.6rem;
+margin-left: 20px;
+}
+.delete_span:hover {
+color: #000;
+}
+
+.delete_sapn2 {
+color: #fff;
+font-size: 1.6rem;
+margin-left: 20px;
+}
+.delete_span2:hover{
+color: #000;
+}
 
 .delete_btn_img {
 position: relative;
