@@ -357,7 +357,8 @@ function db_select_boards_id( &$conn, &$arr_param) {
 // 파라미터 : PDO       &$conn 
 //           Array      &arr_param 쿼리 작성용 배열
 // 리턴     : boolean
-// -------------------------------
+// 제작     : 10-10정훈
+//-------------------------------
 
 function db_update_chk_flg(&$conn, &$arr_param) {
     $sql =
@@ -365,13 +366,15 @@ function db_update_chk_flg(&$conn, &$arr_param) {
         ."      boards "
         ." SET "
         ."      chk_date = NOW() "
-        ."      ,chk_flg = '1' "
+        // ."      ,chk_flg = '1' " // del 1011 정훈
+        ."      ,chk_flg = :chk_flg " // add 1011 정훈
         ." WHERE "
         ."      id = :id "
     ;
 
     $arr_ps = [
         ":id" => $arr_param["id"]
+        ,":chk_flg" =>$arr_param["chk_flg"]
     ];
 
     try {

@@ -42,7 +42,6 @@ try {
 
 } catch(Exception $e) {
     echo $e->getMessage(); //예외발생 메세지 출력  //v002 del
-    // header("Location: /error.php/?err_msg={$e->getMessage()}");
     exit; //처리종료
 } finally {
     db_destroy_conn($conn); //DB파기
@@ -66,7 +65,6 @@ try {
             require_once(FILE_HEADER);
     ?>
         <table class="list_table">     
-            <div>  
                 <tr>
                     <td class="list_head_td">오늘의할일                   
                     <form action="/todolist/src/search.php" method="get">           
@@ -77,33 +75,38 @@ try {
                     </form>
                     </td>
                 </tr>
-            </div>
         <?php
         // 리스트를 생성
         foreach ($result as $item) {
         ?>
             <tr>
                 <td>
-                    <form action="/todolist/src/img/chk_flg.php" method="post">
-                        <input type="checkbox" name="<?php echo $item["id"]; ?>" id="checker<?php echo $item["id"]; ?>" value="<?php echo $item["id"]; ?>">
-                        <label for="checker<?php echo $item["id"]; ?>">
+                    <!-- <form action="/todolist/src/img/chk_flg.php" method="post">
+                        <input type="checkbox" name="<?php //echo $item["id"]; ?>" id="checker<?php //echo $item["id"]; ?>" value="<?php //echo $item["id"]; ?>">
+                        <label for="checker"> --> <!-- del 1011 정훈  -->
                         <?php
-                            if($item["chk_flg"] == 0){
-                        ?>
+                            if($item["chk_flg"] === "0"){
+                        ?>  
+                            <a href="/todolist/src/chk_flg.php/?id=<?php echo $item["id"]; ?>&chk_flg=<?php echo $item["chk_flg"] ?>&page=<?php echo $page_num ?>">
+                                <img src="/todolist/src/img/check_b.svg" alt="">
+                            </a> <!-- add 1011 정훈  -->
                             <a class="list_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
                                 <?php echo $item["content"]; ?>
                             </a>
                         <?php
                             }else {
                         ?>
+                            <a href="/todolist/src/chk_flg.php/?id=<?php echo $item["id"]; ?>&chk_flg=<?php echo $item["chk_flg"] ?>&page=<?php echo $page_num ?>">
+                                <img src="/todolist/src/img/check_a.svg" alt=""> 
+                            </a> <!-- add 1011 정훈  -->
                             <a class="list_content_chk" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
                                 <?php echo $item["content"]; ?>
                             </a>
                         <?php
                             }
-                        ?>
-                    </form>
-                    </label>
+                        ?>  
+                    <!-- </form>
+                    </label> --> <!-- del 1011 정훈  -->
                 </td>
             </tr>
         <?php
@@ -128,5 +131,6 @@ try {
                 </td>
         </tr>
         </table>
+        <a class="list_insert_btn center" href="/todolist/src/insert.php">등록</a>
 </body>
 </html>
