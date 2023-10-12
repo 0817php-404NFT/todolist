@@ -465,3 +465,157 @@ font-size: 1.6rem;
     padding: 12px 20px 0px 55px;
     height: 75px;
 }
+
+
+
+/* 햄버거버튼 list페이지 */
+
+input[id="icon"] {
+    display:none;
+} 
+
+
+input[id="icon"] + label{
+    position: relative;
+    display:block;
+    width:40px;
+    height:30px;
+    cursor:pointer;
+    margin-left: 20px;
+    margin-top: 20px;
+} 
+
+input[id="icon"] + label > span {
+    position: absolute;
+    display:block;
+    width:100%;
+    height:5px;
+    border-radius:30px;
+    background:#ffffff;
+    transition: all 0.35s;  
+    z-index:2;
+
+}
+
+input[id="icon"] + label > span:nth-child(1) {
+    top:0px;
+}
+
+input[id="icon"] + label > span:nth-child(2) {
+    top:50%;
+    transform: translateY(-50%);  
+}
+
+input[id="icon"] + label > span:nth-child(3) {
+    bottom:0px;
+}
+
+
+input[id="icon"]:checked + label > span:nth-child(1) {
+    top:50%;
+    transform:translateY(-50%) rotate(45deg);
+}
+
+input[id="icon"]:checked + label > span:nth-child(2) {
+    opacity: 0;
+}
+
+input[id="icon"]:checked + label > span:nth-child(3) {
+    bottom:50%;
+    transform:translateY(50%) rotate(-45deg);
+}
+
+#icon + label + #header {
+    box-shadow: 10px 0px 70px 20px #000000b5;
+    position:fixed; 
+    width:300px;
+    height:100%;
+    background-color: #311a9344;
+    top:0px;
+    padding:400px 25px 25px 25px;
+    box-sizing:border-box;
+    left:-300px;
+    z-index:1;
+    transition: all 0.35s;
+}
+
+#icon:checked + label + #header {
+    left:0px;
+}
+
+#icon:checked + label + #header > ul > li > a {
+    color: white;
+
+}
+
+.side_li{
+    padding: 20px;
+    font-size: 40px;
+    list-style: none;
+}
+
+
+
+/* stats */
+
+.stats_table{
+    width: 900px;
+    height: 470px;
+    border: 8px solid #9BA4F8;
+    border-radius: 30px;
+    margin: 0 auto;
+    position: relative;
+    font-size: 40px;
+    padding: 20px;
+}
+
+.stats_table thead tr{
+    display: flex;
+    justify-content: space-between;
+}
+.stats_table thead tr a{
+    line-height: 120px;
+}
+.stats_table thead tr a:hover{
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.stats_table thead tr span{
+    font-size: 60px;
+}
+
+.stats_td_t{
+    height: 50px;
+}
+
+.stats_td_f{
+    
+}
+
+
+
+progress {
+    -webkit-appearance: none;
+    border-radius: 10px;
+}
+
+::-webkit-progress-bar {
+background-color: grey;
+}
+
+.stats_progress_1::-webkit-progress-value {
+background-color: greenyellow;
+}
+.stats_progress_2::-webkit-progress-value {
+background-color: blue;
+}
+.stats_progress_3::-webkit-progress-value {
+background-color: yellow;
+}
+.stats_progress_4::-webkit-progress-value {
+background-color: orange;
+}
+.stats_progress_5::-webkit-progress-value {
+background-color: red;
+}
