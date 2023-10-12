@@ -5,6 +5,8 @@
     font-family: 'DungGeunMo';
     color: #fff;
 }
+/* 버튼 hover 각 페이지 전체 적용 */
+@-webkit-keyframes blink-2{0%{opacity:1}50%{opacity:.2}100%{opacity:1}}@keyframes blink-2{0%{opacity:1}50%{opacity:.2}100%{opacity:1}}
 @font-face {
     font-family: 'DungGeunMo';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
@@ -39,6 +41,46 @@ h1{
     right: 60px;
     top: 100px;
 }
+
+/**
+ * ----------------------------------------
+ * animation pulsate-bck
+ * ----------------------------------------
+ */
+h1:hover {
+	-webkit-animation: pulsate-bck 1.5s ease-in-out infinite both;
+	        animation: pulsate-bck 1.5s ease-in-out infinite both;
+}
+
+ @-webkit-keyframes pulsate-bck {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+    50% {
+      -webkit-transform: scale(0.9);
+              transform: scale(0.9);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+}
+  @keyframes pulsate-bck {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+    50% {
+      -webkit-transform: scale(0.9);
+              transform: scale(0.9);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+}
+  
 
 h1 a {
     color: #fff;  
@@ -111,6 +153,7 @@ h1 a {
 
 .list_search_btn:hover{
     cursor: pointer;
+   
 }
 
 
@@ -146,7 +189,9 @@ h1 a {
     margin: 30px auto;
     line-height: 60px
 }
-
+.list_insert_btn:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
 
 /* detail */
 .detail_img {
@@ -160,26 +205,44 @@ h1 a {
     height: 538px;
     position: absolute;
     top: 390px;
-    left: 563px;
+    left: 640px;
     font-size: 2.0rem;
     text-align: center;
     padding: 50px;
 
 }
-.detail-button-container {
-    text-align: center;
-    line-height: 50px;
-    position: absolute;
-    bottom: 190px;
-    left: 860px;
-    font-size: 2.0rem;
-}
+
 
 .detail_head {
     font-size: 50px;
     padding: 0px;
     height: 100px;
 
+}
+
+.detail_btn {
+    position: relative;
+    left: -120px; 
+    width: 200px;
+    height: 60px;
+    font-size: 40px;
+    margin: 35px auto;
+    line-height: 60px;
+    display: inline-block;
+    padding: 0;
+    margin: 0 40px;
+    border: none;
+    width: 160px;
+    height: 55px;
+    line-height: 55px;
+    background-color : rgba(205, 204, 204, 0.2);
+    color: #ffffff;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.detail_btn:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
 .detail_content_1 {
     font-size: 35px;
@@ -191,15 +254,43 @@ h1 a {
     padding-bottom: 30px;
     height: 100px;
 }
-.detail_btn {
-    display: block;
-    width: 190px;
-    height: 60px;
-    font-size: 40px;
-    background-color: rgba(205, 204, 204, 0.2);
-    margin: 30px auto;
-    line-height: 60px
+.typing-text {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 1px solid transparent;
+    display: inline-block;
+    animation: typing 5s steps(30); /* 30글자까지 표시 */
+    max-width: 30ch; /* 최대 30글자 표시 */
 }
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/star.png); 
+    animation: twinkling 6s infinite;
+    z-index: -1;
+}
+
+@keyframes twinkling {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
 
 /* insert */
 
@@ -245,21 +336,134 @@ h1 a {
     top: 5px;
     left:  1065px;
 }
+/* ----------------------------------------------
+ *  2023-10-12 10:53:47
+ * 기능 : 양이 블랙홀에 빨려들어감 효과
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+@-webkit-keyframes slide-out-blurred-top{0%{-webkit-transform:translateY(0) scaleY(1) scaleX(1);transform:translateY(0) scaleY(1) scaleX(1);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(0);filter:blur(0);opacity:1}100%{-webkit-transform:translateY(-1000px) scaleY(2) scaleX(.2);transform:translateY(-1000px) scaleY(2) scaleX(.2);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(40px);filter:blur(40px);opacity:0}}@keyframes slide-out-blurred-top{0%{-webkit-transform:translateY(0) scaleY(1) scaleX(1);transform:translateY(0) scaleY(1) scaleX(1);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(0);filter:blur(0);opacity:1}100%{-webkit-transform:translateY(-1000px) scaleY(2) scaleX(.2);transform:translateY(-1000px) scaleY(2) scaleX(.2);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(40px);filter:blur(40px);opacity:0}}
+
+/* ----------------------------------------------
+ *  2023-10-12 11:49:47
+ * 기능 : UFO 날아가는 효과
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+@-webkit-keyframes slide-out-elliptic-right-bck {
+0% {
+    -webkit-transform: translateX(0) rotateY(0) scale(1);
+            transform: translateX(0) rotateY(0) scale(1);
+    -webkit-transform-origin: -1800px 50%;
+            transform-origin: -1800px 50%;
+    opacity: 1;
+}
+100% {
+    -webkit-transform: translateX(1000px) rotateY(-30deg) scale(0);
+            transform: translateX(1000px) rotateY(-30deg) scale(0);
+    -webkit-transform-origin: -100% 50%;
+            transform-origin: -100% 50%;
+    opacity: 1;
+}
+}
+@keyframes slide-out-elliptic-right-bck {
+0% {
+    -webkit-transform: translateX(0) rotateY(0) scale(1);
+            transform: translateX(0) rotateY(0) scale(1);
+    -webkit-transform-origin: -1800px 50%;
+            transform-origin: -1800px 50%;
+    opacity: 1;
+}
+100% {
+    -webkit-transform: translateX(1000px) rotateY(-30deg) scale(0);
+            transform: translateX(1000px) rotateY(-30deg) scale(0);
+    -webkit-transform-origin: -100% 50%;
+            transform-origin: -100% 50%;
+    opacity: 1;
+}
+}
+
+
+
 .insert_sheep {
+position: absolute;
+top: 420px;
+left: -200px;
+width: 300px;
+
+}
+.insert_sheep:hover {
     position: absolute;
     top: 420px;
     left: -200px;
     width: 300px;
+    display: block;
+    -webkit-animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) infinite both;animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) both
 }
-.insert_cat {
+.insert_sheep:hover + .insert_ufo{
+    display: block;
+}
+
+.insert_cat1 {
     position: absolute;
-    top: 100px;
-    left: 300px;
-    width: 520px;
+    top: 30px;
+    left: 310px;
+    width: 550px;
 }
+.insert_cat2 {
+    position: absolute;
+    top: 30px;
+    left: 310px;
+    width: 550px;
+}
+
+.insert_div {
+    position: relative;   
+}
+
+/* 기능 : 고양이 hover 했을 때 바뀌는 것*/
+
+.face {       
+    transition: all 0.5s;
+}
+.cat_back {
+    position: absolute; 
+    z-index: 1;
+    opacity: 0; 
+}
+.cat_front {
+    position: relative; 
+    z-index: 2; 
+    opacity: 1;     
+}
+.insert_div:hover > .cat_back {
+    z-index: 2; 
+    opacity: 1;   
+}
+.insert_div:hover > .cat_front {
+    z-index: 1; 
+    opacity: 0;   
+}
+	
+
 input::placeholder {
     color: rgb(255, 255, 255, 0.4);
 }
+
+.insert_ufo {
+    position: absolute;
+    top: -300px;
+    left: -150px;
+    width: 520px;
+    height: 250px;
+    width: 200px;
+    display: none;
+	-webkit-animation: slide-out-elliptic-right-bck 1.2s cubic-bezier(0.950, 0.050, 0.795, 0.035) both;
+    animation: slide-out-elliptic-right-bck 1.2s cubic-bezier(0.950, 0.050, 0.795, 0.035) both;
+    animation-delay: 3s;
+}
+
 /* update */
 .update_form {
     margin: 0 auto;
@@ -308,6 +512,9 @@ input::placeholder {
     font-size: 35px;
     cursor: pointer;
 }
+.update_a:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
 /* delete */
 
 .delete_table{
@@ -353,11 +560,15 @@ input::placeholder {
     display: inline-block;
     font-size: 1.6rem;
     background-color: rgba(240, 240, 240,0.3);
-    color: #000;
+    /* color: #000; */
     width: 150px;
     height: 50px;
     padding : 8px;
- }
+}
+
+.delete_a:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
 .delete_section {
     text-align: center;
     top: 500px;
@@ -373,8 +584,10 @@ input::placeholder {
     width: 150px;
     height: 50px;
 }
+
 .delete_btn:hover {
     cursor: pointer;
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
 .delete_span {
     position: absolute;
@@ -385,9 +598,6 @@ input::placeholder {
     padding: 10px;
 
 }
-.delete_span:hover {
-color: #000;
-}
 
 .delete_span2 {
     position: relative;
@@ -396,9 +606,6 @@ color: #000;
     color: #fff;
     font-size: 1.6rem;
     margin-left: 20px;
-}
-.delete_span2:hover{
-color: #000;
 }
 
 .delete_btn_img2 {
