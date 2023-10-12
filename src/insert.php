@@ -47,7 +47,7 @@ if($http_method === "POST") {
             require_once(FILE_HEADER);
     ?>  
     <form action="/todolist/src/insert.php" method="post" class="insert_form">
-            <input class="insert_input" type="text" name="content" placeholder="             내용을 입력해 주세요(최대30글자)." maxlength='30' required>
+            <input class="insert_input" type="text" name="content" placeholder="          내용을 입력해 주세요(최대30글자)" maxlength='30' required>
             <button class="insert_butt" type="submit">
                 <img class="insert_pen" src="/todolist/src/img/흐리멍텅한연필.png" alt="연필">
             </button>
