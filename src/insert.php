@@ -56,6 +56,7 @@ if($http_method === "POST") {
             </a>
             <img class="insert_sheep" src="/todolist/src/img/sheeps.svg" alt="sheeps">
             <img class="insert_cat" src="/todolist/src/img/cat2.png" alt="눈감은고양이">
+            <img class="insert_ufo" src="/todolist/src/img/ufo.png" alt="ufo">
         </div>
     </form>
 </body>

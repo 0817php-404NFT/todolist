@@ -5,6 +5,8 @@
     font-family: 'DungGeunMo';
     color: #fff;
 }
+/* 버튼 hover 각 페이지 전체 적용 */
+@-webkit-keyframes blink-2{0%{opacity:1}50%{opacity:.2}100%{opacity:1}}@keyframes blink-2{0%{opacity:1}50%{opacity:.2}100%{opacity:1}}
 @font-face {
     font-family: 'DungGeunMo';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
@@ -151,6 +153,7 @@ h1 a {
 
 .list_search_btn:hover{
     cursor: pointer;
+   
 }
 
 
@@ -186,7 +189,9 @@ h1 a {
     margin: 30px auto;
     line-height: 60px
 }
-
+.list_insert_btn:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
 
 /* detail */
 .detail_img {
@@ -240,6 +245,26 @@ h1 a {
     margin: 30px auto;
     line-height: 60px
 }
+.detail_btn:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
+
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/star.png); 
+    animation: twinkling 6s infinite;
+    z-index: -1;
+}
+
+@keyframes twinkling {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
 
 /* insert */
 
@@ -285,12 +310,28 @@ h1 a {
     top: 5px;
     left:  1065px;
 }
+/* ----------------------------------------------
+ *  2023-10-12 10:53:47
+ * 기능 : 양이 블랙홀에 빨려들어감 효과
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+ @-webkit-keyframes slide-out-blurred-top{0%{-webkit-transform:translateY(0) scaleY(1) scaleX(1);transform:translateY(0) scaleY(1) scaleX(1);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(0);filter:blur(0);opacity:1}100%{-webkit-transform:translateY(-1000px) scaleY(2) scaleX(.2);transform:translateY(-1000px) scaleY(2) scaleX(.2);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(40px);filter:blur(40px);opacity:0}}@keyframes slide-out-blurred-top{0%{-webkit-transform:translateY(0) scaleY(1) scaleX(1);transform:translateY(0) scaleY(1) scaleX(1);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(0);filter:blur(0);opacity:1}100%{-webkit-transform:translateY(-1000px) scaleY(2) scaleX(.2);transform:translateY(-1000px) scaleY(2) scaleX(.2);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(40px);filter:blur(40px);opacity:0}}
 .insert_sheep {
     position: absolute;
     top: 420px;
     left: -200px;
     width: 300px;
 }
+.insert_sheep:hover {
+    position: absolute;
+    top: 420px;
+    left: -200px;
+    width: 300px;
+    -webkit-animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) infinite both;animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) infinite both
+}
+
 .insert_cat {
     position: absolute;
     top: 100px;
@@ -299,6 +340,14 @@ h1 a {
 }
 input::placeholder {
     color: rgb(255, 255, 255, 0.4);
+}
+.insert_ufo {
+    position: absolute;
+    top: -300px;
+    left: -150px;
+    width: 520px;
+    height: 250px;
+    width: 200px;
 }
 /* update */
 .update_form {
@@ -347,6 +396,9 @@ input::placeholder {
     color: #ffffff;
     font-size: 35px;
     cursor: pointer;
+}
+.update_a:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
 /* delete */
 
@@ -397,7 +449,11 @@ input::placeholder {
     width: 150px;
     height: 50px;
     padding : 8px;
- }
+}
+
+.delete_a:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
 .delete_section {
     text-align: center;
     top: 500px;
@@ -413,8 +469,10 @@ input::placeholder {
     width: 150px;
     height: 50px;
 }
+
 .delete_btn:hover {
     cursor: pointer;
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
 .delete_span {
     position: absolute;
@@ -426,7 +484,8 @@ input::placeholder {
 
 }
 .delete_span:hover {
-color: #000;
+    color: #000;
+   
 }
 
 .delete_span2 {
