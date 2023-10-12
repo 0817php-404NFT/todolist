@@ -325,28 +325,36 @@ h1 a {
  * See http://animista.net/license for more info. 
  * w: http://animista.net, t: @cssanimista
  * ---------------------------------------------- */
-@-webkit-keyframes slide-out-tl {
+@-webkit-keyframes slide-out-elliptic-right-bck {
 0% {
-    -webkit-transform: translateY(0) translateX(0);
-            transform: translateY(0) translateX(0);
+    -webkit-transform: translateX(0) rotateY(0) scale(1);
+            transform: translateX(0) rotateY(0) scale(1);
+    -webkit-transform-origin: -1800px 50%;
+            transform-origin: -1800px 50%;
     opacity: 1;
 }
 100% {
-    -webkit-transform: translateY(-1000px) translateX(-1000px);
-            transform: translateY(-1000px) translateX(-1000px);
-    opacity: 0;
+    -webkit-transform: translateX(1000px) rotateY(-30deg) scale(0);
+            transform: translateX(1000px) rotateY(-30deg) scale(0);
+    -webkit-transform-origin: -100% 50%;
+            transform-origin: -100% 50%;
+    opacity: 1;
 }
 }
-@keyframes slide-out-tl {
+@keyframes slide-out-elliptic-right-bck {
 0% {
-    -webkit-transform: translateY(0) translateX(0);
-            transform: translateY(0) translateX(0);
+    -webkit-transform: translateX(0) rotateY(0) scale(1);
+            transform: translateX(0) rotateY(0) scale(1);
+    -webkit-transform-origin: -1800px 50%;
+            transform-origin: -1800px 50%;
     opacity: 1;
 }
 100% {
-    -webkit-transform: translateY(-1000px) translateX(-1000px);
-            transform: translateY(-1000px) translateX(-1000px);
-    opacity: 0;
+    -webkit-transform: translateX(1000px) rotateY(-30deg) scale(0);
+            transform: translateX(1000px) rotateY(-30deg) scale(0);
+    -webkit-transform-origin: -100% 50%;
+            transform-origin: -100% 50%;
+    opacity: 1;
 }
 }
 
@@ -389,8 +397,8 @@ input::placeholder {
     height: 250px;
     width: 200px;
     display: none;
-    -webkit-animation: slide-out-tl 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-    animation: slide-out-tl 2.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	-webkit-animation: slide-out-elliptic-right-bck 1.2s cubic-bezier(0.950, 0.050, 0.795, 0.035) both;
+    animation: slide-out-elliptic-right-bck 1.2s cubic-bezier(0.950, 0.050, 0.795, 0.035) both;
     animation-delay: 3s;
 }
 
