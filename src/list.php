@@ -71,8 +71,17 @@ try {
         <ul>
             <li class="side_li"><a href="/todolist/src/stats.php/?date=week">주간 통계</a></li>
             <br>
+            <li class="side_li_2"><a href="/todolist/src/stats.php/?date=month">월간 통계</a></li>
             <br>
-            <li class="side_li"><a href="/todolist/src/stats.php/?date=month">월간 통계</a></li>
+            <br>
+            <form action="/todolist/src/pickstate.php" method="get">           
+                <label class="list_label">
+                    <input type="date" name="date_1" required class="list_side_input">
+                    <div class="side_div center">~</div>
+                    <input type="date" name="date_2" required class="list_side_input">
+                    <button type="submit" class="list_side_btn">검색</button>
+                </label>
+            </form>
         </ul>
     </div>
     <?php

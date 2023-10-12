@@ -400,37 +400,95 @@ function db_update_chk_flg(&$conn, &$arr_param) {
 
 function db_select_boards_stats( &$conn, &$arr_param){
     $sql =
-    " SELECT
-	        ROUND(
-                (
-                    (SELECT COUNT(id)
-                        FROM
-                            boards
-                        WHERE
-                            write_date <= NOW()
-                        AND
-                            write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000')
-                        AND
-                            del_flg = '0'
-                        AND
-                            chk_flg = '1'
-                    )
-	                /
-                    (SELECT COUNT(id)
-                        FROM 
-                            boards
-                        WHERE 
-                            write_date <= NOW()
-                        AND 
-                            write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000')
-                        AND 
-                            del_flg = '0'
-                        )
-		        ) * 100
-            ) AS per "
+    " SELECT "
+	."        ROUND( "
+    ."            ( "
+    ."                (SELECT COUNT(id) "
+    ."                    FROM "
+    ."                        boards "
+    ."                    WHERE "
+    ."                        write_date <= NOW() "
+    ."                    AND "
+    ."                        write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000') "
+    ."                    AND "
+    ."                        del_flg = '0' "
+    ."                    AND "
+    ."                        chk_flg = '1' "
+    ."                ) "
+	."                / "
+    ."                (SELECT COUNT(id) "
+    ."                    FROM "
+    ."                        boards "
+    ."                    WHERE "
+    ."                        write_date <= NOW() "
+    ."                    AND "
+    ."                        write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000') "
+    ."                    AND "
+    ."                        del_flg = '0' "
+    ."                    ) "
+	."	        ) * 100 " 
+    ."        ) AS per "
     ;
     
     $arr_ps = [];
+
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($arr_ps);
+        $result = $stmt->fetchAll();
+        return (int)$result[0]["per"]; // 정상 : 쿼리 결과 리턴
+    } catch (Exception $e) {
+        echo $e->getMessage(); // Exception 메세지 출력
+        return false; // 예외 발생 : false 리턴
+    }
+}
+// -------------------------------
+// 함수명   : db_select_search_boards_stats
+// 기능     : boards stats count
+// 파라미터 : PDO  &$conn
+//           Array      &arr_param 쿼리 작성용 배열
+// 리턴     : int / false
+// 제작     : 20231012 정훈
+// -------------------------------
+
+function db_select_search_boards_stats( &$conn, &$arr_param){
+    $sql =
+    " SELECT "
+	."        ROUND( "
+    ."            ( "
+    ."                (SELECT COUNT(id) "
+    ."                    FROM "
+    ."                        boards "
+    ."                    WHERE "
+    ."                        write_date <= :date_2 "
+    ."                    AND "
+    ."                        write_date >= :date_1 "
+    ."                    AND "
+    ."                        del_flg = '0' "
+    ."                    AND "
+    ."                        chk_flg = '1' "
+    ."                ) "
+	."                / "
+    ."                (SELECT COUNT(id) "
+    ."                    FROM "
+    ."                        boards "
+    ."                    WHERE "
+    ."                        write_date <= :date_2_1 "
+    ."                    AND "
+    ."                        write_date >= :date_1_1 "
+    ."                    AND "
+    ."                        del_flg = '0' "
+    ."                    ) "
+	."	        ) * 100 " 
+    ."        ) AS per "
+    ;
+    
+    $arr_ps = [
+        ":date_1" => $arr_param["date_1"]
+        ,":date_1_1" => $arr_param["date_1"]
+        ,":date_2" => $arr_param["date_2"]
+        ,":date_2_1" => $arr_param["date_2"]
+    ];
 
     try {
         $stmt = $conn->prepare($sql);

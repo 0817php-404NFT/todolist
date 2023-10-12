@@ -49,38 +49,38 @@ h1{
  */
 h1:hover {
 	-webkit-animation: pulsate-bck 1.5s ease-in-out infinite both;
-	        animation: pulsate-bck 1.5s ease-in-out infinite both;
+        animation: pulsate-bck 1.5s ease-in-out infinite both;
 }
 
- @-webkit-keyframes pulsate-bck {
-    0% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-    }
-    50% {
-      -webkit-transform: scale(0.9);
-              transform: scale(0.9);
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-    }
+@-webkit-keyframes pulsate-bck {
+0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
 }
-  @keyframes pulsate-bck {
-    0% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-    }
-    50% {
-      -webkit-transform: scale(0.9);
-              transform: scale(0.9);
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-    }
+50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
 }
-  
+100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+}
+@keyframes pulsate-bck {
+0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+}
+100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+}
+
 
 h1 a {
     color: #fff;  
@@ -136,8 +136,12 @@ h1 a {
     outline: none;
 }
 
+
 .list_search_input::-webkit-calendar-picker-indicator {
     filter: invert(1);
+}
+.list_search_input::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer;
 }
 
 
@@ -152,8 +156,7 @@ h1 a {
 }
 
 .list_search_btn:hover{
-    cursor: pointer;
-   
+    cursor: pointer;   
 }
 
 
@@ -738,7 +741,7 @@ input[id="icon"]:checked + label > span:nth-child(3) {
     height:100%;
     background-color: #311a9344;
     top:0px;
-    padding:400px 25px 25px 25px;
+    padding:265px 25px 25px 25px;
     box-sizing:border-box;
     left:-300px;
     z-index:1;
@@ -759,8 +762,49 @@ input[id="icon"]:checked + label > span:nth-child(3) {
     font-size: 40px;
     list-style: none;
 }
+.side_li_2{
+    padding: 20px;
+    font-size: 40px;
+    list-style: none;
+    margin-bottom: 100px;
+}
 
+.list_side_input{
+    position: relative;
+    font-size: 30px;
+    padding-left: 17px;
+    background: none;
+    border: none;
+    outline: none;
+}
 
+.list_side_input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.list_side_input::-webkit-calendar-picker-indicator:hover{
+    cursor: pointer;
+}
+
+.side_div{
+    font-size: 40px;
+    padding: 11px 55px 0px 0px;
+}
+
+.list_side_btn{
+    display: block;
+    width: 80px;
+    height: 40px;
+    font-size: 20px;
+    background-color: rgba(205, 204, 204, 0.2);
+    margin: 20px auto;
+    line-height: 20px
+}
+
+.list_side_btn:hover {
+    cursor: pointer;
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
 
 /* stats */
 
