@@ -263,12 +263,22 @@ h1 a {
     top: 5px;
     left:  1065px;
 }
+/* ----------------------------------------------
+ *  2023-10-12 10:53:47
+ * 기능 : 양이 블랙홀에 빨려들어감 효과
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+ @-webkit-keyframes slide-out-blurred-top{0%{-webkit-transform:translateY(0) scaleY(1) scaleX(1);transform:translateY(0) scaleY(1) scaleX(1);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(0);filter:blur(0);opacity:1}100%{-webkit-transform:translateY(-1000px) scaleY(2) scaleX(.2);transform:translateY(-1000px) scaleY(2) scaleX(.2);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(40px);filter:blur(40px);opacity:0}}@keyframes slide-out-blurred-top{0%{-webkit-transform:translateY(0) scaleY(1) scaleX(1);transform:translateY(0) scaleY(1) scaleX(1);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(0);filter:blur(0);opacity:1}100%{-webkit-transform:translateY(-1000px) scaleY(2) scaleX(.2);transform:translateY(-1000px) scaleY(2) scaleX(.2);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(40px);filter:blur(40px);opacity:0}}
 .insert_sheep {
     position: absolute;
     top: 420px;
     left: -200px;
     width: 300px;
+    -webkit-animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) infinite both;animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) infinite both
 }
+
 .insert_cat {
     position: absolute;
     top: 100px;
