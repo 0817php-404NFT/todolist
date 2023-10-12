@@ -5,6 +5,8 @@
     font-family: 'DungGeunMo';
     color: #fff;
 }
+/* 버튼 hover 각 페이지 전체 적용 */
+@-webkit-keyframes blink-2{0%{opacity:1}50%{opacity:.2}100%{opacity:1}}@keyframes blink-2{0%{opacity:1}50%{opacity:.2}100%{opacity:1}}
 @font-face {
     font-family: 'DungGeunMo';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
@@ -111,6 +113,7 @@ h1 a {
 
 .list_search_btn:hover{
     cursor: pointer;
+   
 }
 
 
@@ -146,7 +149,9 @@ h1 a {
     margin: 30px auto;
     line-height: 60px
 }
-
+.list_insert_btn:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
 
 /* detail */
 .detail_img {
@@ -200,7 +205,9 @@ h1 a {
     margin: 30px auto;
     line-height: 60px
 }
-
+.detail_btn:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
 
 .stars {
     position: absolute;
@@ -276,6 +283,12 @@ h1 a {
     top: 420px;
     left: -200px;
     width: 300px;
+}
+.insert_sheep:hover {
+    position: absolute;
+    top: 420px;
+    left: -200px;
+    width: 300px;
     -webkit-animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) infinite both;animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) infinite both
 }
 
@@ -336,6 +349,9 @@ input::placeholder {
     font-size: 35px;
     cursor: pointer;
 }
+.update_a:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
 /* delete */
 
 .delete_table{
@@ -386,6 +402,10 @@ input::placeholder {
     height: 50px;
     padding : 8px;
 }
+
+.delete_a:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
 .delete_section {
     text-align: center;
     top: 500px;
@@ -401,8 +421,10 @@ input::placeholder {
     width: 150px;
     height: 50px;
 }
+
 .delete_btn:hover {
     cursor: pointer;
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
 .delete_span {
     position: absolute;
@@ -414,7 +436,8 @@ input::placeholder {
 
 }
 .delete_span:hover {
-color: #000;
+    color: #000;
+   
 }
 
 .delete_span2 {
