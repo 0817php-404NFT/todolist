@@ -249,6 +249,28 @@ h1 a {
     -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
 
+.typing-text {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 1px solid transparent;
+    display: inline-block;
+    animation: typing 5s steps(30); /* 30글자까지 표시 */
+    max-width: 30ch; /* 최대 30글자 표시 */
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.typing-text::after {
+    content: '\A'; /* 줄 바꿈 문자 추가 */
+    white-space: pre; /* 개행 문자 유지 */
+}
 .stars {
     position: absolute;
     top: 0;
@@ -265,6 +287,8 @@ h1 a {
     50% { opacity: 1; }
     100% { opacity: 0; }
 }
+
+
 
 /* insert */
 
