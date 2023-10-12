@@ -427,25 +427,24 @@ width: 300px;
 .face {       
     transition: all 0.5s;
 }
-.cat_back {
-    position: absolute; 
-    z-index: 1;
-    opacity: 0; 
-}
 .cat_front {
     position: relative; 
     z-index: 2; 
     opacity: 1;     
 }
-.insert_div:hover > .cat_back {
-    z-index: 2; 
-    opacity: 1;   
+.cat_back {
+    position: absolute; 
+    z-index: 1;
+    opacity: 0; 
 }
 .insert_div:hover > .cat_front {
     z-index: 1; 
     opacity: 0;   
 }
-	
+.insert_div:hover > .cat_back {
+    z-index: 2; 
+    opacity: 1;   
+}
 
 input::placeholder {
     color: rgb(255, 255, 255, 0.4);
