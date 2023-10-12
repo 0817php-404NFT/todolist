@@ -92,6 +92,10 @@ $page=$_GET["page"];
 				<td>
 				<a href="/todolist/src/delete.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">삭제</a>
 				</td>
+				<td>
+				<a href="/todolist/src/list.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">나가기</a>
+				</td>
+			</tr>
 			</tr>
         </table>
 	</div>

@@ -205,26 +205,44 @@ h1 a {
     height: 538px;
     position: absolute;
     top: 390px;
-    left: 563px;
+    left: 640px;
     font-size: 2.0rem;
     text-align: center;
     padding: 50px;
 
 }
-.detail-button-container {
-    text-align: center;
-    line-height: 50px;
-    position: absolute;
-    bottom: 190px;
-    left: 860px;
-    font-size: 2.0rem;
-}
+
 
 .detail_head {
     font-size: 50px;
     padding: 0px;
     height: 100px;
 
+}
+
+.detail_btn {
+    position: relative;
+    left: -101px; 
+    width: 200px;
+    height: 60px;
+    font-size: 40px;
+    margin: 35px auto;
+    line-height: 60px;
+    display: inline-block;
+    padding: 0;
+    margin: 0 40px;
+    border: none;
+    width: 160px;
+    height: 55px;
+    line-height: 55px;
+    background-color : rgba(205, 204, 204, 0.2);
+    color: #ffffff;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.detail_btn:hover {
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
 .detail_content_1 {
     font-size: 35px;
@@ -236,19 +254,6 @@ h1 a {
     padding-bottom: 30px;
     height: 100px;
 }
-.detail_btn {
-    display: block;
-    width: 190px;
-    height: 60px;
-    font-size: 40px;
-    background-color: rgba(205, 204, 204, 0.2);
-    margin: 30px auto;
-    line-height: 60px
-}
-.detail_btn:hover {
-    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
-}
-
 .typing-text {
     overflow: hidden;
     white-space: nowrap;
@@ -267,10 +272,7 @@ h1 a {
     }
 }
 
-.typing-text::after {
-    content: '\A'; /* 줄 바꿈 문자 추가 */
-    white-space: pre; /* 개행 문자 유지 */
-}
+
 .stars {
     position: absolute;
     top: 0;
