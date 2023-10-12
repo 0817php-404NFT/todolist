@@ -317,19 +317,58 @@ h1 a {
  * w: http://animista.net, t: @cssanimista
  * ---------------------------------------------- */
 
- @-webkit-keyframes slide-out-blurred-top{0%{-webkit-transform:translateY(0) scaleY(1) scaleX(1);transform:translateY(0) scaleY(1) scaleX(1);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(0);filter:blur(0);opacity:1}100%{-webkit-transform:translateY(-1000px) scaleY(2) scaleX(.2);transform:translateY(-1000px) scaleY(2) scaleX(.2);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(40px);filter:blur(40px);opacity:0}}@keyframes slide-out-blurred-top{0%{-webkit-transform:translateY(0) scaleY(1) scaleX(1);transform:translateY(0) scaleY(1) scaleX(1);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(0);filter:blur(0);opacity:1}100%{-webkit-transform:translateY(-1000px) scaleY(2) scaleX(.2);transform:translateY(-1000px) scaleY(2) scaleX(.2);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(40px);filter:blur(40px);opacity:0}}
+@-webkit-keyframes slide-out-blurred-top{0%{-webkit-transform:translateY(0) scaleY(1) scaleX(1);transform:translateY(0) scaleY(1) scaleX(1);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(0);filter:blur(0);opacity:1}100%{-webkit-transform:translateY(-1000px) scaleY(2) scaleX(.2);transform:translateY(-1000px) scaleY(2) scaleX(.2);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(40px);filter:blur(40px);opacity:0}}@keyframes slide-out-blurred-top{0%{-webkit-transform:translateY(0) scaleY(1) scaleX(1);transform:translateY(0) scaleY(1) scaleX(1);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(0);filter:blur(0);opacity:1}100%{-webkit-transform:translateY(-1000px) scaleY(2) scaleX(.2);transform:translateY(-1000px) scaleY(2) scaleX(.2);-webkit-transform-origin:50% 0;transform-origin:50% 0;-webkit-filter:blur(40px);filter:blur(40px);opacity:0}}
+
+/* ----------------------------------------------
+ *  2023-10-12 11:49:47
+ * 기능 : UFO 날아가는 효과
+ * See http://animista.net/license for more info. 
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+@-webkit-keyframes slide-out-tl {
+0% {
+    -webkit-transform: translateY(0) translateX(0);
+            transform: translateY(0) translateX(0);
+    opacity: 1;
+}
+100% {
+    -webkit-transform: translateY(-1000px) translateX(-1000px);
+            transform: translateY(-1000px) translateX(-1000px);
+    opacity: 0;
+}
+}
+@keyframes slide-out-tl {
+0% {
+    -webkit-transform: translateY(0) translateX(0);
+            transform: translateY(0) translateX(0);
+    opacity: 1;
+}
+100% {
+    -webkit-transform: translateY(-1000px) translateX(-1000px);
+            transform: translateY(-1000px) translateX(-1000px);
+    opacity: 0;
+}
+}
+
+
+
 .insert_sheep {
-    position: absolute;
-    top: 420px;
-    left: -200px;
-    width: 300px;
+position: absolute;
+top: 420px;
+left: -200px;
+width: 300px;
+
 }
 .insert_sheep:hover {
     position: absolute;
     top: 420px;
     left: -200px;
     width: 300px;
-    -webkit-animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) infinite both;animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) infinite both
+    display: block;
+    -webkit-animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) infinite both;animation:slide-out-blurred-top 3s cubic-bezier(.755,.05,.855,.06) both
+}
+.insert_sheep:hover + .insert_ufo{
+    display: block;
 }
 
 .insert_cat {
@@ -341,6 +380,7 @@ h1 a {
 input::placeholder {
     color: rgb(255, 255, 255, 0.4);
 }
+
 .insert_ufo {
     position: absolute;
     top: -300px;
@@ -348,7 +388,12 @@ input::placeholder {
     width: 520px;
     height: 250px;
     width: 200px;
+    display: none;
+    -webkit-animation: slide-out-tl 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: slide-out-tl 2.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation-delay: 3s;
 }
+
 /* update */
 .update_form {
     margin: 0 auto;
@@ -445,7 +490,7 @@ input::placeholder {
     display: inline-block;
     font-size: 1.6rem;
     background-color: rgba(240, 240, 240,0.3);
-    color: #000;
+    /* color: #000; */
     width: 150px;
     height: 50px;
     padding : 8px;
@@ -483,10 +528,6 @@ input::placeholder {
     padding: 10px;
 
 }
-.delete_span:hover {
-    color: #000;
-   
-}
 
 .delete_span2 {
     position: relative;
@@ -495,9 +536,6 @@ input::placeholder {
     color: #fff;
     font-size: 1.6rem;
     margin-left: 20px;
-}
-.delete_span2:hover{
-color: #000;
 }
 
 .delete_btn_img2 {
