@@ -405,12 +405,48 @@ width: 300px;
     display: block;
 }
 
-.insert_cat {
+.insert_cat1 {
     position: absolute;
-    top: 100px;
-    left: 300px;
-    width: 520px;
+    top: 30px;
+    left: 310px;
+    width: 550px;
 }
+.insert_cat2 {
+    position: absolute;
+    top: 30px;
+    left: 310px;
+    width: 550px;
+}
+
+.insert_div {
+    position: relative;   
+}
+
+/* 기능 : 고양이 hover 했을 때 바뀌는 것*/
+
+.face {       
+    transition: all 0.5s;
+}
+.cat_back {
+    position: absolute; 
+    z-index: 1;
+    opacity: 0; 
+}
+.cat_front {
+    position: relative; 
+    z-index: 2; 
+    opacity: 1;     
+}
+.insert_div:hover > .cat_back {
+    z-index: 2; 
+    opacity: 1;   
+}
+.insert_div:hover > .cat_front {
+    z-index: 1; 
+    opacity: 0;   
+}
+	
+
 input::placeholder {
     color: rgb(255, 255, 255, 0.4);
 }
