@@ -6,7 +6,7 @@
 // 파라미터 : PDO    &$conn
 //           Array  &$arr_param
 // 리턴     : boolen
-// 제작     : 정훈
+// 제작     : 20231010 정훈
 // -------------------------------
 
 
@@ -60,7 +60,7 @@ function db_destroy_conn(&$conn){
 // 파라미터 : PDO  &$conn
 //           Array  &$arr_param
 // 리턴     : Array /false
-// 제작     : 정훈
+// 제작     : 20231010 정훈
 // -------------------------------
 function db_select_boards_paging(&$conn, &$arr_param){
     try {
@@ -102,7 +102,7 @@ function db_select_boards_paging(&$conn, &$arr_param){
 // 기능     : boards count
 // 파라미터 : PDO  &$conn
 // 리턴     : Array /false
-// 제작     : 정훈
+// 제작     : 20231010 정훈
 // -------------------------------
 
 function db_select_boards_cnt( &$conn ){
@@ -137,7 +137,7 @@ function db_select_boards_cnt( &$conn ){
 // 파라미터 : PDO       &$conn
 //           Array      &arr_param 쿼리 작성용 배열
 // 리턴     : Array /false
-// 제작     : 정훈
+// 제작     : 20231010 정훈
 // -------------------------------
 function db_insert_boards(&$conn, &$arr_param){
     $sql =
@@ -173,7 +173,7 @@ function db_insert_boards(&$conn, &$arr_param){
 // 파라미터 : PDO       &$conn &$arr_apram
 //           Array      &arr_param 쿼리 작성용 배열
 // 리턴     : array / false
-// 제작     : 정훈
+// 제작     : 20231011 정훈
 // -------------------------------
 
 function db_search_boards(&$conn, &$arr_param)
@@ -217,7 +217,7 @@ function db_search_boards(&$conn, &$arr_param)
 // 파라미터 : PDO       &$conn
 //           Array      &$arr_param
 // 리턴     : int / false
-// 제작     : 정훈
+// 제작     : 20231011 정훈
 // -------------------------------
 
 function db_search_boards_cnt(&$conn, &$arr_param)
@@ -385,6 +385,61 @@ function db_update_chk_flg(&$conn, &$arr_param) {
     } catch (Exception $e) {
         echo $e->getMessage(); // Exception 메세지 출력
         return false; // 예외발생 : false 리턴
+    }
+}
+
+
+// -------------------------------
+// 함수명   : db_select_boards_stats
+// 기능     : boards stats count
+// 파라미터 : PDO  &$conn
+//           Array      &arr_param 쿼리 작성용 배열
+// 리턴     : int / false
+// 제작     : 20231012 정훈
+// -------------------------------
+
+function db_select_boards_stats( &$conn, &$arr_param){
+    $sql =
+    " SELECT
+	        ROUND(
+                (
+                    (SELECT COUNT(id)
+                        FROM
+                            boards
+                        WHERE
+                            write_date <= NOW()
+                        AND
+                            write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000')
+                        AND
+                            del_flg = '0'
+                        AND
+                            chk_flg = '1'
+                    )
+	                /
+                    (SELECT COUNT(id)
+                        FROM 
+                            boards
+                        WHERE 
+                            write_date <= NOW()
+                        AND 
+                            write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000')
+                        AND 
+                            del_flg = '0'
+                        )
+		        ) * 100
+            ) AS per "
+    ;
+    
+    $arr_ps = [];
+
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($arr_ps);
+        $result = $stmt->fetchAll();
+        return (int)$result[0]["per"]; // 정상 : 쿼리 결과 리턴
+    } catch (Exception $e) {
+        echo $e->getMessage(); // Exception 메세지 출력
+        return false; // 예외 발생 : false 리턴
     }
 }
 

@@ -61,6 +61,20 @@ try {
 </head>
 
 <body>
+    <input type="checkbox" id="icon">
+        <label for="icon">  <!--label은 인라인 스타일-->
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+    <div id="header">
+        <ul>
+            <li class="side_li"><a href="/todolist/src/stats.php/?date=week">주간 통계</a></li>
+            <br>
+            <br>
+            <li class="side_li"><a href="/todolist/src/stats.php/?date=month">월간 통계</a></li>
+        </ul>
+    </div>
     <?php
             require_once(FILE_HEADER);
     ?>
