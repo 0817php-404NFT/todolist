@@ -95,5 +95,6 @@ $page=$_GET["page"];
 			</tr>
         </table>
 	</div>
+	<div class="stars"></div>
 </body>
 </html>
