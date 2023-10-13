@@ -93,30 +93,37 @@ try {
                                                                                 }
                                                                             ?>
                                                                             <?php
-                                                                                if($result < 100 && $result >= 75){
+                                                                                if($result < 100 && $result >= 80){
                                                                             ?> 
                                                                                 stats_progress_2
                                                                             <?php        
                                                                                 }
                                                                             ?>
                                                                             <?php
-                                                                                if($result < 75 && $result >= 50){
+                                                                                if($result < 80 && $result >= 60){
                                                                             ?> 
                                                                                 stats_progress_3
                                                                             <?php        
                                                                                 }
                                                                             ?>
                                                                             <?php
-                                                                                if($result < 50 && $result >= 25){
+                                                                                if($result < 60 && $result >= 40){
                                                                             ?> 
                                                                                 stats_progress_4
                                                                             <?php        
                                                                                 }
                                                                             ?>
                                                                             <?php
-                                                                                if($result < 25 && $result >= 0){
+                                                                                if($result < 40 && $result >= 20){
                                                                             ?> 
                                                                                 stats_progress_5
+                                                                            <?php        
+                                                                                }
+                                                                            ?>
+                                                                            <?php
+                                                                                if($result < 20 && $result >= 0){
+                                                                            ?> 
+                                                                                stats_progress_6
                                                                             <?php        
                                                                                 }
                                                                             ?>

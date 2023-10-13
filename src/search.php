@@ -88,7 +88,7 @@ try {
         foreach ($result as $item) {
         ?>
             <tr>
-                <td colspan="2">
+                <td>
                 <?php if($item["chk_flg"] === "0"){ ?>
                     <span class="search_content">
                         <img src="/todolist/src/img/check_b.svg" alt="">

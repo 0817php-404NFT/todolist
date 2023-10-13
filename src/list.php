@@ -69,6 +69,12 @@ try {
         </label>
     <div id="header">
         <ul>
+            <li class="side_search_li">
+                <form action="/todolist/src/search_con.php" method="get">
+                    <input type="search" name="content">
+                    <button type ="submit"><img src="/todolist/src/img/search_btn.png" alt=""></button>
+                </form>
+            </li>
             <li class="side_li"><a href="/todolist/src/stats.php/?date=week">주간 통계</a></li>
             <br>
             <li class="side_li_2"><a href="/todolist/src/stats.php/?date=month">월간 통계</a></li>
