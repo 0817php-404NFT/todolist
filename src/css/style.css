@@ -967,10 +967,6 @@ input[id="icon"]:checked + label > span:nth-child(3) {
     height: 50px;
 }
 
-.stats_td_f{
-    
-}
-
 
 
 progress {

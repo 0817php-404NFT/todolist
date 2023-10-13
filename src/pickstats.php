@@ -130,7 +130,7 @@ try {
                 </td>
             </tr>
             <tr>
-                <td class="center stats_td_f">
+                <td class="center">
                     <?php
                         if($result === 100){
                     ?>
