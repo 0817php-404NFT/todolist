@@ -1,28 +1,37 @@
 <?php
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 define("FILE_HEADER", ROOT."header.php");
+define("ERROR_MSG_PARAM", "%s을 입력해주세요.");// 파라미터 에러메세지
 // define("ERROR_MSG_PARAM", "%s: 필수 입력 사항입니다.");
 require_once(ROOT."lib/lib_db.php");
 
+$conn = null; //기본값셋팅
+$arr_err_msg= []; //에러 메세지 저장용
+$content = "";//콘텐츠 기본값셋팅
 $http_method = $_SERVER["REQUEST_METHOD"];
+
 if($http_method === "POST") {
     try {
         $arr_post = $_POST;
-        $conn = null;
-
         if(!my_db_conn($conn)) {
             throw new Exception ("DB Error : PDO instance");
         }
-
-        $conn->beginTransaction();
-
-        if(!db_insert_boards($conn, $arr_post)) {
-            throw new Exception("DB Error : Insert Boards");
+        $content = isset($_POST["content"]) ? trim($_POST["content"]) : ""; //content 셋팅
+        // 만약 빈공간으로 보내져왔을시 오류메세지 출력
+        if($content === ""){
+            $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용");
         }
-        $conn->commit();
+        if(count($arr_err_msg) === 0){
+            $conn->beginTransaction();
 
-        header("Location: list.php");
-        exit;
+            if(!db_insert_boards($conn, $arr_post)) {
+                throw new Exception("DB Error : Insert Boards");
+            }
+            $conn->commit();
+
+            header("Location: list.php");
+            exit;
+        }
     } catch (Exception $e) {
         echo $e->getMessage();
         exit;
@@ -44,8 +53,15 @@ if($http_method === "POST") {
 </head>
 <body>
     <?php
-            require_once(FILE_HEADER);
-    ?>  
+        require_once(FILE_HEADER);
+    ?>
+    <?php
+        foreach($arr_err_msg as $val){
+    ?> 
+        <p class="error_p"><?php echo $val ?></p>
+    <?php        
+        }
+    ?>
     <form action="/todolist/src/insert.php" method="post" class="insert_form">
             <input class="insert_input" type="text" name="content" placeholder="          내용을 입력해 주세요(최대30글자)" maxlength='30' required>
             <button class="insert_butt" type="submit">

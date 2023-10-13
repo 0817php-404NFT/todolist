@@ -1,12 +1,12 @@
 <?php
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 define("FILE_HEADER", ROOT."header.php");
+define("ERROR_MSG_PARAM", "%s을 입력해주세요.");// 파라미터 에러메세지
 require_once(ROOT."lib/lib_db.php");
 
 $conn = null; // DB 연결용 변수
-// $id = isset($_GET["id"]) ? $_GET["id"] : $_POST["id"]; // id 셋팅
-// $page = isset($_GET["page"]) ? $_GET["page"] : $_POST["page"]; // page 셋팅
 $http_method = $_SERVER["REQUEST_METHOD"]; // Method 확인
+$arr_err_msg= []; //에러메세지용 변수
 
 try {
     // DB 연결
@@ -21,29 +21,50 @@ try {
         // 파라미터 획득
         $id = isset($_GET["id"]) ? $_GET["id"] :""; // id 셋팅
         $page = isset($_GET["page"]) ? $_GET["page"] : ""; // page 셋팅
-
+        
+        if($id === ""){
+            $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "id");
+        }       
+        if($page === ""){
+            $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "page");
+        }
+        if(count($arr_err_msg) >= 1){
+            throw new Exception(implode("<br>",$arr_err_msg));
+        }
         
     } else {
          // POST Method의 경우
         // 게시글 수정을 위해 파라미터 셋팅
         $id = isset($_POST["id"]) ? $_POST["id"] :""; // id 셋팅
         $page = isset($_POST["page"]) ? $_POST["page"] : ""; // page 셋팅
-        $content = trim( isset($_POST["content"]) ? $_POST["content"] : "" ); // content 셋팅
-
-        $arr_param = [
-            "id" => $id
-            ,"content" => $content
-        ];
-        // 게시글 수정 처리
-        $conn->beginTransaction(); // 트랜잭션 시작
-
-        if(!db_update_boards_id($conn, $arr_param)) { 
-            throw new Exception("DB Error : Update_boards_id");
+        $content = isset($_POST["content"]) ? trim($_POST["content"]) : ""; //content셋팅
+        if($id === ""){
+            $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "id");
+        }       
+        if($page === ""){
+            $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "page");
         }
-        $conn->commit(); // commit
-        
-        header("Location: detail.php/?id={$id}&page={$page}"); // detail 페이지로 이동
-        exit;
+        if(count($arr_err_msg) >= 1){
+            throw new Exception(implode("<br>",$arr_err_msg));
+        }
+        if($content === ""){
+            $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용");
+        }
+        if(count($arr_err_msg) === 0){
+            $arr_param = [
+                "id" => $id
+                ,"content" => $content
+            ];
+            // 게시글 수정 처리
+            $conn->beginTransaction(); // 트랜잭션 시작
+
+            if(!db_update_boards_id($conn, $arr_param)) { 
+                throw new Exception("DB Error : Update_boards_id");
+            }
+            $conn->commit(); // commit
+            header("Location: detail.php/?id={$id}&page={$page}"); // detail 페이지로 이동
+            exit;
+        }
     }
 
     // 게시글 데이터 조회를 위한 파라미터 셋팅
@@ -89,22 +110,35 @@ try {
 </head>
 <body>
     <?php
-            require_once(FILE_HEADER);
-    ?>  
+        require_once(FILE_HEADER);
+    ?>
     <form class="update_form" action="/todolist/src/update.php" method="post">
-        <table>
-            <input type="hidden" name="id" value="<?php echo $id ?>">
-            <input type="hidden" name="page" value="<?php echo $page ?>">
-            <img src="/todolist/src/img/update_table.svg" alt="update_table">
-            <!-- <input class="update_input" type="text" name="content" value="<?php echo $item["content"] ?>"> -->
-            <textarea class="update_text" name="content" id="content" cols="30" rows="2" maxlength="30" required><?php echo $item["content"] ?></textarea>
+        <input type="hidden" name="id" value="<?php echo $id ?>">
+        <input type="hidden" name="page" value="<?php echo $page ?>">
+        <table class="update_table">
+            <tr>
+                <td class="update_table_error center">
+                    <?php
+                        foreach($arr_err_msg as $val){
+                    ?> 
+                        <?php echo $val ?>
+                    <?php        
+                        }
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea class="update_text" name="content" id="content" cols="30" rows="2" maxlength="30" required><?php echo $item["content"] ?></textarea>
+                </td>
+            </tr>            
         </table>
+        <img class="update_cat2" src="/todolist/src/img/updatecat2.png" alt="">
+        <img class="update_cat" src="/todolist/src/img/updatecat.png" alt="">
         <div class="update_div">
             <button class="update_a" type="submit">완료</button>
             <a class="update_a "href="/todolist/src/detail.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?>">취소</a>
         </div>
-        <img class="update_cat2" src="/todolist/src/img/updatecat2.png" alt="">
-        <img class="update_cat" src="/todolist/src/img/updatecat.png" alt="">
         
     </form>
 </body>
