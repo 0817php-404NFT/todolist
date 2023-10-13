@@ -63,11 +63,6 @@ try {
     <title>통계페이지</title>
 </head>
 <body>
-    <colgroup>
-        <col width="25%">
-        <col width="50%">
-        <col width="25%">
-    </colgroup>
     <table class="stats_table">
         <?php
                 require_once(FILE_HEADER);
