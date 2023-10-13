@@ -154,7 +154,6 @@ h1 a {
 
 .list_search_btn:hover{
     cursor: pointer;
-   
 }
 
 
@@ -251,6 +250,7 @@ h1 a {
     padding-top: 50px;
     height: 100px;
 }
+
 .detail_content_2 {
     font-size: 35px;
     padding-bottom: 30px;
@@ -522,17 +522,31 @@ input::placeholder {
 .update_a:hover {
     -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
+.update_table {
+    position: relative;
+    background-image: url(../img/update_table.svg);
+    width: 859px;
+    height: 392px;
+    padding: 50px;
+}
+
+.update_table_error{
+    height: 100px;
+    color: red;
+}
+
+
 
 .update_cat {
-    position: relative;
-    bottom: -30px;
-    left: -360px;
+    position: absolute;
+    bottom: -250px;
+    left: -150px;
     width: 180px;
 }
 .update_cat2 {
-    position: relative;
-    bottom: -30px;
-    left: -380px;
+    position: absolute;
+    bottom: -250px;
+    left: -400px;
 }
 /* update_cat hover */
 .update_cat:hover{
@@ -857,7 +871,7 @@ input[id="icon"]:checked + label > span:nth-child(3) {
     height:100%;
     background-color: #311a9344;
     top:0px;
-    padding:400px 25px 25px 25px;
+    padding: 270px 25px 25px 25px;
     box-sizing:border-box;
     left:-300px;
     z-index:1;
@@ -986,12 +1000,12 @@ background-color: red;
 
 
 /* pickstate */
-.pickstate_date{
+.pickstats_date{
     height: 50px;
     padding-left:  0px;
 }
 
-.pickstate_img{
+.pickstats_img{
     width: 26px;
     height: 22px;
     margin-right: 8px;

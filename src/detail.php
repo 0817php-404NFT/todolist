@@ -63,6 +63,7 @@ $page=$_GET["page"];
     <link rel="stylesheet" href="/todolist/src/css/style.css">
     <title>상세페이지</title>
 </head>
+
 <body>
     <?php require_once(FILE_HEADER); ?>
     
