@@ -318,7 +318,7 @@ function db_delete_boards_id(&$conn, &$arr_param) {
 }
 
 //  ---------------------------------------------
-//  함수명 db_detail_boards_id
+//  함수명 db_select_boards_id
 //  기능 : 디테일 데이터 조회
 //  파라미터 : pdo &$conn
 //			&$arr_param 	

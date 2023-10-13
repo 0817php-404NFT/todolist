@@ -165,12 +165,12 @@ try {
                 </td>
             </tr>
             <tr>
-                <td class="center stats_td_f">
+                <td class="center">
                     <?php
                         if($result === 100){
                     ?>
                         <span>
-                            !!!!! <?php echo $result; ?> % 꿀잠성공!!!!!
+                            !!!!!꿀잠성공!!!!!
                         </span>
                     <?php        
                         }
