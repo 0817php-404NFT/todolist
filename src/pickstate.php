@@ -35,6 +35,14 @@ try {
     if($result === false){
         throw new Exception("DB Error : SELECT boards cnt"); // 강제 예외 발생 : SELECT boards
     }
+    $cnt = db_select_search_boards_pickstats_cnt($conn, $arr_param);
+    if($cnt === false){
+        throw new Exception("DB Error : SELECT boards cnt"); // 강제 예외 발생 : SELECT boards
+    }
+    $clear_cnt = db_select_search_boards_clear_pickstats_cnt($conn, $arr_param);
+    if($clear_cnt === false){
+        throw new Exception("DB Error : SELECT boards cnt"); // 강제 예외 발생 : SELECT boards
+    }
 
 } catch(Exception $e) {
     echo $e->getMessage(); //예외발생 메세지 출력  //v002 del
@@ -61,8 +69,8 @@ try {
         ?>
         <thead>
             <tr>
-                <th>
-                    <?php echo $date_1 ?> ~  <?php echo $date_2 ?>
+                <th class="pickstate_date">
+                    <img class="pickstate_img" src="/todolist/src/img/search_btn.png" alt=""><?php echo $date_1 ?> ~  <?php echo $date_2 ?>
                 </th>
                 <th>
                     <a href="/todolist/src/list.php">메인으로</a>
@@ -114,7 +122,12 @@ try {
                                                                             ?>
                                                                             ">
                     </progress>
-            </td>
+                </td>
+            </tr>
+            <tr class="center">
+                <td>
+                    총 <?php echo $cnt ?>개 중 <?php echo $clear_cnt; ?>개 성공!
+                </td>
             </tr>
             <tr>
                 <td class="center stats_td_f">
@@ -122,7 +135,7 @@ try {
                         if($result === 100){
                     ?>
                         <span>
-                            !!!!! <?php echo $result; ?> % 꿀잠성공!!!!!
+                            !!!!!꿀잠성공!!!!!
                         </span>
                     <?php        
                         }
@@ -131,7 +144,7 @@ try {
                         if($result < 100 && $result >= 80){
                     ?>
                         <span>
-                            무려 <?php echo $result; ?> %...! 조금만 더!
+                            다 왔어요! 조금만 더!
                         </span>
                     <?php        
                         }
@@ -140,7 +153,7 @@ try {
                         if($result < 80 && $result >= 60){
                     ?>
                         <span>
-                            오.. <?php echo $result; ?> % 힘을내요..!
+                            오...힘을내요..!
                         </span>
                     <?php        
                         }
@@ -149,7 +162,7 @@ try {
                         if($result < 60 && $result >= 40){
                     ?>
                         <span>
-                            흠.. <?php echo $result; ?> %..네...뭐..
+                            흠....네...뭐..
                         </span>
                     <?php        
                         }
@@ -158,7 +171,7 @@ try {
                         if($result < 40 && $result >= 20){
                     ?>
                         <span>
-                            고작... <?php echo $result; ?> % ? 노력하세요!
+                            고작...? 노력하세요!
                         </span>
                     <?php        
                         }
@@ -167,7 +180,7 @@ try {
                         if($result < 20 && $result >= 0){
                     ?>
                         <span>
-                            아니... <?php echo $result; ?> %..? 잠을 포기하셨나요?
+                            아니....? 잠을 포기하셨나요?
                         </span>
                     <?php        
                         }

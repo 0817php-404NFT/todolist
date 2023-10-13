@@ -391,7 +391,7 @@ function db_update_chk_flg(&$conn, &$arr_param) {
 
 // -------------------------------
 // 함수명   : db_select_boards_stats
-// 기능     : boards stats count
+// 기능     : boards stats count %
 // 파라미터 : PDO  &$conn
 //           Array      &arr_param 쿼리 작성용 배열
 // 리턴     : int / false
@@ -444,7 +444,7 @@ function db_select_boards_stats( &$conn, &$arr_param){
 }
 // -------------------------------
 // 함수명   : db_select_search_boards_stats
-// 기능     : boards stats count
+// 기능     : boards search stats count %
 // 파라미터 : PDO  &$conn
 //           Array      &arr_param 쿼리 작성용 배열
 // 리턴     : int / false
@@ -502,5 +502,161 @@ function db_select_search_boards_stats( &$conn, &$arr_param){
 }
 
 
+// -------------------------------
+// 함수명   : db_select_search_boards_stats_cnt
+// 기능     : boards stats count 
+// 파라미터 : PDO  &$conn
+//           Array      &arr_param 쿼리 작성용 배열
+// 리턴     : int / false
+// 제작     : 20231013 정훈
+// -------------------------------
+
+function db_select_search_boards_stats_cnt( &$conn, &$arr_param){
+    $sql =
+    " SELECT "
+    ."    COUNT(id) as cnt "
+    ." FROM "
+    ."     boards "
+    ." WHERE "
+    ."     write_date <= NOW() "
+    ." AND "
+    ."     write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000') "
+    ." AND "
+    ."     del_flg = '0' "
+    ;
+
+    $arr_ps = [];
+
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($arr_ps);
+        $result = $stmt->fetchAll();
+        return (int)$result[0]["cnt"]; // 정상 : 쿼리 결과 리턴
+    } catch (Exception $e) {
+        echo $e->getMessage(); // Exception 메세지 출력
+        return false; // 예외 발생 : false 리턴
+    }
+}
+
+// -------------------------------
+// 함수명   : db_select_search_boards_clear_stats_cnt
+// 기능     : boards clear stats count 
+// 파라미터 : PDO  &$conn
+//           Array      &arr_param 쿼리 작성용 배열
+// 리턴     : int / false
+// 제작     : 20231013 정훈
+// -------------------------------
+
+function db_select_search_boards_clear_stats_cnt( &$conn, &$arr_param){
+    $sql =
+    " SELECT "
+    ."    COUNT(id) as cnt "
+    ." FROM "
+    ."     boards "
+    ." WHERE "
+    ."     write_date <= NOW() "
+    ." AND "
+    ."     write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000') "
+    ." AND "
+    ."     del_flg = '0' "
+    ." AND "
+    ."     chk_flg = '1' "
+    ;
+
+    $arr_ps = [];
+
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($arr_ps);
+        $result = $stmt->fetchAll();
+        return (int)$result[0]["cnt"]; // 정상 : 쿼리 결과 리턴
+    } catch (Exception $e) {
+        echo $e->getMessage(); // Exception 메세지 출력
+        return false; // 예외 발생 : false 리턴
+    }
+}
+
+
+
+
+// -------------------------------
+// 함수명   : db_select_search_boards_pickstats_cnt
+// 기능     : boards pickstats count 
+// 파라미터 : PDO  &$conn
+//           Array      &arr_param 쿼리 작성용 배열
+// 리턴     : int / false
+// 제작     : 20231013 정훈
+// -------------------------------
+
+function db_select_search_boards_pickstats_cnt( &$conn, &$arr_param){
+    $sql =
+    " SELECT "
+    ."    COUNT(id) as pickcnt "
+    ." FROM "
+    ."      boards "
+    ." WHERE "
+    ."      write_date <= :date_2 "
+    ." AND "
+    ."      write_date >= :date_1 "
+    ." AND "
+    ."      del_flg = '0' "
+    ;
+
+    $arr_ps = [
+        ":date_1" => $arr_param["date_1"]
+        ,":date_2" => $arr_param["date_2"]
+    ];
+
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($arr_ps);
+        $result = $stmt->fetchAll();
+        return (int)$result[0]["pickcnt"]; // 정상 : 쿼리 결과 리턴
+    } catch (Exception $e) {
+        echo $e->getMessage(); // Exception 메세지 출력
+        return false; // 예외 발생 : false 리턴
+    }
+}
+
+
+// -------------------------------
+// 함수명   : db_select_search_boards_clear_pickstats_cnt
+// 기능     : boards clear pickstats count 
+// 파라미터 : PDO  &$conn
+//           Array      &arr_param 쿼리 작성용 배열
+// 리턴     : int / false
+// 제작     : 20231013 정훈
+// -------------------------------
+
+function db_select_search_boards_clear_pickstats_cnt( &$conn, &$arr_param){
+    $sql =
+    " SELECT "
+    ."    COUNT(id) as pickcnt "
+    ." FROM "
+    ."      boards "
+    ." WHERE "
+    ."      write_date <= :date_2 "
+    ." AND "
+    ."      write_date >= :date_1 "
+    ." AND "
+    ."      del_flg = '0' "
+    ." AND "
+    ."     chk_flg = '1' "
+    ;
+    $arr_ps = [
+        ":date_1" => $arr_param["date_1"]
+        ,":date_2" => $arr_param["date_2"]
+    ];
+
+    try {
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($arr_ps);
+        $result = $stmt->fetchAll();
+        return (int)$result[0]["pickcnt"]; // 정상 : 쿼리 결과 리턴
+    } catch (Exception $e) {
+        echo $e->getMessage(); // Exception 메세지 출력
+        return false; // 예외 발생 : false 리턴
+    }
+}
 
 ?>

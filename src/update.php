@@ -103,6 +103,9 @@ try {
             <button class="update_a" type="submit">완료</button>
             <a class="update_a "href="/todolist/src/detail.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?>">취소</a>
         </div>
+        <img class="update_cat2" src="/todolist/src/img/updatecat2.png" alt="">
+        <img class="update_cat" src="/todolist/src/img/updatecat.png" alt="">
+        
     </form>
 </body>
 </html>
