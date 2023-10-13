@@ -760,7 +760,7 @@ input[id="icon"]:checked + label > span:nth-child(3) {
     height:100%;
     background-color: #311a9344;
     top:0px;
-    padding:400px 25px 25px 25px;
+    padding: 270px 25px 25px 25px;
     box-sizing:border-box;
     left:-300px;
     z-index:1;
@@ -889,12 +889,12 @@ background-color: red;
 
 
 /* pickstate */
-.pickstate_date{
+.pickstats_date{
     height: 50px;
     padding-left:  0px;
 }
 
-.pickstate_img{
+.pickstats_img{
     width: 26px;
     height: 22px;
     margin-right: 8px;

@@ -73,7 +73,7 @@ try {
             <br>
             <li class="side_li_2"><a href="/todolist/src/stats.php/?date=month">월간 통계</a></li>
             <br>
-            <form action="/todolist/src/pickstate.php" method="get">           
+            <form action="/todolist/src/pickstats.php" method="get">           
                 <label class="list_label">
                     <input type="date" name="date_1" required class="list_side_input">
                     <div class="side_div center">~</div>

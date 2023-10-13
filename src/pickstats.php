@@ -20,7 +20,7 @@ try {
 	}
     // date_2 id확인
 	if(isset($_GET["date_2"])){
-		$date_2 = str_replace('-','', $_GET["date_2"]); //id 셋팅
+		$date_2 = str_replace('-','', $_GET["date_2"])+1; //id 셋팅
 	} else {
 		throw new Exception("Parameter ERROR : NO id"); //강제 예외 발생
 	}
@@ -69,8 +69,8 @@ try {
         ?>
         <thead>
             <tr>
-                <th class="pickstate_date">
-                    <img class="pickstate_img" src="/todolist/src/img/search_btn.png" alt=""><?php echo $date_1 ?> ~  <?php echo $date_2 ?>
+                <th class="pickstats_date">
+                    <img class="pickstats_img" src="/todolist/src/img/search_btn.png" alt=""><?php echo $date_1 ?> ~  <?php echo $date_2-1 ?>
                 </th>
                 <th>
                     <a href="/todolist/src/list.php">메인으로</a>
