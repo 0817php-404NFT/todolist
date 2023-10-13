@@ -721,19 +721,33 @@ input::placeholder {
     color: #000;
     height: 40px;
 }
+/* @keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+} */
 
 .delete_td{
     font-size: 1.7rem;
     color: #000;
     height: 150px;
-    padding-bottom: 50px;
+    padding-bottom: 50px; 
 }
+
 .delete_td span{
     display: inline-block;
     border: 5px solid #d9d9d9;
-    color: #000;
+    color: #000000;
     padding: 20px;
+    animation:flash 2s infinite; 
+    
 }
+
+@keyframes flash{
+    0%{opacity:1;}
+    50%{opacity:.5;}
+    100%{opacity:1;}
+    }
 
 .delete_a {
     display: inline-block;
