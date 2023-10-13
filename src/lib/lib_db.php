@@ -409,7 +409,7 @@ function db_select_boards_stats( &$conn, &$arr_param){
     ."                    WHERE "
     ."                        write_date <= NOW() "
     ."                    AND "
-    ."                        write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000') "
+    ."                        write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["date"]." ), '%Y%m%d000000') "
     ."                    AND "
     ."                        del_flg = '0' "
     ."                    AND "
@@ -422,7 +422,7 @@ function db_select_boards_stats( &$conn, &$arr_param){
     ."                    WHERE "
     ."                        write_date <= NOW() "
     ."                    AND "
-    ."                        write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000') "
+    ."                        write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["date"]." ), '%Y%m%d000000') "
     ."                    AND "
     ."                        del_flg = '0' "
     ."                    ) "
@@ -460,9 +460,9 @@ function db_select_search_boards_stats( &$conn, &$arr_param){
     ."                    FROM "
     ."                        boards "
     ."                    WHERE "
-    ."                        write_date < :date_2 "
+    ."                        write_date < :to_date "
     ."                    AND "
-    ."                        write_date >= :date_1 "
+    ."                        write_date >= :from_date "
     ."                    AND "
     ."                        del_flg = '0' "
     ."                    AND "
@@ -473,9 +473,9 @@ function db_select_search_boards_stats( &$conn, &$arr_param){
     ."                    FROM "
     ."                        boards "
     ."                    WHERE "
-    ."                        write_date < :date_2_1 "
+    ."                        write_date < :to_date_1 "
     ."                    AND "
-    ."                        write_date >= :date_1_1 "
+    ."                        write_date >= :from_date_1 "
     ."                    AND "
     ."                        del_flg = '0' "
     ."                    ) "
@@ -484,10 +484,10 @@ function db_select_search_boards_stats( &$conn, &$arr_param){
     ;
     
     $arr_ps = [
-        ":date_1" => $arr_param["date_1"]
-        ,":date_1_1" => $arr_param["date_1"]
-        ,":date_2" => $arr_param["date_2"]
-        ,":date_2_1" => $arr_param["date_2"]
+        ":from_date" => $arr_param["from_date"]
+        ,":from_date_1" => $arr_param["from_date"]
+        ,":to_date" => $arr_param["to_date"]
+        ,":to_date_1" => $arr_param["to_date"]
     ];
 
     try {
@@ -595,16 +595,16 @@ function db_select_search_boards_pickstats_cnt( &$conn, &$arr_param){
     ." FROM "
     ."      boards "
     ." WHERE "
-    ."      write_date < :date_2 "
+    ."      write_date < :to_date "
     ." AND "
-    ."      write_date >= :date_1 "
+    ."      write_date >= :from_date "
     ." AND "
     ."      del_flg = '0' "
     ;
 
     $arr_ps = [
-        ":date_1" => $arr_param["date_1"]
-        ,":date_2" => $arr_param["date_2"]
+        ":from_date" => $arr_param["from_date"]
+        ,":to_date" => $arr_param["to_date"]
     ];
 
     try {
@@ -635,17 +635,17 @@ function db_select_search_boards_clear_pickstats_cnt( &$conn, &$arr_param){
     ." FROM "
     ."      boards "
     ." WHERE "
-    ."      write_date < :date_2 "
+    ."      write_date < :to_date "
     ." AND "
-    ."      write_date >= :date_1 "
+    ."      write_date >= :from_date "
     ." AND "
     ."      del_flg = '0' "
     ." AND "
     ."     chk_flg = '1' "
     ;
     $arr_ps = [
-        ":date_1" => $arr_param["date_1"]
-        ,":date_2" => $arr_param["date_2"]
+        ":from_date" => $arr_param["from_date"]
+        ,":to_date" => $arr_param["to_date"]
     ];
 
     try {

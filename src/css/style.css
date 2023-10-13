@@ -111,7 +111,7 @@ h1 a {
     padding: 20px;
 }
 
-.list_img_1{
+.list_img_paper{
     width: 63px;
     height: 63px;
     position: absolute;
@@ -128,7 +128,7 @@ h1 a {
     height: 75px;
 }
 
-.list_search_input{
+.list_date_search_input{
     position: relative;
     font-size: 30px;
     padding: 0px 70px 0px 30px;
@@ -137,13 +137,13 @@ h1 a {
     outline: none;
 }
 
-.list_search_input::-webkit-calendar-picker-indicator {
+.list_date_search_input::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
 
 
 
-.list_search_btn{
+.list_date_search_btn{
     right: 32px;
     top: 34px;
     position: absolute;
@@ -152,7 +152,7 @@ h1 a {
     border: none;
 }
 
-.list_search_btn:hover{
+.list_date_search_btn:hover{
     cursor: pointer;
 }
 
@@ -924,19 +924,19 @@ input::-webkit-search-results-decoration{
     cursor: pointer;
 }
 
-.side_li{
+.side_week_li{
     padding: 20px;
     font-size: 40px;
     list-style: none;
 }
-.side_li_2{
+.side_month_li{
     padding: 20px;
     font-size: 40px;
     list-style: none;
     margin-bottom: 100px;
 }
 
-.list_side_input{
+.list_side_date{
     position: relative;
     font-size: 30px;
     padding-left: 17px;
@@ -953,11 +953,11 @@ input::-webkit-search-results-decoration{
     cursor: pointer;
 }
 
-.side_div{
+.side_tilde{
     font-size: 40px;
     padding: 11px 55px 0px 0px;
 }
-.list_side_btn {
+.list_side_date_btn {
     margin: 13px 0px 0px 88px;
     border: none;
     background-color: rgba(240, 240, 240,0.3);
@@ -1000,7 +1000,7 @@ input::-webkit-search-results-decoration{
     font-size: 60px;
 }
 
-.stats_td_t{
+.stats_td_per{
     height: 50px;
 }
 

@@ -75,16 +75,16 @@ try {
                     <button type ="submit"><img src="/todolist/src/img/search_btn.png" alt=""></button>
                 </form>
             </li>
-            <li class="side_li"><a href="/todolist/src/stats.php/?date=week">주간 통계</a></li>
+            <li class="side_week_li"><a href="/todolist/src/stats.php/?date=week">주간 통계</a></li>
             <br>
-            <li class="side_li_2"><a href="/todolist/src/stats.php/?date=month">월간 통계</a></li>
+            <li class="side_month_li"><a href="/todolist/src/stats.php/?date=month">월간 통계</a></li>
             <br>
             <form action="/todolist/src/pickstats.php" method="get">           
                 <label class="list_label">
-                    <input type="date" name="date_1" required class="list_side_input">
-                    <div class="side_div center">~</div>
-                    <input type="date" name="date_2" required class="list_side_input">
-                    <button type="submit" class="list_side_btn">검색</button>
+                    <input type="date" name="from_date" required class="list_side_date">
+                    <div class="side_tilde center">~</div>
+                    <input type="date" name="to_date" required class="list_side_date">
+                    <button type="submit" class="list_side_date_btn">검색</button>
                 </label>
             </form>
         </ul>
@@ -96,12 +96,12 @@ try {
             <thead> 
                 <tr>
                     <td class="list_head_td">오늘의할일                   
-                    <form action="/todolist/src/search.php" method="get">           
+                        <form action="/todolist/src/search.php" method="get">           
                             <label class="list_label">
-                                <input type="date" name="date" required class="list_search_input" value="<?php echo $today; ?>">
-                                <button type="submit" class="list_search_btn"><img src="/todolist/src/img/lens.png" alt=""></button>
+                                <input type="date" name="date" required class="list_date_search_input" value="<?php echo $today; ?>">
+                                <button type="submit" class="list_date_search_btn"><img src="/todolist/src/img/lens.png" alt=""></button>
                             </label>
-                    </form>
+                        </form>
                     </td>
                 </tr>
             </thead>
@@ -112,7 +112,7 @@ try {
                 <tr>
                     <td>
                         <!-- <form action="/todolist/src/img/chk_flg.php" method="post">
-                            <input type="checkbox" name="<?php //echo $item["id"]; ?>" id="checker<?php //echo $item["id"]; ?>" value="<?php //echo $item["id"]; ?>">
+                            <input type="checkbox" name=" <?php //echo $item["id"]; ?>" id="checker<?php //echo $item["id"]; ?>" value="<?php //echo $item["id"]; ?>">
                             <label for="checker"> --> <!-- del 1011 정훈  -->
                         <?php
                             if($item["chk_flg"] === "0"){
@@ -144,12 +144,12 @@ try {
             ?>
         <tr>
             <td>
-                <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_1">
+                <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
             </td>
         </tr>
         <tfoot>
             <tr>
-                <td class="list_page_td center">
+                <td class="center">
                     <?php                  
                         for ($i = 1; $i <= 3; $i++) {
                                 // 삼항연산자 : 조건 ? 참일때처리 : 거짓일때처리
@@ -159,7 +159,7 @@ try {
                     <?php
                         }
                     ?>
-                    </td>
+                </td>
             </tr>
         </tfoot>
         </table>  
