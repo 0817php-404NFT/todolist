@@ -66,39 +66,42 @@ $page=$_GET["page"];
 <body>
     <?php require_once(FILE_HEADER); ?>
     
-    <div class="detail-container">
-        <img class="detail_img" src="/todolist/src/img/Group 7.svg" alt="">
-        <table class="detail_table">
-            
-            <tr>
-                <td colspan="2" class="detail_head">
-                    <span>수행여부: <?php echo $ox; ?></span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" class="detail_content_1">
-                    <div class="typing-text"><?php echo $item["content"]; ?></div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" class="detail_content_2">
-                    <div class="typing-text"><?php echo $item["write_date"]; ?></div>
-                </td>
-            </tr>
-			<tr>
-				<td>
-					<a href="/todolist/src/update.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">수정</a>
-				</td>
-				<td>
-				<a href="/todolist/src/delete.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">삭제</a>
-				</td>
-				<td>
-				<a href="/todolist/src/list.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">나가기</a>
-				</td>
-			</tr>
-			</tr>
-        </table>
-	</div>
+	<div class="detail-container">
+    <div class="detail_img"> </div>
+    <table class="detail_table">
+	
+			
+		<tr>
+					<td colspan="2" class="detail_head">
+						<span>수행여부: <?php echo $ox; ?></span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="detail_content_1">
+						<div class="typing-text"><?php echo $item["content"]; ?></div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="detail_content_2">
+						<div class="typing-text"><?php echo $item["write_date"]; ?></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="/todolist/src/update.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">수정</a>
+					</td>
+					<td>
+					<a href="/todolist/src/delete.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">삭제</a>
+					</td>
+					<td>
+					<a href="/todolist/src/list.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">나가기</a>
+					</td>
+				</tr>
+				</tr>
+			</table>
+		</div>
+		
+    
 	<div class="stars"></div>
 </body>
 </html>
