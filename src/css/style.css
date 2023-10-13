@@ -195,15 +195,10 @@ h1 a {
 
 /* detail */
 
-
-
-
 .detail_img {
     position: relative;
     top: -111px;
     left: 450px;
-    z-index: 1; 
-    background-image: url('/src/img/Group\ 7.svg');
 }
 
 .detail_table {
@@ -215,10 +210,8 @@ h1 a {
     font-size: 2.0rem;
     text-align: center;
     padding: 50px;
-    z-index: 2; 
-    background-image: url('/src/img/Group\ 7.svg'); 
-}
 
+}
 
 
 .detail_head {
@@ -297,6 +290,11 @@ h1 a {
     50% { opacity: 1; }
     100% { opacity: 0; }
 }
+
+
+
+
+
 
 
 
