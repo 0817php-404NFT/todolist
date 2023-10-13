@@ -90,12 +90,14 @@ try {
             <tr>
                 <td colspan="2">
                 <?php if($item["chk_flg"] === "0"){ ?>
-                    <span class="search_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                    <span class="search_content">
+                        <img src="/todolist/src/img/check_b.svg" alt="">
                         <?php echo $item["content"]; ?>
                     </span>
                 <?php } ?>
                 <?php if($item["chk_flg"] === "1"){ ?>
                     <span class="search_content_chk" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                        <img src="/todolist/src/img/check_a.svg" alt=""> 
                         <?php echo $item["content"]; ?>
                     </span>
                 <?php } ?>

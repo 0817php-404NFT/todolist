@@ -49,38 +49,38 @@ h1{
  */
 h1:hover {
 	-webkit-animation: pulsate-bck 1.5s ease-in-out infinite both;
-	        animation: pulsate-bck 1.5s ease-in-out infinite both;
+        animation: pulsate-bck 1.5s ease-in-out infinite both;
 }
 
- @-webkit-keyframes pulsate-bck {
-    0% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-    }
-    50% {
-      -webkit-transform: scale(0.9);
-              transform: scale(0.9);
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-    }
+@-webkit-keyframes pulsate-bck {
+0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
 }
-  @keyframes pulsate-bck {
-    0% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-    }
-    50% {
-      -webkit-transform: scale(0.9);
-              transform: scale(0.9);
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-    }
+50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
 }
-  
+100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+}
+@keyframes pulsate-bck {
+0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+50% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+}
+100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+}
+
 
 h1 a {
     color: #fff;  
@@ -660,14 +660,12 @@ font-size: 1.6rem;
 }
 
 .search_content{
-    padding-left: 57px;
     text-decoration: none;
     color: white;
     display: inline-block;
 }
 
 .search_content_chk{
-    padding-left: 57px;
     text-decoration: line-through;
     color: #565656;
     display: inline-block;
@@ -692,6 +690,7 @@ font-size: 1.6rem;
     padding: 12px 20px 0px 55px;
     height: 75px;
 }
+
 
 
 
@@ -780,8 +779,47 @@ input[id="icon"]:checked + label > span:nth-child(3) {
     font-size: 40px;
     list-style: none;
 }
+.side_li_2{
+    padding: 20px;
+    font-size: 40px;
+    list-style: none;
+    margin-bottom: 100px;
+}
 
+.list_side_input{
+    position: relative;
+    font-size: 30px;
+    padding-left: 17px;
+    background: none;
+    border: none;
+    outline: none;
+}
 
+.list_side_input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.list_side_input::-webkit-calendar-picker-indicator:hover{
+    cursor: pointer;
+}
+
+.side_div{
+    font-size: 40px;
+    padding: 11px 55px 0px 0px;
+}
+.list_side_btn {
+    margin: 13px 0px 0px 88px;
+    border: none;
+    background-color: rgba(240, 240, 240,0.3);
+    font-size: 1rem;
+    width: 60px;
+    height: 30px;
+}
+
+.list_side_btn:hover {
+    cursor: pointer;
+    -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
+}
 
 /* stats */
 
