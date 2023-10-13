@@ -5,7 +5,9 @@ require_once(ROOT."lib/lib_db.php");
 
 $conn = null; // DB connection 변수
 $date = "";
-
+$cnt = "";
+$arr_param = [];
+$clear_cnt = "";
 
 try {
     // DB 접속
@@ -24,11 +26,22 @@ try {
         "dat" => $date
     ];
 
-    // 게시글 리스트 조회 
+    // 게시글 리스트 % 조회
     $result  = db_select_boards_stats($conn, $arr_param);
     if($result === false){
-        throw new Exception("DB Error : SELECT boards cnt"); // 강제 예외 발생 : SELECT boards
+        throw new Exception("DB Error : SELECT boards %"); // 강제 예외 발생 : SELECT boards %
     }
+    // 조회된 총 리스트 cnt
+    $cnt = db_select_search_boards_stats_cnt($conn, $arr_param);
+    if($cnt === false){
+        throw new Exception("DB Error : SELECT boards cnt"); // 강제 예외 발생 : SELECT boards cnt
+    }
+    // 조회된 총 리스트 cnt 중 성공한 cnt
+    $clear_cnt  = db_select_search_boards_clear_stats_cnt($conn, $arr_param);
+    if($clear_cnt === false){
+        throw new Exception("DB Error : SELECT boards cnt"); // 강제 예외 발생 : SELECT boards cnt
+    }
+
 
 } catch(Exception $e) {
     echo $e->getMessage(); //예외발생 메세지 출력  //v002 del
@@ -139,6 +152,11 @@ try {
                     </progress>
             </td>
             </tr>
+            <tr class="center">
+                <td>
+                    총 <?php echo $cnt ?>개 중 <?php echo $clear_cnt; ?>개 성공!
+                </td>
+            </tr>
             <tr>
                 <td class="center stats_td_f">
                     <?php
@@ -154,7 +172,7 @@ try {
                         if($result < 100 && $result >= 80){
                     ?>
                         <span>
-                            무려 <?php echo $result; ?> %...! 조금만 더!
+                            다 왔어요! 조금만 더!
                         </span>
                     <?php        
                         }
@@ -163,7 +181,7 @@ try {
                         if($result < 80 && $result >= 60){
                     ?>
                         <span>
-                            오.. <?php echo $result; ?> % 힘을내요..!
+                            오...힘을내요..!
                         </span>
                     <?php        
                         }
@@ -172,7 +190,7 @@ try {
                         if($result < 60 && $result >= 40){
                     ?>
                         <span>
-                            흠.. <?php echo $result; ?> %..네...뭐..
+                            흠....네...뭐..
                         </span>
                     <?php        
                         }
@@ -181,7 +199,7 @@ try {
                         if($result < 40 && $result >= 20){
                     ?>
                         <span>
-                            고작... <?php echo $result; ?> % ? 노력하세요!
+                            고작...? 노력하세요!
                         </span>
                     <?php        
                         }
@@ -190,7 +208,7 @@ try {
                         if($result < 20 && $result >= 0){
                     ?>
                         <span>
-                            아니... <?php echo $result; ?> %..? 잠을 포기하셨나요?
+                            아니....? 잠을 포기하셨나요?
                         </span>
                     <?php        
                         }

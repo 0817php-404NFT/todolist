@@ -70,7 +70,7 @@ $page=$_GET["page"];
         <img class="detail_img" src="/todolist/src/img/Group 7.svg" alt="">
         <table class="detail_table">
             
-            <tr>
+            <<tr>
                 <td colspan="2" class="detail_head">
                     <span>수행여부: <?php echo $ox; ?></span>
                 </td>

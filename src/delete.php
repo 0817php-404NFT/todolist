@@ -98,10 +98,12 @@ try {
                 <td class="delete_msg_2">                 
                     그래도 하시겠습니까?
                 </td>
-            </tr>      
-            <tr>
-                <td class = "delete_td"><span><?php echo $item["content"] ?></span></td>
             </tr>
+           
+            <tr>
+                <td class = "delete_td"><span class="td_span"><?php echo $item["content"] ?></span></td>
+            </tr>
+         
         </table>
     </main>
     <section class="delete_section">
