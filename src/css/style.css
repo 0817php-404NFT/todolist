@@ -869,3 +869,16 @@ background-color: orange;
 .stats_progress_5::-webkit-progress-value {
 background-color: red;
 }
+
+
+/* pickstate */
+.pickstate_date{
+    height: 50px;
+    padding-left:  0px;
+}
+
+.pickstate_img{
+    width: 26px;
+    height: 22px;
+    margin-right: 8px;
+}
