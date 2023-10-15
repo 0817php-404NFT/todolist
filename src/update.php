@@ -1,12 +1,14 @@
 <?php
-define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
+define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");//root 설정
 define("FILE_HEADER", ROOT."header.php");
 define("ERROR_MSG_PARAM", "%s을 입력해주세요.");// 파라미터 에러메세지
 require_once(ROOT."lib/lib_db.php");
 
+$page = "";
+$id = "";
 $conn = null; // DB 연결용 변수
-$http_method = $_SERVER["REQUEST_METHOD"]; // Method 확인
 $arr_err_msg= []; //에러메세지용 변수
+$http_method = $_SERVER["REQUEST_METHOD"]; // Method 확인
 
 try {
     // DB 연결
@@ -56,7 +58,7 @@ try {
                 ,"content" => $content
             ];
             // 게시글 수정 처리
-            $conn->beginTransaction(); // 트랜잭션 시작
+            $conn->beginTrantsacion(); // 트랜잭션 시작
 
             if(!db_update_boards_id($conn, $arr_param)) { 
                 throw new Exception("DB Error : Update_boards_id");

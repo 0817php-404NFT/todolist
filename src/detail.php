@@ -2,6 +2,7 @@
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
+
 try{
     // 초기값설정
 	$id = "";
@@ -19,16 +20,16 @@ try{
 	} else {
 		throw new Exception("Parameter ERROR : NO page"); //강제 예외 발생
 	}
-
+	// DB 연결
 	if(!my_db_conn($conn)) {
 		throw new Exception("DB Error : PDO Instance");
 	}
 
 	// 게시글 데이터 조회
-	$param_id = [
+	$arr_param = [
 		"id" => $id
 	];
-	$result=db_select_boards_id($conn, $param_id);
+	$result=db_select_boards_id($conn, $arr_param);
 
 	// 게시글 조회 예외 처리
 	if(!$result) {
@@ -40,7 +41,7 @@ $item=$result[0];
 	if($item["chk_flg"] === "0"){
 		$ox = "X";
 	}
-	if($item["chk_flg"] === "1"){
+	else if($item["chk_flg"] === "1"){
 		$ox = "O";
 	}
 } catch (Exception $e) {
@@ -51,7 +52,6 @@ $item=$result[0];
 }
 	// 게시글 조회 count 에러
 	
-$page=$_GET["page"];	
 ?>
 
 
@@ -65,25 +65,25 @@ $page=$_GET["page"];
 </head>
 
 <body>
-    <?php require_once(FILE_HEADER); ?>
-    
+    <?php
+		require_once(FILE_HEADER);
+	?>  
     <div class="detail-container">
         <img class="detail_img" src="/todolist/src/img/Group 7.svg" alt="">
-        <table class="detail_table">
-            
-            <<tr>
+        <table class="detail_table">        
+            <tr>
                 <td colspan="2" class="detail_head">
                     <span>수행여부: <?php echo $ox; ?></span>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" class="detail_content_1">
-                    <div class="typing-text"><?php echo $item["content"]; ?></div>
+                    <div class="detail_typing-text"><?php echo $item["content"]; ?></div>
                 </td>
             </tr>
             <tr>
                 <td colspan="2" class="detail_content_2">
-                    <div class="typing-text"><?php echo $item["write_date"]; ?></div>
+                    <div class="detail_typing-text"><?php echo $item["write_date"]; ?></div>
                 </td>
             </tr>
 			<tr>
@@ -94,9 +94,8 @@ $page=$_GET["page"];
 				<a href="/todolist/src/delete.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">삭제</a>
 				</td>
 				<td>
-				<a href="/todolist/src/list.php/?id=<?php echo $id; ?>&page=<?php echo $page ?>" class="detail_btn">나가기</a>
+				<a href="/todolist/src/list.php/?page=<?php echo $page ?>" class="detail_btn">나가기</a>
 				</td>
-			</tr>
 			</tr>
         </table>
 	</div>

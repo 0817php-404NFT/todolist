@@ -3,6 +3,10 @@ define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/TODOLIST/src/");
 define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
 
+$conn = null; //기본값셋팅
+$arr_err_msg= []; //에러 메세지 저장용
+$content = "";//콘텐츠 기본값셋팅
+$http_method = $_SERVER["REQUEST_METHOD"];
 
 try {
     // 2. DB Connect
