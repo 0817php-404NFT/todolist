@@ -176,7 +176,7 @@ try {
                         ?>
                         <a class="page_btn" href="/todolist/src/search_con.php/?page=<?php echo $next_page_num ?>&content=<?php echo $content ?>">></a>
                         <?php
-                            if($boards_cnt > 21){
+                            if($boards_cnt > 17){
                         ?> 
                         <a class="page_btn" id="minmax_btn" href="/todolist/src/search_con.php/?page=<?php echo $max_page_num ?>&content=<?php echo $content ?>">>></a>                    
                         <?php
