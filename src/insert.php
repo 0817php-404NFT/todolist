@@ -12,7 +12,6 @@ $http_method = $_SERVER["REQUEST_METHOD"];
 
 if($http_method === "POST") {
     try {
-        $arr_post = $_POST;
         if(!my_db_conn($conn)) {
             throw new Exception ("DB Error : PDO instance");
         }
@@ -22,9 +21,14 @@ if($http_method === "POST") {
             $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용");
         }
         if(count($arr_err_msg) === 0){
+            
+            $arr_param = [
+                "content" => $content
+            ];
+
             $conn->beginTransaction();
 
-            if(!db_insert_boards($conn, $arr_post)) {
+            if(!db_insert_boards($conn, $arr_param)) {
                 throw new Exception("DB Error : Insert Boards");
             }
             $conn->commit();
