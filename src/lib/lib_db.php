@@ -666,7 +666,7 @@ function db_select_search_boards_clear_pickstats_cnt( &$conn, &$arr_param){
 // 파라미터 : PDO       &$conn &$arr_apram
 //           Array      &arr_param 쿼리 작성용 배열
 // 리턴     : array / false
-// 제작     : 20231013 민주,다윗
+// 제작     : 20231013 정훈
 // -------------------------------
 
 function db_search_boards_content(&$conn, &$arr_param)
@@ -706,7 +706,7 @@ function db_search_boards_content(&$conn, &$arr_param)
 }
 
 // -------------------------------
-// 함수명   : db_search_boards_cnt
+// 함수명   : db_search_content_boards_cnt
 // 기능     : 검색한 보드 카운트
 // 파라미터 : PDO       &$conn
 //           Array      &$arr_param

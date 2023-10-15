@@ -3,6 +3,7 @@ define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/TODOLIST/src/");
 define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
 
+$id = "";
 $conn = null; //기본값셋팅
 $arr_err_msg= []; //에러 메세지 저장용
 $content = "";//콘텐츠 기본값셋팅
@@ -11,14 +12,10 @@ $http_method = $_SERVER["REQUEST_METHOD"];
 try {
     // 2. DB Connect
     // 2-1. connection 함수호출
-    $conn=null; // PDO 객체변수
     if(!my_db_conn($conn)){
         // 2-2 예외처리
         throw new Exception("DB Error : PDO instance");
     }
-    // Method 획득
-    $http_method = $_SERVER["REQUEST_METHOD"]; 
-
     if($http_method === "GET"){
         // 3-1. GET일 경우 (상세 페이지의 삭제 버튼 클릭)
         // 3-1-1. 파라미터에서 id 획득
@@ -87,7 +84,7 @@ try {
         require_once(FILE_HEADER);
     ?>  
     <main>
-        <table  style="text-align: center;" class="delete_table">
+        <table class="delete_table center">
             <tr>
                 <td class="delete_p">
                     - Warning -
@@ -105,7 +102,7 @@ try {
             </tr>
            
             <tr>
-                <td class = "delete_td"><span class="td_span"><?php echo $item["content"] ?></span></td>
+                <td class = "delete_td"><span><?php echo $item["content"] ?></span></td>
             </tr>
          
         </table>

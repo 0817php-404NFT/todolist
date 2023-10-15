@@ -83,6 +83,7 @@ try {
     <title>검색</title>
 </head>
 <body>
+    <!-- 제작 : 민주,다윗 -->
     <?php
         require_once(FILE_HEADER);
     ?>
@@ -134,17 +135,17 @@ try {
         <tfoot>
             <tr class="center">
                 <td>
-                    <section class="">
+                    <section><!-- 제작 : 정훈 -->
                         <?php
-                            if($boards_cnt > 21){
+                            if($boards_cnt > 17){
                         ?> 
-                        <a class="" id="minmax_btn" href="/todolist/src/search_con.php/?page=1&content=<?php echo $content ?>"><<</a>
+                        <a href="/todolist/src/search_con.php/?page=1&content=<?php echo $content ?>"><<</a>
                         <?php
                             }
-                        ?>
-                        <a class="" href="/todolist/src/search_con.php/?page=<?php echo $prev_page_num ?>&content=<?php echo $content ?>"><</a>
+                        ?>                       
+                        <a href="/todolist/src/search_con.php/?page=<?php echo $prev_page_num ?>&content=<?php echo $content ?>"><</a>
                         <?php
-                            if($boards_cnt < 21){
+                            if($boards_cnt < 17){
                                 for ($i = 1; $i <= $max_page_num; $i++) {
                                     // 삼항연산자 : 조건 ? 참일때처리 : 거짓일때처리
                                     $class = ($i == $page_num) ? "search_con_page_now_page" : "";
@@ -153,7 +154,7 @@ try {
                         <?php
                                 }
                             }
-                            else if($boards_cnt >= 21){
+                            else if($boards_cnt >= 17){
                             $min_page = max($page_num - 2, 1); 
                             $max_page = min($page_num + 2, $max_page_num);
                                 if($min_page === 1){
