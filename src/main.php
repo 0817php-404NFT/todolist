@@ -13,7 +13,7 @@ define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 <body>
 	<a class="main_a" href="/todolist/src/list.php">
 		<div class="main_jpg">
-			<div class="main_msg">아무곳이나 클릭해 주세요</div>
+			<div class="main_msg">아무 곳이나 클릭해 주세요</div>
 			<div class="zzz zzz-zzz">Z</div>
 			<div class="zzz zzz-zz">Z</div>
 			<div class="zzz zzz-z">Z</div>
