@@ -105,7 +105,7 @@ h1 a {
     height: 480px;
     border: 8px solid #9BA4F8;
     border-radius: 30px;
-    margin: 0 auto;
+    margin: -50px auto 50px auto;
     position: relative;
     font-size: 40px;
     padding: 20px;
@@ -140,7 +140,9 @@ h1 a {
 .list_date_search_input::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
-
+.list_date_search_input::-webkit-calendar-picker-indicator:hover{
+    cursor: pointer;
+}
 
 
 .list_date_search_btn{
@@ -775,7 +777,7 @@ font-size: 1.6rem;
 
 .search_table {
     width: 900px;
-    height: 470px;
+    height: 480px;
     border: 8px solid #9BA4F8;
     border-radius: 30px;
     margin: 0 auto;
@@ -860,7 +862,7 @@ input[id="icon"]:checked + label > span:nth-child(3) {
     height:100%;
     background-color: #311a9344;
     top:0px;
-    padding: 270px 25px 25px 25px;
+    padding: 230px 25px 25px 25px;
     box-sizing:border-box;
     left:-300px;
     z-index:1;
@@ -875,6 +877,13 @@ input[id="icon"]:checked + label > span:nth-child(3) {
     color: white;
 
 }
+.side_search_li_msg {
+    height: 30px;
+    list-style: none;
+    color: red;
+    padding-right: 27px;
+}
+
 .side_search_li {
     list-style: none;
 }
@@ -904,7 +913,7 @@ input::-webkit-search-results-decoration{
 .side_search_li form button {
     position: absolute;
     right: 35px;
-    top: 274px;
+    top: 263px;
     border: none;
     background: none;
 }
@@ -922,13 +931,19 @@ input::-webkit-search-results-decoration{
     padding: 20px;
     font-size: 40px;
     list-style: none;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
+}
+
+.side_search_li_msg_2 {
+    height: 30px;
+    list-style: none;
+    color: red;
 }
 
 .list_side_date{
     position: relative;
     font-size: 30px;
-    padding-left: 17px;
+    padding-left: 34px;
     background: none;
     border: none;
     outline: none;
@@ -944,10 +959,10 @@ input::-webkit-search-results-decoration{
 
 .side_tilde{
     font-size: 40px;
-    padding: 11px 55px 0px 0px;
+    padding-left: 11px;
 }
 .list_side_date_btn {
-    margin: 13px 0px 0px 88px;
+    margin: 13px 0px 0px 93px;
     border: none;
     background-color: rgba(240, 240, 240,0.3);
     font-size: 1rem;
@@ -955,7 +970,7 @@ input::-webkit-search-results-decoration{
     height: 30px;
 }
 
-.list_side_btn:hover {
+.list_side_date_btn:hover {
     cursor: pointer;
     -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
@@ -964,7 +979,7 @@ input::-webkit-search-results-decoration{
 
 .stats_table{
     width: 900px;
-    height: 470px;
+    height: 480px;
     border: 8px solid #9BA4F8;
     border-radius: 30px;
     margin: 0 auto;
@@ -1064,4 +1079,9 @@ background-color: red;
     font-size: 25px;
     color: rgb(110, 110, 110);
     padding-left: 20px;
+}
+
+.search_con_msg{
+    color: #999999;
+    padding-bottom: 60px;
 }

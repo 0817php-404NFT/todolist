@@ -4,6 +4,8 @@ define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
 
 $conn = null; // DB connection 변수
+$content = "";
+$date="";
 
 $today = date("Y-m-d");
 $list_cnt = 4; // 한 페이지 최대 표시 수
@@ -14,6 +16,8 @@ try {
         // DB Instance 에러
         throw new Exception("DB Error : PDO instance"); //강제예외발생 : DB Insrance
     }
+    $content = isset($_GET["content"]) ? $_GET["content"] : "";
+    $date = isset($_GET["date"]) ? $_GET["date"] : "";
     // -------------
     // 페이징 처리
     // -------------
@@ -69,21 +73,40 @@ try {
         </label>
     <div id="header">
         <ul>
+            <li class="side_search_li_msg center">
+                <?php 
+                    if($content==="none"){
+                ?>
+                    내용을 입력해 주세요.
+                <?php
+                    }
+                ?>    
+            </li>
             <li class="side_search_li">
-                <form action="/todolist/src/search_con.php" method="get">
-                    <input type="search" name="content" required>
-                    <button type ="submit"><img src="/todolist/src/img/search_btn.png" alt=""></button>
+                <form action="/todolist/src/search_con.php" method="get">      
+                    <input type="search" name="content" id="content" required>
+                    <button type ="submit"><img src="/todolist/src/img/search_btn.png" alt=""></button>                  
                 </form>
             </li>
+                <li class="side_search_li_msg center">
             <li class="side_week_li"><a href="/todolist/src/stats.php/?date=week">주간 통계</a></li>
             <br>
             <li class="side_month_li"><a href="/todolist/src/stats.php/?date=month">월간 통계</a></li>
             <br>
+            <li class="side_search_li_msg_2 center">
+                <?php 
+                    if($date==="none"){
+                ?>
+                    조회기간을 확인해주세요.
+                <?php
+                    }
+                ?>    
+            </li>
             <form action="/todolist/src/pickstats.php" method="get">           
                 <label class="list_label">
-                    <input type="date" name="from_date" required class="list_side_date">
+                    <input type="date" name="from_date" required class="list_side_date" max="<?php echo $today ?>">
                     <div class="side_tilde center">~</div>
-                    <input type="date" name="to_date" required class="list_side_date">
+                    <input type="date" name="to_date" required class="list_side_date" max="<?php echo $today ?>">
                     <button type="submit" class="list_side_date_btn">검색</button>
                 </label>
             </form>
@@ -98,7 +121,7 @@ try {
                     <td class="list_head_td">오늘의할일                   
                         <form action="/todolist/src/search.php" method="get">           
                             <label class="list_label">
-                                <input type="date" name="date" required class="list_date_search_input" value="<?php echo $today; ?>">
+                                <input type="date" name="date" required class="list_date_search_input" value="<?php echo $today; ?>" max="<?php echo $today; ?>">
                                 <button type="submit" class="list_date_search_btn"><img src="/todolist/src/img/lens.png" alt=""></button>
                             </label>
                         </form>
