@@ -77,12 +77,12 @@ $item=$result[0];
             </tr>
             <tr>
                 <td colspan="3" class="detail_content_1">
-            		<?php echo $item["content"]; ?>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3" class="detail_content_2">
-            		<?php echo $item["write_date"]; ?>
+						<?php echo $item["content"]; ?>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" class="detail_content_2">
+						<?php echo $item["write_date"]; ?>
                 </td>
             </tr>
 			<tr>
