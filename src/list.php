@@ -128,6 +128,21 @@ try {
                     </td>
                 </tr>
             </thead>
+            <?php if($boards_cnt === 0){ 
+            ?>   
+                <tr>
+                    <td class="search_con_msg center">
+                        조회된 게시물이 없습니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
+                    </td>
+                </tr>
+            <?php 
+                } else {
+            ?>
             <?php
             // 리스트를 생성
             foreach ($result as $item) {
@@ -163,7 +178,8 @@ try {
                     </td>
                 </tr>
             <?php
-            }
+                    }
+                }
             ?>
         <tr>
             <td>
