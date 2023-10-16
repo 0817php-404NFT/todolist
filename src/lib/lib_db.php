@@ -520,7 +520,7 @@ function db_select_search_boards_stats_cnt( &$conn, &$arr_param){
     ." WHERE "
     ."     write_date <= NOW() "
     ." AND "
-    ."     write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000') "
+    ."     write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["date"]." ), '%Y%m%d000000') "
     ." AND "
     ."     del_flg = '0' "
     ;
@@ -556,7 +556,7 @@ function db_select_search_boards_clear_stats_cnt( &$conn, &$arr_param){
     ." WHERE "
     ."     write_date <= NOW() "
     ." AND "
-    ."     write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["dat"]." ), '%Y%m%d000000') "
+    ."     write_date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 ".$arr_param["date"]." ), '%Y%m%d000000') "
     ." AND "
     ."     del_flg = '0' "
     ." AND "

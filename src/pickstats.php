@@ -7,6 +7,7 @@ require_once(ROOT."lib/lib_db.php");
 $conn = null;
 $from_date = "";
 $to_date = "";
+$today = str_replace('-','', date("Y-m-d"));
 try {
     // DB 접속
     if(!my_db_conn($conn)){
@@ -21,14 +22,18 @@ try {
 	}
     // to_date id확인
 	if(isset($_GET["to_date"])){
-		$to_date = str_replace('-','', $_GET["to_date"])+1; //날짜 방식 YYYY-MM-DD -> YYYYMMDD 로 치완
+		$to_date = str_replace('-','', $_GET["to_date"]); //날짜 방식 YYYY-MM-DD -> YYYYMMDD 로 치완
     } else {
 		throw new Exception("Parameter ERROR : NO to_date"); //강제 예외 발생
 	}
+    if($from_date > $to_date || $to_date > $today || $from_date > $today){
+        header("Location: list.php/?date=none");
+    }else
+    $to_date_db = $to_date + 1 ;
      // DB 조회시 사용할 데이터 배열
     $arr_param = [
         "from_date" => $from_date
-        ,"to_date" => $to_date
+        ,"to_date" => $to_date_db
     ];
 
     // 게시글 리스트 조회 
@@ -71,7 +76,7 @@ try {
         <thead>
             <tr>
                 <th class="pickstats_date">
-                    <img class="pickstats_img" src="/todolist/src/img/search_btn.png" alt=""><?php echo $from_date ?> ~  <?php echo $to_date-1 ?>
+                    <img class="pickstats_img" src="/todolist/src/img/search_btn.png" alt=""><?php echo $from_date ?> ~  <?php echo $to_date ?>
                 </th>
                 <th>
                     <a href="/todolist/src/list.php">메인으로</a>

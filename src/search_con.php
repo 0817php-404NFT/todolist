@@ -1,6 +1,7 @@
 <?php
 define("ROOT", $_SERVER["DOCUMENT_ROOT"] . "/todolist/src/");
 define("FILE_HEADER", ROOT . "header.php");
+define("ERROR_MSG_PARAM", "%s을 입력해주세요.");// 파라미터 에러메세지
 require_once(ROOT . "lib/lib_db.php");
 
 $conn = null;
@@ -17,55 +18,56 @@ try {
         throw new Exception("DB Error : PDO instance"); // 강제 예외 발생 : DB Insrance
     }
     // content 확인
-    if (isset($_GET["content"])){
-        $content = $_GET["content"]; // content 셋팅
-    }else{
-        throw new Exception("Parameter Error : No content"); // 강제 예외 발생 : Parameter Error
+    $content = trim($_GET["content"]); //content 셋팅
+    if($content === ""){
+        $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용");
     }
+    if(count($arr_err_msg) >= 1){
+        header("Location: list.php/?content=none"); // 리스트 페이지로 이동 
+    } else if(count($arr_err_msg) === 0){
+        $arr_param = [
+            "content" => '%' . $content . '%'
+        ];
+        // -------------
+        // 페이징 처리
+        // -------------
+        $boards_cnt = db_search_content_boards_cnt($conn, $arr_param); // 수정: 검색어 파라미터 추가
+        if ($boards_cnt === false) {
+            throw new Exception("DB Error : SELECT Count"); // 강제 예외 발생 : DB SELECT Count
+        }
+        
+        $max_page_num = ceil($boards_cnt / $list_cnt); // 최대페이지 수
 
-    $arr_param = [
-        "content" => '%' . $content . '%'
-    ];
-    // -------------
-    // 페이징 처리
-    // -------------
-    $boards_cnt = db_search_content_boards_cnt($conn, $arr_param); // 수정: 검색어 파라미터 추가
-    if ($boards_cnt === false) {
-        throw new Exception("DB Error : SELECT Count"); // 강제 예외 발생 : DB SELECT Count
-    }
+        // GET Method 확인
+        $page_num = isset($_GET["page"]) ? $_GET["page"] : 1;
+        
+        $offset = ($page_num - 1) * $list_cnt; // 오프셋 계산
+        
+        // 이전버튼
+        $prev_page_num = $page_num - 1;
+        if ($prev_page_num === 0) {
+            $prev_page_num = 1;
+        }
+        
+        // 다음버튼
+        $next_page_num = $page_num + 1;
+        if ($next_page_num > $max_page_num) {
+            $next_page_num = $max_page_num;
+        }
+        
+        // 게시글 데이터 조회
+        $arr_param = [
+            "content" => "%". $content ."%"
+            ,"list_cnt" => $list_cnt
+            ,"offset" => $offset
+        ];
 
-    $max_page_num = ceil($boards_cnt / $list_cnt); // 최대페이지 수
-
-    // GET Method 확인
-    $page_num = isset($_GET["page"]) ? $_GET["page"] : 1;
-    
-    $offset = ($page_num - 1) * $list_cnt; // 오프셋 계산
-    
-    // 이전버튼
-    $prev_page_num = $page_num - 1;
-    if ($prev_page_num === 0) {
-        $prev_page_num = 1;
+        // 게시글 리스트 조회
+        $result = db_search_boards_content($conn, $arr_param);
+        if ($result===false) {
+            throw new Exception("DB Error : can't search content"); // 강제 예외 발생 : SELECT boards
+        }
     }
-    
-    // 다음버튼
-    $next_page_num = $page_num + 1;
-    if ($next_page_num > $max_page_num) {
-        $next_page_num = $max_page_num;
-    }
-    
-    // 게시글 데이터 조회
-    $arr_param = [
-        "content" => "%". $content ."%"
-        ,"list_cnt" => $list_cnt
-        ,"offset" => $offset
-    ];
-
-    // 게시글 리스트 조회
-    $result = db_search_boards_content($conn, $arr_param);
-    if (!$result) {
-        throw new Exception("DB Error : NO content"); // 강제 예외 발생 : SELECT boards
-    }
-    
 } catch (Exception $e) {
     echo $e->getMessage(); //예외발생 메세지 출력  //
     exit; //처리종료
@@ -98,10 +100,24 @@ try {
                 </td>
             </tr>
         </thead>
-
+            <?php if($boards_cnt === 0){ 
+            ?>   
+                <tr>
+                    <td class="search_con_msg center">
+                        조회된 게시물이 없습니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
+                    </td>
+                </tr>
+            <?php 
+                } else {
+            ?>
             <?php
             // 리스트를 생성
-            foreach ($result as $item) {
+                    foreach ($result as $item) {
             ?>
                 <tr>
                     <td colspan="2">
@@ -128,13 +144,14 @@ try {
                     </td>
                 </tr>
             <?php
-            }
+                    }
             ?>
             <tr>
                 <td>
                     <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
                 </td>
             </tr>
+            
         <tfoot>
             <tr class="center">
                 <td>
@@ -145,8 +162,14 @@ try {
                         <a href="/todolist/src/search_con.php/?page=1&content=<?php echo $content ?>"><<</a>
                         <?php
                             }
-                        ?>                       
+                        ?>      
+                        <?php
+                            if($boards_cnt > 0){
+                        ?>                  
                         <a href="/todolist/src/search_con.php/?page=<?php echo $prev_page_num ?>&content=<?php echo $content ?>"><</a>
+                        <?php
+                            }
+                        ?>
                         <?php
                             if($boards_cnt < 17){
                                 for ($i = 1; $i <= $max_page_num; $i++) {
@@ -177,7 +200,13 @@ try {
                         <?php
                                 }}             
                         ?>
+                        <?php
+                            if($boards_cnt > 0){
+                        ?>     
                         <a class="page_btn" href="/todolist/src/search_con.php/?page=<?php echo $next_page_num ?>&content=<?php echo $content ?>">></a>
+                        <?php
+                            }
+                        ?>
                         <?php
                             if($boards_cnt > 17){
                         ?> 
@@ -189,6 +218,9 @@ try {
                 </td>
             </tr>
         </tfoot>
+        <?php
+            }
+        ?>
     </table>
 </body>
 </html>
