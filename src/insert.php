@@ -61,7 +61,7 @@ if($http_method === "POST") {
     <?php
         foreach($arr_err_msg as $val){
     ?> 
-        <p class="error_p"><?php echo $val ?></p>
+        <p class="insert_error_p"><?php echo $val ?></p>
     <?php        
         }
     ?>
