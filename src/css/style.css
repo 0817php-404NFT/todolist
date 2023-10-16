@@ -294,17 +294,13 @@ h1 a {
 
 
 
-
-
-
-
-
 /* insert */
 .insert_error_p {
     font-size: 20px;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     text-align: center;
     color: red;
+    
     
 }
 .insert_form{
