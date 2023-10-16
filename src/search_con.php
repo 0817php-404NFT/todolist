@@ -129,7 +129,7 @@ try {
             ?>
             <tr>
                 <td>
-                    <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_1">
+                    <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
                 </td>
             </tr>
         <tfoot>
