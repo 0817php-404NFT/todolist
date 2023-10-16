@@ -58,7 +58,7 @@ try {
                 ,"content" => $content
             ];
             // 게시글 수정 처리
-            $conn->beginTrantsacion(); // 트랜잭션 시작
+            $conn->beginTransaction(); // 트랜잭션 시작
 
             if(!db_update_boards_id($conn, $arr_param)) { 
                 throw new Exception("DB Error : Update_boards_id");
