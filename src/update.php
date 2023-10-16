@@ -4,6 +4,8 @@ define("FILE_HEADER", ROOT."header.php");
 define("ERROR_MSG_PARAM", "%s을 입력해주세요.");// 파라미터 에러메세지
 require_once(ROOT."lib/lib_db.php");
 
+$id = "";
+$page = "";
 $conn = null; // DB 연결용 변수
 $http_method = $_SERVER["REQUEST_METHOD"]; // Method 확인
 $arr_err_msg= []; //에러메세지용 변수

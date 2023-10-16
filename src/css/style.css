@@ -492,8 +492,7 @@ input::placeholder {
 .update_table_error {
     height: 100px;
     color: red;
-    font-size: 28px;
-    font-weight: bolder;
+    font-size: 25px;
 }
 
 .update_text {
