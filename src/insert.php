@@ -2,7 +2,6 @@
 define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 define("FILE_HEADER", ROOT."header.php");
 define("ERROR_MSG_PARAM", "%s을 입력해주세요.");// 파라미터 에러메세지
-// define("ERROR_MSG_PARAM", "%s: 필수 입력 사항입니다.");
 require_once(ROOT."lib/lib_db.php");
 
 $conn = null; //기본값셋팅

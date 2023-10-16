@@ -478,16 +478,22 @@ input::placeholder {
     width: 860px;
     height: 400px;
 }
-/* .update_table {
-    background-image: url(./img/update_table.svg);
-    width: 860px;
-    height: 400px;
-    ˚✧₊⁎( ˘ω˘ )⁎⁺˳✧༚
-} */
-/* .update_img {
-    margin: auto;
-    display: block; 
-} */
+
+.update_table {
+    position: relative;
+    background-image: url(../img/update_table.svg);
+    width: 859px;
+    height: 392px;
+    padding: 50px;
+}
+
+.update_table_error {
+    height: 100px;
+    color: red;
+    font-size: 28px;
+    font-weight: bolder;
+}
+
 .update_text {
     padding: 10px;
     background: none;
@@ -496,7 +502,6 @@ input::placeholder {
     left: 80px;
     color: #000;
     border: none;
-    /* border-radius: 8px; */
     font-size: 35px;
     width: 700px;
     text-align: center;
@@ -522,20 +527,6 @@ input::placeholder {
 .update_a:hover {
     -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
-.update_table {
-    position: relative;
-    background-image: url(../img/update_table.svg);
-    width: 859px;
-    height: 392px;
-    padding: 50px;
-}
-
-.update_table_error{
-    height: 100px;
-    color: red;
-}
-
-
 
 .update_cat {
     position: absolute;
