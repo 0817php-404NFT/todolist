@@ -69,21 +69,20 @@ $item=$result[0];
 		require_once(FILE_HEADER);
 	?>  
     <div class="detail-container">
-        <img class="detail_img" src="/todolist/src/img/Group 7.svg" alt="">
-        <table class="detail_table">        
+        <table class="detail_table center">        
             <tr>
-                <td colspan="2" class="detail_head">
+                <td colspan="3" class="detail_head center">
                     <span>수행여부: <?php echo $ox; ?></span>
                 </td>
             </tr>
             <tr>
-                <td colspan="2" class="detail_content_1">
-                    <div class="detail_typing-text"><?php echo $item["content"]; ?></div>
+                <td colspan="3" class="detail_content_1">
+            		<?php echo $item["content"]; ?>
                 </td>
             </tr>
             <tr>
-                <td colspan="2" class="detail_content_2">
-                    <div class="detail_typing-text"><?php echo $item["write_date"]; ?></div>
+                <td colspan="3" class="detail_content_2">
+            		<?php echo $item["write_date"]; ?>
                 </td>
             </tr>
 			<tr>
@@ -97,7 +96,15 @@ $item=$result[0];
 				<a href="/todolist/src/list.php/?page=<?php echo $page ?>" class="detail_btn">나가기</a>
 				</td>
 			</tr>
+			<tr>
+				<td>
+					<img src="/todolist/src/img/labtop.png" alt="" class="detail_img labtop">
+					<img src="/todolist/src/img/c_star.png" alt="" class="detail_img c_star">
+					<img src="/todolist/src/img/cloude.png" alt="" class="detail_img cloude">
+				</td>
+			</tr>
         </table>
+
 	</div>
 	<div class="stars"></div>
 </body>

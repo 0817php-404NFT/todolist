@@ -105,7 +105,7 @@ h1 a {
     height: 480px;
     border: 8px solid #9BA4F8;
     border-radius: 30px;
-    margin: 0 auto;
+    margin: -50px auto 50px auto;
     position: relative;
     font-size: 40px;
     padding: 20px;
@@ -140,7 +140,9 @@ h1 a {
 .list_date_search_input::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
-
+.list_date_search_input::-webkit-calendar-picker-indicator:hover{
+    cursor: pointer;
+}
 
 
 .list_date_search_btn{
@@ -195,40 +197,29 @@ h1 a {
 
 /* detail */
 
-.detail_img {
-    position: relative;
-    top: -111px;
-    left: 450px;
-}
-
 .detail_table {
+    position: relative;
     width: 755px;
-    height: 538px;
-    position: absolute;
-    top: 390px;
-    left: 640px;
+    height: 559px;
+    margin: 0 auto;
     font-size: 2.0rem;
     text-align: center;
-    padding: 50px;
-
+    background: url(../img/detail_board.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 50px;
+    padding: 30px;
 }
 
 
 .detail_head {
     font-size: 50px;
-    padding: 0px;
     height: 100px;
-
+    margin: 0 auto;
+    padding-top: 55px;
 }
 
 .detail_btn {
-    position: relative;
-    left: -120px; 
-    width: 200px;
-    height: 60px;
-    font-size: 40px;
-    margin: 35px auto;
-    line-height: 60px;
     display: inline-block;
     padding: 0;
     margin: 0 40px;
@@ -236,7 +227,7 @@ h1 a {
     width: 160px;
     height: 55px;
     line-height: 55px;
-    background-color : rgba(205, 204, 204, 0.2);
+    background-color: rgba(205, 204, 204, 0.2);
     color: #ffffff;
     font-size: 35px;
     cursor: pointer;
@@ -247,7 +238,7 @@ h1 a {
 }
 .detail_content_1 {
     font-size: 35px;
-    padding-top: 50px;
+    padding-top: 80px;
     height: 100px;
 }
 
@@ -256,15 +247,6 @@ h1 a {
     padding-bottom: 30px;
     height: 100px;
 }
-.detail_typing-text {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 1px solid transparent;
-    display: inline-block;
-    animation: typing 5s steps(30); /* 30글자까지 표시 */
-    max-width: 30ch; /* 최대 30글자 표시 */
-}
-
 @keyframes typing {
     from {
         width: 0;
@@ -291,6 +273,23 @@ h1 a {
     50% { opacity: 1; }
     100% { opacity: 0; }
 }
+
+.detail_img{
+    position: absolute;
+}
+.labtop {
+    left: -75px;
+    bottom: -40px;
+}
+.c_star{
+    left: -100px;
+    top: -100px;
+}
+.cloude{
+    right: -120px;
+    top: 155px;
+}
+
 
 
 
@@ -480,16 +479,22 @@ input::placeholder {
     width: 860px;
     height: 400px;
 }
-/* .update_table {
-    background-image: url(./img/update_table.svg);
-    width: 860px;
-    height: 400px;
-    ˚✧₊⁎( ˘ω˘ )⁎⁺˳✧༚
-} */
-/* .update_img {
-    margin: auto;
-    display: block; 
-} */
+
+.update_table {
+    position: relative;
+    background-image: url(../img/update_table.svg);
+    width: 859px;
+    height: 392px;
+    padding: 50px;
+}
+
+.update_table_error {
+    height: 100px;
+    color: red;
+    font-size: 28px;
+    font-weight: bolder;
+}
+
 .update_text {
     padding: 10px;
     background: none;
@@ -498,7 +503,6 @@ input::placeholder {
     left: 80px;
     color: #000;
     border: none;
-    /* border-radius: 8px; */
     font-size: 35px;
     width: 700px;
     text-align: center;
@@ -524,20 +528,6 @@ input::placeholder {
 .update_a:hover {
     -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
-.update_table {
-    position: relative;
-    background-image: url(../img/update_table.svg);
-    width: 859px;
-    height: 392px;
-    padding: 50px;
-}
-
-.update_table_error{
-    height: 100px;
-    color: red;
-}
-
-
 
 .update_cat {
     position: absolute;
@@ -788,7 +778,7 @@ font-size: 1.6rem;
 
 .search_table {
     width: 900px;
-    height: 470px;
+    height: 480px;
     border: 8px solid #9BA4F8;
     border-radius: 30px;
     margin: 0 auto;
@@ -873,7 +863,7 @@ input[id="icon"]:checked + label > span:nth-child(3) {
     height:100%;
     background-color: #311a9344;
     top:0px;
-    padding: 270px 25px 25px 25px;
+    padding: 230px 25px 25px 25px;
     box-sizing:border-box;
     left:-300px;
     z-index:1;
@@ -888,6 +878,13 @@ input[id="icon"]:checked + label > span:nth-child(3) {
     color: white;
 
 }
+.side_search_li_msg {
+    height: 30px;
+    list-style: none;
+    color: red;
+    padding-right: 27px;
+}
+
 .side_search_li {
     list-style: none;
 }
@@ -917,7 +914,7 @@ input::-webkit-search-results-decoration{
 .side_search_li form button {
     position: absolute;
     right: 35px;
-    top: 274px;
+    top: 263px;
     border: none;
     background: none;
 }
@@ -935,32 +932,38 @@ input::-webkit-search-results-decoration{
     padding: 20px;
     font-size: 40px;
     list-style: none;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
+}
+
+.side_search_li_msg_2 {
+    height: 30px;
+    list-style: none;
+    color: red;
 }
 
 .list_side_date{
     position: relative;
     font-size: 30px;
-    padding-left: 17px;
+    padding-left: 34px;
     background: none;
     border: none;
     outline: none;
 }
 
-.list_side_input::-webkit-calendar-picker-indicator {
+.list_side_date::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
 
-.list_side_input::-webkit-calendar-picker-indicator:hover{
+.list_side_date::-webkit-calendar-picker-indicator:hover{
     cursor: pointer;
 }
 
 .side_tilde{
     font-size: 40px;
-    padding: 11px 55px 0px 0px;
+    padding-left: 11px;
 }
 .list_side_date_btn {
-    margin: 13px 0px 0px 88px;
+    margin: 13px 0px 0px 93px;
     border: none;
     background-color: rgba(240, 240, 240,0.3);
     font-size: 1rem;
@@ -968,7 +971,7 @@ input::-webkit-search-results-decoration{
     height: 30px;
 }
 
-.list_side_btn:hover {
+.list_side_date_btn:hover {
     cursor: pointer;
     -webkit-animation:blink-2 .9s both;animation:blink-2 .9s both
 }
@@ -977,7 +980,7 @@ input::-webkit-search-results-decoration{
 
 .stats_table{
     width: 900px;
-    height: 470px;
+    height: 480px;
     border: 8px solid #9BA4F8;
     border-radius: 30px;
     margin: 0 auto;
@@ -1049,7 +1052,10 @@ background-color: red;
     margin-right: 8px;
 }
 
-
+.pickstats_msg{
+    color: #999999;
+    padding-bottom: 60px;
+}
 
 /* search_con */
 .search_con_page_now_page{
@@ -1074,4 +1080,9 @@ background-color: red;
     font-size: 25px;
     color: rgb(110, 110, 110);
     padding-left: 20px;
+}
+
+.search_con_msg{
+    color: #999999;
+    padding-bottom: 60px;
 }

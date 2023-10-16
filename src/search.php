@@ -30,7 +30,7 @@ try {
         throw new Exception("DB Error : SELECT Count"); // 강제 예외 발생 : DB SELECT Count
     }
     // 만약 오늘로 검색할시
-    if($date === $today){
+    if($date >= $today){
         header("Location: /todolist/src/list.php/?page=1"); // 리스트 페이지로 이동
     }
 
@@ -85,6 +85,16 @@ try {
                     </td>
                 </tr>
             </thead>
+            <?php if($boards_cnt === 0){ 
+            ?>   
+                <tr>
+                    <td class="pickstats_msg center">
+                        조회된 게시물이 없습니다.
+                    </td>
+                </tr>
+            <?php 
+                } else {
+            ?>
         <?php
             foreach ($result as $item) {
         ?>
@@ -109,7 +119,7 @@ try {
         ?>
         <tr>
             <td>
-                <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_1">
+                <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
             </td>
         </tr>
         <tfoot>
@@ -122,7 +132,8 @@ try {
                     ?>
                     <a class="lsit_page <?php echo $class; ?> " href="/todolist/src/search.php/?page=<?php echo $i ?>&date=<?php echo $date ?>">●</a>        
                     <?php
-                        }
+                    }
+                }
                     ?>
                     </td>
             </tr>
