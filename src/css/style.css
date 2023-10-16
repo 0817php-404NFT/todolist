@@ -246,14 +246,6 @@ h1 a {
     padding-bottom: 30px;
     height: 100px;
 }
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
 
 
 .stars {
@@ -289,8 +281,27 @@ h1 a {
     top: 155px;
 }
 
+/*detail_table: 상세 정보를 담고 있는 테이블의 스타일을 정의합니다.
+ 이 테이블은 페이지 중앙에 위치하며, 배경 이미지가 사용되고 텍스트가 중앙 정렬됩니다.
 
+.detail_head: 상세 정보 테이블의 제목 부분 스타일을 설정합니다.
+ 큰 글꼴 크기와 특정 높이로 표시되며, 상단 패딩과 가운데 정렬이 적용됩니다.
 
+.detail_btn: 수정, 삭제, 나가기 버튼의 스타일을 정의합니다. 
+이 버튼들은 인라인 블록 요소로 표시되며, 
+배경 색상과 글꼴 크기가 설정되며 마우스 호버 시 깜빡이는 애니메이션이 적용됩니다.
+
+.detail_content_1 및 .detail_content_2: 상세 정보 테이블의 내용 부분의 스타일을 설정합니다. 
+텍스트 크기와 상단 또는 하단 패딩이 정의됩니다.
+
+.stars: 별 모양 이미지를 배경으로 가지는 요소를 스타일링합니다.
+ 이 배경 이미지는 깜빡이는 애니메이션을 가지며, 화면 전체에 채워집니다.
+
+@keyframes twinkling: 별 모양 이미지의 깜빡이는 애니메이션을 정의합니다.
+ 별 이미지가 화면에서 반짝이는 효과를 가집니다.
+
+.detail_img: 다양한 이미지 요소의 스타일을 설정합니다.
+ labtop, c_star, cloude 클래스는 각 이미지의 위치를 조절합니다*/
 
 /* insert */
 .insert_error_p {
@@ -1194,3 +1205,53 @@ background-color: red;
         transform: translateY(-100%);
     }
 }
+/*.main_a: 메인 페이지 링크 요소의 스타일을 정의합니다.
+
+display: inline-block;: 요소를 인라인 블록으로 표시합니다. 
+이로 인해 요소의 가로 너비와 세로 높이를 지정할 수 있습니다.
+width: 100%;: 요소의 가로 너비를 화면 전체 너비로 확장합니다.
+height: 99.7vh;: 요소의 세로 높이를 화면 높이의 99.7%로 설정합니다.
+margin: 0;: 가장 바깥 여백을 없앱니다.
+padding: 0;: 내부 여백을 없앱니다.
+box-sizing: border-box;: 패딩과 경계 상자의 크기를 요소의 전체 크기에 포함시킵니다.
+.main_jpg: 메인 페이지의 컨테이너 요소의 스타일을 정의합니다.
+
+display: block;: 요소를 블록 요소로 표시합니다.
+background-image: url(../img/sleep.png);: 배경 이미지로 "sleep.png"를 사용합니다.
+background-repeat: no-repeat;: 배경 이미지의 반복을 비활성화합니다.
+background-size: cover;: 배경 이미지를 요소에 맞게 늘립니다.
+width: 510px;: 요소의 가로 크기를 510픽셀로 설정합니다.
+height: 340px;: 요소의 세로 크기를 340픽셀로 설정합니다.
+margin: 630px auto 0px auto;: 요소를 수직 가운데 정렬하고, 수평 가운데 정렬합니다.
+position: relative;: 요소의 위치를 상대적으로 설정합니다.
+.main_msg: "아무 곳이나 클릭해 주세요" 메시지의 스타일을 정의합니다.
+
+font-size: 40px;: 글꼴 크기를 40픽셀로 설정합니다.
+position: absolute;: 요소의 위치를 절대 위치로 설정합니다.
+top: -130px;: 요소를 상단에서 130픽셀 위로 이동시킵니다.
+left: 10px;: 요소를 왼쪽에서 10픽셀 옮깁니다.
+.main_div: "꿀잠" 메시지의 스타일을 정의합니다.
+
+font-size: 180px;: 글꼴 크기를 180픽셀로 설정합니다.
+position: absolute;: 요소의 위치를 절대 위치로 설정합니다.
+top: -489px;: 요소를 상단에서 489픽셀 위로 이동시킵니다.
+left: 74px;: 요소를 왼쪽에서 74픽셀 옮깁니다.
+.main_img_moon: 달 이미지의 스타일을 정의합니다.
+
+position: absolute;: 이미지의 위치를 절대 위치로 설정합니다.
+width: 359px;: 이미지의 가로 크기를 359픽셀로 설정합니다.
+right: -90px;: 이미지를 오른쪽에서 90픽셀 왼쪽으로 이동시킵니다.
+top: -550px;: 이미지를 상단에서 550픽셀 위로 이동시킵니다.
+.zzz, .zzz-z, .zzz-zz, .zzz-zzz: "Z" 문자의 애니메이션 효과의 스타일을 정의합니다.
+
+animation-name: zzz;: 애니메이션 효과의 이름을 "zzz"로 지정합니다.
+animation-duration: 2.5s;: 애니메이션의 지속 시간을 2.5초로 설정합니다.
+animation-timing-function: ease-out;: 애니메이션의 타이밍 함수를 
+"ease-out"으로 설정합니다.
+animation-iteration-count: infinite;: 애니메이션을 무한 반복합니다.
+font-weight: bold;: 글꼴의 두께를 굵게 설정합니다.
+transform: translateY(100%);: translateY 변환을 사용하여 요소를 수직으로 이동시킵니다.
+@-webkit-keyframes zzz와 @keyframes zzz: "Z" 문자의 애니메이션 효과를 정의합니다.
+
+애니메이션은 글자의 크기와 투명도를 조절하여 위아래로 움직이는 것을 표현합니다. 
+초기에 투명한 글자에서 점점 크고 불투명한 글자로 변화하면서 반복됩니다.*/
