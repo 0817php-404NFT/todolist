@@ -97,8 +97,7 @@ h1 a {
     top: -54px;
 }
 
-
-
+/* list */
 
 .list_table {
     width: 900px;
@@ -299,6 +298,7 @@ h1 a {
     margin: 0 auto 10px;
     text-align: center;
     color: red;
+    height: 30px;
     
     
 }
@@ -491,8 +491,7 @@ input::placeholder {
 .update_table_error {
     height: 100px;
     color: red;
-    font-size: 28px;
-    font-weight: bolder;
+    font-size: 25px;
 }
 
 .update_text {
@@ -928,6 +927,10 @@ input::-webkit-search-results-decoration{
     font-size: 40px;
     list-style: none;
 }
+.side_week_li a:hover{
+    text-decoration: underline;
+    text-underline-position: under;
+}
 .side_month_li{
     padding: 20px;
     font-size: 40px;
@@ -935,6 +938,10 @@ input::-webkit-search-results-decoration{
     margin-bottom: 70px;
 }
 
+.side_month_li a:hover{
+    text-decoration: underline;
+    text-underline-position: under;
+}
 .side_search_li_msg_2 {
     height: 30px;
     list-style: none;
@@ -1085,4 +1092,105 @@ background-color: red;
 .search_con_msg{
     color: #999999;
     padding-bottom: 60px;
+}
+
+/* main 페이지 */
+
+.main_a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main_jpg {
+    display: block;
+    background-image: url(../img/sleep.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 510px;
+    height: 340px;
+    margin: 630px auto 0px auto;
+    position: relative;
+}
+.main_msg {
+    font-size: 40px;
+    position: absolute;
+    top: -130px;
+    left: 16px;
+}
+.main_div{
+    font-size: 180px;
+    position: absolute;
+    top: -489px;
+    left: 74px;
+}
+.main_img_moon{
+    position: absolute;
+    width: 359px;
+    right: -90px;
+    top: -550px;
+}
+
+.zzz {
+    animation-name: zzz;
+    animation-duration: 2.5s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+    font-weight: bold;
+    
+    transform: translateY(100%);
+}
+
+.zzz-z {
+    top: 90px;
+    animation-delay: 0s;
+    right: 50px;
+    position: absolute;
+}
+.zzz-zz {
+    top: 90px;
+    animation-delay: 0.5s;
+    right: 30px;
+    position: absolute;
+}
+.zzz-zzz {
+    top: 90px;
+    animation-delay: 1s;
+    right: 40px;
+    position: absolute;
+}
+
+
+/* *** All Animations *** */
+/*Darker Sky*/
+@-webkit-keyframes zzz {
+	0% {
+        color: rgb(255, 255, 255);
+        font-size: 50px;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    100% {
+        color: rgb(255, 255, 255);
+        font-size: 92px;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes zzz {
+    0% {
+        color: rgba(255, 255, 255, 0);
+        font-size: 30px;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+    100% {
+        color: rgb(255, 255, 255);
+        font-size: 72px;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
 }
