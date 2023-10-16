@@ -164,7 +164,7 @@ try {
                             }
                         ?>      
                         <?php
-                            if($boards_cnt > 0){
+                            if($boards_cnt > 4){
                         ?>                  
                         <a href="/todolist/src/search_con.php/?page=<?php echo $prev_page_num ?>&content=<?php echo $content ?>"><</a>
                         <?php
@@ -176,9 +176,12 @@ try {
                                     // 삼항연산자 : 조건 ? 참일때처리 : 거짓일때처리
                                     $class = ($i == $page_num) ? "search_con_page_now_page" : "";
                         ?>
+                        <?php
+                            if($boards_cnt > 4){
+                        ?>
                                     <a class="search_con_page_btn <?php echo $class; ?> " href="/todolist/src/search_Con.php/?page=<?php echo $i ?>&content=<?php echo $content ?>"><?php echo $i ?></a>        
                         <?php
-                                }
+                                }}
                             }
                             else if($boards_cnt >= 17){
                             $min_page = max($page_num - 2, 1); 
@@ -196,12 +199,13 @@ try {
                                     $class = ($i == $page_num) ? "search_con_page_now_page" : "";
                                     // 현재 페이지와 $i를 비교하여 현재 페이지에 해당하는 버튼에 강조 스타일을 적용
                         ?>
+                        
                         <a class="page_btn <?php echo $class; ?> " href="/todolist/src/search_con.php/?page=<?php echo $i ?>&content=<?php echo $content ?>"><?php echo $i ?></a>
                         <?php
                                 }}             
                         ?>
                         <?php
-                            if($boards_cnt > 0){
+                            if($boards_cnt > 4){
                         ?>     
                         <a class="page_btn" href="/todolist/src/search_con.php/?page=<?php echo $next_page_num ?>&content=<?php echo $content ?>">></a>
                         <?php

@@ -97,8 +97,7 @@ h1 a {
     top: -54px;
 }
 
-
-
+/* list */
 
 .list_table {
     width: 900px;
@@ -927,6 +926,10 @@ input::-webkit-search-results-decoration{
     font-size: 40px;
     list-style: none;
 }
+.side_week_li a:hover{
+    text-decoration: underline;
+    text-underline-position: under;
+}
 .side_month_li{
     padding: 20px;
     font-size: 40px;
@@ -934,6 +937,10 @@ input::-webkit-search-results-decoration{
     margin-bottom: 70px;
 }
 
+.side_month_li a:hover{
+    text-decoration: underline;
+    text-underline-position: under;
+}
 .side_search_li_msg_2 {
     height: 30px;
     list-style: none;
