@@ -295,9 +295,11 @@ h1 a {
 /* insert */
 .insert_error_p {
     font-size: 20px;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     text-align: center;
     color: red;
+    height: 30px;
+    
     
 }
 .insert_form{
@@ -489,8 +491,7 @@ input::placeholder {
 .update_table_error {
     height: 100px;
     color: red;
-    font-size: 28px;
-    font-weight: bolder;
+    font-size: 25px;
 }
 
 .update_text {
