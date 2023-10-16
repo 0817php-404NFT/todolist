@@ -21,7 +21,16 @@ try {
         // 3-1-1. 파라미터에서 id 획득
         $id = isset($_GET["id"]) ? $_GET["id"] : "";
         $page = isset($_GET["page"]) ? $_GET["page"] : "";
-
+        $arr_err_msg= [];
+        if($id === ""){
+            $arr_err_msg[] = "Parameter Error : ID";
+        }
+        if($page === ""){
+            $arr_err_msg[] = "Parameter Error : Page";
+        }
+        if(count($arr_err_msg)>= 1){
+            throw new Exception(implode("<br>",$arr_err_msg));
+        }
         // 3-1-2. 게시글 정보 획득
         $arr_param = [
             "id" => $id
@@ -38,6 +47,14 @@ try {
     } else {
         // 3-2-1.파라미터에서 id 획득
         $id = isset($_POST["id"]) ? $_POST["id"] : "";
+        $arr_err_msg = [];
+			//error 메세지
+			if($id === ""){
+				$arr_err_msg[] = "Parameter Error : ID";
+			}
+			if(count($arr_err_msg)>= 1){
+				throw new Exception(implode("<br>",$arr_err_msg));
+			}
         // 3-2-2.Transaction 시작
         $conn->beginTransaction();
 
