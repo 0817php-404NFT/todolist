@@ -1036,7 +1036,10 @@ background-color: red;
     margin-right: 8px;
 }
 
-
+.pickstats_msg{
+    color: #999999;
+    padding-bottom: 60px;
+}
 
 /* search_con */
 .search_con_page_now_page{

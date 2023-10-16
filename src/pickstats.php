@@ -22,6 +22,7 @@ try {
     // to_date id확인
 	if(isset($_GET["to_date"])){
 		$to_date = str_replace('-','', $_GET["to_date"])+1; //날짜 방식 YYYY-MM-DD -> YYYYMMDD 로 치완
+    } else {
 		throw new Exception("Parameter ERROR : NO to_date"); //강제 예외 발생
 	}
      // DB 조회시 사용할 데이터 배열
@@ -77,13 +78,23 @@ try {
                 </th>
             </tr>
         </thead>
+            <?php if($cnt === 0){ 
+            ?>   
+                <tr>
+                    <td class="pickstats_msg center">
+                        조회된 게시물이 없습니다.
+                    </td>
+                </tr>
+            <?php 
+                } else {
+            ?>
             <tr class="center stats_td_per">
                 <td>
                     <?php echo $result; ?>%
                 </td>
             </tr>
             <tr>
-                <td>    
+                <td class="center">    
                     <progress value="<?php echo $result; ?>" max="100" class="
                                                                             <?php
                                                                                 if($result === 100){
@@ -181,7 +192,7 @@ try {
                             Error : 잘못된 % 가 설정되었습니다.
                         </span>
                     <?php
-                        }
+                        }}
                     ?>
                 </td>
             </tr>	

@@ -4,10 +4,11 @@ define("FILE_HEADER", ROOT . "header.php");
 require_once(ROOT . "lib/lib_db.php");
 
 $conn = null;
-
+$arr_err_msg= []; //에러 메세지 저장용
+$content="";
+$page_num = 0; // 페이지 번호 초기화
 
 $list_cnt = 4; // 한 페이지 최대 표시 수
-$page_num = 1; // 페이지 번호 초기화
 
 try {
     // DB 접속
@@ -16,10 +17,11 @@ try {
         throw new Exception("DB Error : PDO instance"); // 강제 예외 발생 : DB Insrance
     }
     // content 확인
-    if (!isset($_GET["content"]) || $_GET["content"] === "") {
+    if (isset($_GET["content"])){
+        $content = $_GET["content"]; // content 셋팅
+    }else{
         throw new Exception("Parameter Error : No content"); // 강제 예외 발생 : Parameter Error
     }
-    $content = $_GET["content"]; // content 셋팅
 
     $arr_param = [
         "content" => '%' . $content . '%'
@@ -96,6 +98,7 @@ try {
                 </td>
             </tr>
         </thead>
+
             <?php
             // 리스트를 생성
             foreach ($result as $item) {

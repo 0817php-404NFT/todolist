@@ -71,7 +71,7 @@ try {
         <ul>
             <li class="side_search_li">
                 <form action="/todolist/src/search_con.php" method="get">
-                    <input type="search" name="content">
+                    <input type="search" name="content" required>
                     <button type ="submit"><img src="/todolist/src/img/search_btn.png" alt=""></button>
                 </form>
             </li>
