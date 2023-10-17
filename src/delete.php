@@ -3,11 +3,11 @@ define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/TODOLIST/src/");
 define("FILE_HEADER", ROOT."header.php");
 require_once(ROOT."lib/lib_db.php");
 
-$id = "";
-$conn = null; //기본값셋팅
-$arr_err_msg= []; //에러 메세지 저장용
-$content = "";//콘텐츠 기본값셋팅
-$http_method = $_SERVER["REQUEST_METHOD"];
+$id = ""; // 빈 문자열로 초기화
+$conn = null; //null로 초기화
+$arr_err_msg= []; //빈 배열로 초기화
+$content = "";//빈 문자열로 초기화
+$http_method = $_SERVER["REQUEST_METHOD"]; //method확인
 
 try {
     // 2. DB Connect
@@ -17,23 +17,22 @@ try {
         throw new Exception("DB Error : PDO instance");
     }
     if($http_method === "GET"){
-        // 3-1. GET일 경우 (상세 페이지의 삭제 버튼 클릭)
-        // 3-1-1. 파라미터에서 id 획득
-        $id = isset($_GET["id"]) ? $_GET["id"] : "";
+     
+        $id = isset($_GET["id"]) ? $_GET["id"] : ""; //파라미터 획득
         $page = isset($_GET["page"]) ? $_GET["page"] : "";
         $arr_err_msg= [];
         if($id === ""){
-            $arr_err_msg[] = "Parameter Error : ID";
+            $arr_err_msg[] = "Parameter Error : ID"; //에러 메세지를 배열에 추가
         }
         if($page === ""){
             $arr_err_msg[] = "Parameter Error : Page";
         }
         if(count($arr_err_msg)>= 1){
-            throw new Exception(implode("<br>",$arr_err_msg));
+            throw new Exception(implode("<br>",$arr_err_msg)); //하나 이상의 에러메세지 처리
         }
         // 3-1-2. 게시글 정보 획득
-        $arr_param = [
-            "id" => $id
+        $arr_param = [ //연관배열
+            "id" => $id //id = 키 $id =값
         ];
         $result = db_select_boards_id($conn, $arr_param);
 
