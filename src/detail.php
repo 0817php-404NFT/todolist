@@ -201,7 +201,7 @@ $item=$result[0];
     <div class="detail-container">
 		<!-- 상세 페이지 컨테이너 정의하는 div임 상세 페이지 콘텐츠 감싸기위해 적음 -->
         <table class="detail_table center">     
-			   <!--테이블 요소를 정의함 detail_table이랑 center클래스 갖고있음 상세 페이지 레이아웃이며 클래스를 써서 스타일 적용함 -->
+	<!--테이블 요소를 정의함 detail_table이랑 center클래스 갖고있음 상세 페이지 레이아웃이며 클래스를 써서 스타일 적용함 -->
             <tr>
 				<!-- tr은 테이블 행을 나타냄 각 행의 콘텐츠를 나누기 위해서 적음 -->
                 <td colspan="3" class="detail_head center">
