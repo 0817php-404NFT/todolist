@@ -3,7 +3,7 @@ define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 
 
 
-
+// 상수 설정
 //define 함수는 상수를 정의할때 사용하는 값임, 코드는 "ROOT"라는 이름의 상수를 정의하고, 이 상수에 $_SERVER["DOCUMENT_ROOT"]."/todolist/src/"의 값을 할당함
 // ROOT는 상수의 이름이고$_SERVER["DOCUMENT_ROOT"]는 슈퍼 글로벌 변수 중 하나인
 // _SERVER에서 DOCUMENT_ROOT 값을 가져온것임 결과적으로는 ROOT 상수는 웹 서버의 루트 디렉토리에
@@ -14,6 +14,9 @@ define("FILE_HEADER", ROOT."header.php");
 
 
 
+// root 상수값인 웹 서버 디렉토리에 header.php 추가함 헤더는 똑같이 적용 되는것 설정
+
+
 
 //"FILE_HEADER" 상수는 "ROOT" 상수의 값인 웹 서버 디렉토리에 "header.php"를 추가한 경로임
 //이러한 상수를 사용하면 스크립트 내에서 일관된 경로 또는 파일 이름을 참조할 때 편리하게 사용 가능함
@@ -22,7 +25,7 @@ define("FILE_HEADER", ROOT."header.php");
 
 require_once(ROOT."lib/lib_db.php");
 
-
+// db파일 불러오기
 
 //파일을 포함하거나 불러올때 사용되며,PHP스크립트에서 다른 PHP파일을 포함하거나 불러오는데 사용됨 그래서 lib_db파일을 불러온거임
 
@@ -53,13 +56,14 @@ try{
 	}
 
 
-
+	
 	//"id"라는 이름의 URL 매개변수(파라미터)가 현재 요청에서 존재하는지 확인하는거임
 	//$_GET 은 PHP의 전역 배열로 현재 URL에서 GET METHOD를 통해 전달된 매개변수를 저장함
 	//isset은 매개변수가 존재하는지 확인하며 "id"매개변수가 존재하면 아래 코드를 실행
+	//id는 주로 테이블에서 각 행(레코드)을 고유하게 식별하는 열(칼럼)을 나타냄 고유한 id가 있다는 뜻
 	//"id" 매개변수(파라미터)가 존재하지 않는경우 강제 예외가 발생하고 오류 메세지 출력, 혹은 예외처리 코드로 이동함
 	//$id = $_GET["id"]; "id"매개변수 값을 $id라는 변수에 할당한다 (true) 하면 해당 URL에 매개변수 값을 저장함
-	//id는 주로 테이블에서 각 행(레코드)을 고유하게 식별하는 열(칼럼)을 나타냄 고유한 id가 있다는 뜻임
+
 
 
 
