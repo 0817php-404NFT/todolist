@@ -156,7 +156,7 @@ try{
 	} 
 
 
-	
+
 //if문은 만약에 데이터 $result 변수를 검사해서 데이터 베이스 조회 결과가
 //false일 경우(데이터베이스 조회 실패시)예외를 출력시킴
 //에러 메세지는"DB Error : PDO Select_id"로 설정됨
@@ -248,7 +248,7 @@ $item=$result[0];
                 <td colspan="3" class="detail_content_1">
 						<?php echo $item["content"]; ?>
 						<!-- HTML 테이블 데이터 셀을 나타냄 게시물 값 출력을 위해서 적음 -->
-						<!-- colspan으로 셀을 세개의 열을 병합해서 사용함-->
+						<!-- colspan으로 셀을 세개의 열(수정 삭제 나가기 버튼)을 병합한 영역으로 지정함 -->
 					</td>
 				</tr>
 				<tr>
