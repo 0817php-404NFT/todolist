@@ -21,8 +21,8 @@ try {
     if($http_method === "GET") {
         
         // 파라미터 획득
-        $id = isset($_GET["id"]) ? $_GET["id"] :""; // id 셋팅
-        $page = isset($_GET["page"]) ? $_GET["page"] : ""; // page 셋팅
+        $id = isset($_GET["id"]) ? trim($_GET["id"]) :""; // id 셋팅
+        $page = isset($_GET["page"]) ? trim($_GET["page"]) : ""; // page 셋팅
         
         if($id === ""){
             $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "id");
@@ -38,8 +38,12 @@ try {
     } else {
          // POST Method의 경우
         // 게시글 수정을 위해 파라미터 셋팅
-        $id = isset($_POST["id"]) ? $_POST["id"] :""; // id 셋팅
-        $page = isset($_POST["page"]) ? $_POST["page"] : ""; // page 셋팅
+        // content 수정칸에 스페이스바 공백을 넣으면 에러 뜨게하고 막아둔 것은 
+        // 이대로 입력 돼 버리면 유저가 눌러서 수정을 할수도 삭제도 할 수 없고 
+        // 오늘의 할일을 적는 것이기 때문에 빈 값으로 수정되면 안된다.
+         
+        $id = isset($_POST["id"]) ? trim($_POST["id"]) :""; // id 셋팅
+        $page = isset($_POST["page"]) ? trim($_POST["page"]) : ""; // page 셋팅
         $content = isset($_POST["content"]) ? trim($_POST["content"]) : ""; //content셋팅
         if($id === ""){
             $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "id");
@@ -82,7 +86,7 @@ try {
     if($result === false) {
         // 게시글 조회 에러
         throw new Exception("DB Error : PDO Select_id");
-    } else if(!(count($result) === 1)) {
+    } else if(count($result) !== 1) {
         // 게시글 조회 count 에러
         throw new Exception("DB ERROR : PDO Select_id Count,".count($result));
     }
