@@ -28,7 +28,11 @@ try {
 
      // 삼항연산자로 작성
     $page_num = isset($_GET["page"]) ? $_GET["page"] : 1;
-    
+    // 1~3 이외의 값 입력시
+    if($page_num < 1 || $page_num > 3){
+        throw new Exception("DB Error : Page Num error"); // 강제 예외 발생 : SELECT boards
+    }
+
     $offset = ($page_num - 1)* $list_cnt; //오프셋계산
     
     // DB 조회시 사용할 데이터 배열
@@ -115,83 +119,170 @@ try {
     <?php
             require_once(FILE_HEADER);
     ?>
-        <table class="list_table">    
-            <thead> 
-                <tr>
-                    <td class="list_head_td">오늘의할일                   
-                        <form action="/todolist/src/search.php" method="get">           
-                            <label class="list_label">
-                                <input type="date" name="date" required class="list_date_search_input" value="<?php echo $today; ?>" max="<?php echo $today; ?>">
-                                <button type="submit" class="list_date_search_btn"><img src="/todolist/src/img/lens.png" alt=""></button>
-                            </label>
-                        </form>
-                    </td>
-                </tr>
-            </thead>
-            <?php if($boards_cnt === 0){ 
+    <table class="list_table">    
+        <thead> 
+            <tr>
+                <td class="list_head_td">오늘의할일                   
+                    <form action="/todolist/src/search.php" method="get">           
+                        <label class="list_label">
+                            <input type="date" name="date" required class="list_date_search_input" value="<?php echo $today; ?>" max="<?php echo $today; ?>">
+                            <button type="submit" class="list_date_search_btn"><img src="/todolist/src/img/lens.png" alt=""></button>
+                        </label>
+                    </form>
+                </td>
+            </tr>
+        </thead>
+            <?php 
+                if($boards_cnt === 0){ 
             ?>   
-                <tr>
-                    <td class="search_con_msg center">
-                        등록된 게시물이 없습니다.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
-                    </td>
-                </tr>
+            <tr>
+                <td class="search_con_msg center">
+                    등록된 게시물이 없습니다.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
+                </td>
+            </tr>
+        <?php 
+            }
+            else if($boards_cnt <= 4){
+                if( $page_num >= 2){ 
+        ?>  
+            <tr>
+                <td class="search_con_msg center">
+                    등록된 게시물이 없습니다.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
+                </td>
+            </tr>
             <?php 
                 } else {
+                    foreach ($result as $item) {
+            ?>
+            <tr>
+                <td>
+                    <?php
+                        if($item["chk_flg"] === "0"){
+                    ?>  
+                        <a href="/todolist/src/chk_flg.php/?id=<?php echo $item["id"]; ?>&chk_flg=<?php echo $item["chk_flg"] ?>&page=<?php echo $page_num ?>">
+                            <img src="/todolist/src/img/check_b.svg" alt="">
+                        </a>
+                        <a class="list_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                            <?php echo $item["content"]; ?>
+                        </a>
+                    <?php
+                        }else {
+                    ?>
+                        <a href="/todolist/src/chk_flg.php/?id=<?php echo $item["id"]; ?>&chk_flg=<?php echo $item["chk_flg"] ?>&page=<?php echo $page_num ?>">
+                            <img src="/todolist/src/img/check_a.svg" alt=""> 
+                        </a>
+                        <a class="list_content_chk" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                            <?php echo $item["content"]; ?>
+                        </a>
+                    <?php
+                        }
+                    ?>  
+                </td>
+            </tr>
+            <?php
+                                                }
+                    }
+                }else if($boards_cnt <= 8 ){
+                        if( $page_num >= 3 ){ 
+            ?>  
+            <tr>
+                <td class="search_con_msg center">
+                    등록된 게시물이 없습니다.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
+                </td>
+            </tr>
+            <?php 
+                } else {
+                // 리스트를 생성
+                    foreach ($result as $item) {
+            ?>
+            <tr>
+                <td>
+                    <?php
+                        if($item["chk_flg"] === "0"){
+                    ?>  
+                        <a href="/todolist/src/chk_flg.php/?id=<?php echo $item["id"]; ?>&chk_flg=<?php echo $item["chk_flg"] ?>&page=<?php echo $page_num ?>">
+                            <img src="/todolist/src/img/check_b.svg" alt="">
+                        </a> 
+                        <a class="list_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                            <?php echo $item["content"]; ?>
+                        </a>
+                    <?php
+                        }else {
+                    ?>
+                        <a href="/todolist/src/chk_flg.php/?id=<?php echo $item["id"]; ?>&chk_flg=<?php echo $item["chk_flg"] ?>&page=<?php echo $page_num ?>">
+                            <img src="/todolist/src/img/check_a.svg" alt=""> 
+                        </a>
+                        <a class="list_content_chk" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                            <?php echo $item["content"]; ?>
+                        </a>
+                    <?php
+                        }
+                    ?>  
+                </td>
+            </tr>
+            <?php
+                                            }
+                    }
+                    } else {
             ?>
             <?php
             // 리스트를 생성
-            foreach ($result as $item) {
-            ?>
-                <tr>
-                    <td>
-                        <!-- <form action="/todolist/src/img/chk_flg.php" method="post">
-                            <input type="checkbox" name=" <?php //echo $item["id"]; ?>" id="checker<?php //echo $item["id"]; ?>" value="<?php //echo $item["id"]; ?>">
-                            <label for="checker"> --> <!-- del 1011 정훈  -->
-                        <?php
-                            if($item["chk_flg"] === "0"){
-                        ?>  
-                            <a href="/todolist/src/chk_flg.php/?id=<?php echo $item["id"]; ?>&chk_flg=<?php echo $item["chk_flg"] ?>&page=<?php echo $page_num ?>">
-                                <img src="/todolist/src/img/check_b.svg" alt="">
-                            </a> <!-- add 1011 정훈  -->
-                            <a class="list_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
-                                <?php echo $item["content"]; ?>
-                            </a>
-                        <?php
-                            }else {
+                        foreach ($result as $item) {
                         ?>
-                            <a href="/todolist/src/chk_flg.php/?id=<?php echo $item["id"]; ?>&chk_flg=<?php echo $item["chk_flg"] ?>&page=<?php echo $page_num ?>">
-                                <img src="/todolist/src/img/check_a.svg" alt=""> 
-                            </a> <!-- add 1011 정훈  -->
-                            <a class="list_content_chk" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
-                                <?php echo $item["content"]; ?>
-                            </a>
-                        <?php
-                            }
-                        ?>  
-                        <!-- </form>
-                        </label> --> <!-- del 1011 정훈  -->
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    <?php
+                        if($item["chk_flg"] === "0"){
+                    ?>  
+                        <a href="/todolist/src/chk_flg.php/?id=<?php echo $item["id"]; ?>&chk_flg=<?php echo $item["chk_flg"] ?>&page=<?php echo $page_num ?>">
+                            <img src="/todolist/src/img/check_b.svg" alt="">
+                        </a>
+                        <a class="list_content" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                            <?php echo $item["content"]; ?>
+                        </a>
+                    <?php
+                        }else {
+                    ?>
+                        <a href="/todolist/src/chk_flg.php/?id=<?php echo $item["id"]; ?>&chk_flg=<?php echo $item["chk_flg"] ?>&page=<?php echo $page_num ?>">
+                            <img src="/todolist/src/img/check_a.svg" alt=""> 
+                        </a>
+                        <a class="list_content_chk" href="/todolist/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>">
+                            <?php echo $item["content"]; ?>
+                        </a>
+                    <?php
+                        }
+                    ?>  
+                </td>
+            </tr>
             <?php
+                                }
                     }
-                }
             ?>
-        <tr>
-            <td>
-                <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
+                </td>
+            </tr>
         <tfoot>
             <tr>
                 <td class="center">
                     <?php                  
                         for ($i = 1; $i <= 3; $i++) {
-                                // 삼항연산자 : 조건 ? 참일때처리 : 거짓일때처리
                                 $class = ($i == $page_num) ? "list_now_page" : "";
                     ?>
                     <a class="lsit_page <?php echo $class; ?> " href="/todolist/src/list.php/?page=<?php echo $i ?>">●</a>        
@@ -201,7 +292,7 @@ try {
                 </td>
             </tr>
         </tfoot>
-        </table>  
+    </table>  
     <a class="list_insert_btn center" href="/todolist/src/insert.php">등록</a>
 </body>
 </html>
