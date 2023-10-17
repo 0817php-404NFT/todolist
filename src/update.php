@@ -1,10 +1,10 @@
 <?php
-define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
+define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/"); // httpd.conf파일에 설정된 웹서버의 루트
 define("FILE_HEADER", ROOT."header.php");
 define("ERROR_MSG_PARAM", "%s을 입력해주세요.");// 파라미터 에러메세지
 require_once(ROOT."lib/lib_db.php");
 
-$id = "";
+$id = ""; // 변수에 값을 담기 위해 공백으로 설정
 $page = "";
 $conn = null; // DB 연결용 변수
 $http_method = $_SERVER["REQUEST_METHOD"]; // Method 확인
@@ -33,7 +33,24 @@ try {
         if(count($arr_err_msg) >= 1){
             throw new Exception(implode("<br>",$arr_err_msg));
         }
-        
+
+          // 게시글 데이터 조회를 위한 파라미터 셋팅
+        $arr_param = [
+            "id" => $id
+        ];
+
+        // 게시글 데이터 조회
+        $result = db_select_boards_id($conn, $arr_param);
+
+        // 게시글 조회 예외처리
+        if($result === false) {
+            // 게시글 조회 에러
+            throw new Exception("DB Error : PDO Select_id");
+        } else if(!(count($result) === 1)) {
+            // 게시글 조회 count 에러
+            throw new Exception("DB ERROR : PDO Select_id Count,".count($result));
+        }
+            
     } else {
          // POST Method의 경우
         // 게시글 수정을 위해 파라미터 셋팅
@@ -67,23 +84,6 @@ try {
             header("Location: detail.php/?id={$id}&page={$page}"); // detail 페이지로 이동
             exit;
         }
-    }
-
-    // 게시글 데이터 조회를 위한 파라미터 셋팅
-    $arr_param = [
-        "id" => $id
-    ];
-
-    // 게시글 데이터 조회
-    $result = db_select_boards_id($conn, $arr_param);
-
-    // 게시글 조회 예외처리
-    if($result === false) {
-        // 게시글 조회 에러
-        throw new Exception("DB Error : PDO Select_id");
-    } else if(!(count($result) === 1)) {
-        // 게시글 조회 count 에러
-        throw new Exception("DB ERROR : PDO Select_id Count,".count($result));
     }
 
     $item = $result[0];
