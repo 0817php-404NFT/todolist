@@ -22,9 +22,9 @@ try {
     if($content === ""){
         $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용");
     }
-    if(count($arr_err_msg) === 1){
+    if(count($arr_err_msg) >= 1){
         header("Location: list.php/?content=none"); // 리스트 페이지로 이동 
-    } else if(!count($arr_err_msg) === 1){
+    } else if(count($arr_err_msg) === 0){
         $arr_param = [
             "content" => '%' . $content . '%'
         ];

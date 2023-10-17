@@ -146,8 +146,7 @@ try {
                 </td>
             </tr>
         <?php 
-            }
-            else if($boards_cnt <= 4){
+            } else if($boards_cnt <= 4){
                 if( $page_num >= 2){ 
         ?>  
             <tr>
