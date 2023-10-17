@@ -3,6 +3,8 @@ define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 
 
 
+// 상수 설정
+
 
 //define 함수는 상수를 정의할때 사용하는 값임, 코드는 "ROOT"라는 이름의 상수를 정의하고, 이 상수에 $_SERVER["DOCUMENT_ROOT"]."/todolist/src/"의 값을 할당함
 // ROOT는 상수의 이름이고$_SERVER["DOCUMENT_ROOT"]는 슈퍼 글로벌 변수 중 하나인
@@ -14,6 +16,9 @@ define("FILE_HEADER", ROOT."header.php");
 
 
 
+// root 상수값인 웹 서버 디렉토리에 header.php 추가함 헤더는 똑같이 적용 되는것 설정
+
+
 
 //"FILE_HEADER" 상수는 "ROOT" 상수의 값인 웹 서버 디렉토리에 "header.php"를 추가한 경로임
 //이러한 상수를 사용하면 스크립트 내에서 일관된 경로 또는 파일 이름을 참조할 때 편리하게 사용 가능함
@@ -22,7 +27,7 @@ define("FILE_HEADER", ROOT."header.php");
 
 require_once(ROOT."lib/lib_db.php");
 
-
+// db파일 불러오기
 
 //파일을 포함하거나 불러올때 사용되며,PHP스크립트에서 다른 PHP파일을 포함하거나 불러오는데 사용됨 그래서 lib_db파일을 불러온거임
 
@@ -42,9 +47,6 @@ try{
 	
 
 
-
-
-
 // id확인
 	if(isset($_GET["id"])){
 		$id=$_GET["id"]; //id 셋팅
@@ -52,14 +54,13 @@ try{
 		throw new Exception("Parameter ERROR : NO id"); //강제 예외 발생
 	}
 
-
-
 	//"id"라는 이름의 URL 매개변수(파라미터)가 현재 요청에서 존재하는지 확인하는거임
 	//$_GET 은 PHP의 전역 배열로 현재 URL에서 GET METHOD를 통해 전달된 매개변수를 저장함
 	//isset은 매개변수가 존재하는지 확인하며 "id"매개변수가 존재하면 아래 코드를 실행
+	//id는 주로 테이블에서 각 행(레코드)을 고유하게 식별하는 열(칼럼)을 나타냄 고유한 id가 있다는 뜻
 	//"id" 매개변수(파라미터)가 존재하지 않는경우 강제 예외가 발생하고 오류 메세지 출력, 혹은 예외처리 코드로 이동함
 	//$id = $_GET["id"]; "id"매개변수 값을 $id라는 변수에 할당한다 (true) 하면 해당 URL에 매개변수 값을 저장함
-	//id는 주로 테이블에서 각 행(레코드)을 고유하게 식별하는 열(칼럼)을 나타냄 고유한 id가 있다는 뜻임
+
 
 
 
@@ -127,9 +128,9 @@ try{
 
 	//데이터 베이스 쿼리를 실행할 때 사용되는 $arr_parm을 사용해서
 	//특정 게시판 게시물을 조회하기 위한 조건문 적는데 사용됨
-	//$arr_param = ["id" => $id];으로 배열 내부에 "id"키를 사용해서
+	//$arr_param = ["id" <= $id];으로 배열 내부에 "id"키를 사용해서
 	//$id 변수의 값을 값으로 설정함
-	//그래서 $arr_param 배열은 ["id" => $id] 와 같이 설정됨
+	//그래서 $arr_param 배열은 [&id => "id"] 와 같이 설정됨
 	//$result 변수는 게시물 조회 결과를 저장하고 반환해줌
 	//db_select_boards_id 함수의 실행 결과는 $result 변수에 할당됨
 	//$conn 은 데이터 베이스 연결을 나타내는 PDO객체임
