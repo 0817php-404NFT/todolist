@@ -36,6 +36,9 @@ if($http_method === "POST") {
             exit;
         }
     } catch (Exception $e) {
+        if($http_method === "POST") {
+            $conn->rollBack(); // rollback // 1017 코드리뷰 후 수정
+        }
         echo $e->getMessage();
         exit;
     } finally {
