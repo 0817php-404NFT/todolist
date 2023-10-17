@@ -1,14 +1,14 @@
 <?php
-define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
+define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/"); // httpd.conf파일에 설정된 웹서버의 루트
 define("FILE_HEADER", ROOT."header.php");
 define("ERROR_MSG_PARAM", "%s을 입력해주세요.");// 파라미터 에러메세지
 require_once(ROOT."lib/lib_db.php");
 
-$id = "";
+$id = ""; // 변수에 값을 담기 위해 공백으로 설정
 $page = "";
-$conn = null; // DB 연결용 변수
+$conn = null; // conn 초기화 // DB 연결용 변수
 $http_method = $_SERVER["REQUEST_METHOD"]; // Method 확인
-$arr_err_msg= []; //에러메세지용 변수
+$arr_err_msg= []; //에러메세지용 변수를 배열로 넣어줌
 
 try {
     // DB 연결
@@ -33,7 +33,24 @@ try {
         if(count($arr_err_msg) >= 1){
             throw new Exception(implode("<br>",$arr_err_msg));
         }
-        
+
+          // 게시글 데이터 조회를 위한 파라미터 셋팅
+        $arr_param = [
+            "id" => $id
+        ];
+
+        // 게시글 데이터 조회
+        $result = db_select_boards_id($conn, $arr_param);
+
+        // 게시글 조회 예외처리
+        if($result === false) {
+            // 게시글 조회 에러
+            throw new Exception("DB Error : PDO Select_id");
+        } else if(!(count($result) === 1)) {
+            // 게시글 조회 count 에러
+            throw new Exception("DB ERROR : PDO Select_id Count,".count($result));
+        }
+            
     } else {
          // POST Method의 경우
         // 게시글 수정을 위해 파라미터 셋팅
@@ -69,23 +86,6 @@ try {
         }
     }
 
-    // 게시글 데이터 조회를 위한 파라미터 셋팅
-    $arr_param = [
-        "id" => $id
-    ];
-
-    // 게시글 데이터 조회
-    $result = db_select_boards_id($conn, $arr_param);
-
-    // 게시글 조회 예외처리
-    if($result === false) {
-        // 게시글 조회 에러
-        throw new Exception("DB Error : PDO Select_id");
-    } else if(!(count($result) === 1)) {
-        // 게시글 조회 count 에러
-        throw new Exception("DB ERROR : PDO Select_id Count,".count($result));
-    }
-
     $item = $result[0];
 
 } catch(Exception $e) {
@@ -115,7 +115,7 @@ try {
     ?>
     <form class="update_form" action="/todolist/src/update.php" method="post">
         <input type="hidden" name="id" value="<?php echo $id ?>">
-        <input type="hidden" name="page" value="<?php echo $page ?>">
+        <input type="hidden" name="page" value="<?php echo $page ?>"> <!-- 유저가 입력할 필요x / 몰라도 되는 정보지만, 폼 전송과 같이 전송해줘야 하는 정보  -->
         <table class="update_table">
             <tr>
                 <td class="update_table_error center">
