@@ -4,6 +4,8 @@ define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/todolist/src/");
 
 
 // 상수 설정
+
+
 //define 함수는 상수를 정의할때 사용하는 값임, 코드는 "ROOT"라는 이름의 상수를 정의하고, 이 상수에 $_SERVER["DOCUMENT_ROOT"]."/todolist/src/"의 값을 할당함
 // ROOT는 상수의 이름이고$_SERVER["DOCUMENT_ROOT"]는 슈퍼 글로벌 변수 중 하나인
 // _SERVER에서 DOCUMENT_ROOT 값을 가져온것임 결과적으로는 ROOT 상수는 웹 서버의 루트 디렉토리에
@@ -45,9 +47,6 @@ try{
 	
 
 
-
-
-
 // id확인
 	if(isset($_GET["id"])){
 		$id=$_GET["id"]; //id 셋팅
@@ -55,8 +54,6 @@ try{
 		throw new Exception("Parameter ERROR : NO id"); //강제 예외 발생
 	}
 
-
-	
 	//"id"라는 이름의 URL 매개변수(파라미터)가 현재 요청에서 존재하는지 확인하는거임
 	//$_GET 은 PHP의 전역 배열로 현재 URL에서 GET METHOD를 통해 전달된 매개변수를 저장함
 	//isset은 매개변수가 존재하는지 확인하며 "id"매개변수가 존재하면 아래 코드를 실행
@@ -131,9 +128,9 @@ try{
 
 	//데이터 베이스 쿼리를 실행할 때 사용되는 $arr_parm을 사용해서
 	//특정 게시판 게시물을 조회하기 위한 조건문 적는데 사용됨
-	//$arr_param = ["id" => $id];으로 배열 내부에 "id"키를 사용해서
+	//$arr_param = ["id" <= $id];으로 배열 내부에 "id"키를 사용해서
 	//$id 변수의 값을 값으로 설정함
-	//그래서 $arr_param 배열은 ["id" => $id] 와 같이 설정됨
+	//그래서 $arr_param 배열은 [&id => "id"] 와 같이 설정됨
 	//$result 변수는 게시물 조회 결과를 저장하고 반환해줌
 	//db_select_boards_id 함수의 실행 결과는 $result 변수에 할당됨
 	//$conn 은 데이터 베이스 연결을 나타내는 PDO객체임
