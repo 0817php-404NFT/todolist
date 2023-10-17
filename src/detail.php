@@ -120,7 +120,7 @@ try{
 	if(!$result) {
 		throw new Exception("DB Error : PDO Select_id");
 	} else if(!(count($result) === 1)){
-		throw new Exception("DB Error : PDO Select_id count," .count($resilt));
+		throw new Exception("DB Error : PDO Select_id count," .count($result));
 	} 
 //if문은 만약에 데이터 $result 변수를 검사해서 데이터 베이스 조회 결과가
 //false일 경우(데이터베이스 조회 실패시)예외를 출력시킴
