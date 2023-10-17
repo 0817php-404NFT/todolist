@@ -145,10 +145,10 @@ try {
                     <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
                 </td>
             </tr>
-        <?php 
-            } else if($boards_cnt <= 4){
-                if( $page_num >= 2){ 
-        ?>  
+            <?php 
+                } else if($boards_cnt <= 4){
+                    if( $page_num >= 2){ 
+            ?>  
             <tr>
                 <td class="search_con_msg center">
                     등록된 게시물이 없습니다.
@@ -159,10 +159,10 @@ try {
                     <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
                 </td>
             </tr>
-            <?php 
-                } else {
-                    foreach ($result as $item) {
-            ?>
+                <?php 
+                    } else {
+                        foreach ($result as $item) {
+                ?>
             <tr>
                 <td>
                     <?php
@@ -189,10 +189,10 @@ try {
                 </td>
             </tr>
             <?php
-                                                }
+                        }
                     }
-                }else if($boards_cnt <= 8 ){
-                        if( $page_num >= 3 ){ 
+                } else if($boards_cnt <= 8 ){
+                    if( $page_num >= 3 ){ 
             ?>  
             <tr>
                 <td class="search_con_msg center">
@@ -204,11 +204,11 @@ try {
                     <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
                 </td>
             </tr>
-            <?php 
-                } else {
-                // 리스트를 생성
-                    foreach ($result as $item) {
-            ?>
+                <?php 
+                    } else {
+                    // 리스트를 생성
+                        foreach ($result as $item) {
+                ?>
             <tr>
                 <td>
                     <?php
@@ -235,14 +235,14 @@ try {
                 </td>
             </tr>
             <?php
-                                            }
+                        }
                     }
-                    } else {
+                } else {
             ?>
-            <?php
-            // 리스트를 생성
-                        foreach ($result as $item) {
-                        ?>
+                <?php
+                    // 리스트를 생성
+                    foreach ($result as $item) {
+                ?>
             <tr>
                 <td>
                     <?php
@@ -269,8 +269,8 @@ try {
                 </td>
             </tr>
             <?php
-                                }
                     }
+                }
             ?>
             <tr>
                 <td>
