@@ -19,6 +19,7 @@ try {
     }
     // content 확인
     $content = trim($_GET["content"]); //content 셋팅
+    
     if($content === ""){
         $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용");
     }
