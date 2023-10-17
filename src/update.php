@@ -34,23 +34,7 @@ try {
             throw new Exception(implode("<br>",$arr_err_msg));
         }
 
-          // 게시글 데이터 조회를 위한 파라미터 셋팅
-        $arr_param = [
-            "id" => $id
-        ];
-
-        // 게시글 데이터 조회
-        $result = db_select_boards_id($conn, $arr_param);
-
-        // 게시글 조회 예외처리
-        if($result === false) {
-            // 게시글 조회 에러
-            throw new Exception("DB Error : PDO Select_id");
-        } else if(!(count($result) === 1)) {
-            // 게시글 조회 count 에러
-            throw new Exception("DB ERROR : PDO Select_id Count,".count($result));
-        }
-            
+        
     } else {
          // POST Method의 경우
         // 게시글 수정을 위해 파라미터 셋팅
@@ -86,7 +70,24 @@ try {
         }
     }
 
+      // 게시글 데이터 조회를 위한 파라미터 셋팅
+      $arr_param = [
+        "id" => $id
+    ];
+
+    // 게시글 데이터 조회
+    $result = db_select_boards_id($conn, $arr_param);
+
+    // 게시글 조회 예외처리
+    if($result === false) {
+        // 게시글 조회 에러
+        throw new Exception("DB Error : PDO Select_id");
+    } else if(!(count($result) === 1)) {
+        // 게시글 조회 count 에러
+        throw new Exception("DB ERROR : PDO Select_id Count,".count($result));
+    }
     $item = $result[0];
+  
 
 } catch(Exception $e) {
     if($http_method === "POST") {
