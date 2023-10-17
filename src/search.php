@@ -76,25 +76,25 @@ try {
     <?php
         require_once(FILE_HEADER);
     ?>
-        <table class="search_table">
-            <thead>       
-                <tr>
-                    <td class="search_head_td">
-                        <?php echo $date ?>
-                        <a class="search_out_btn" href="/todolist/src/list.php/?page=1">메인으로</a>
-                    </td>
-                </tr>
-            </thead>
-            <?php if($boards_cnt === 0){ 
-            ?>   
-                <tr>
-                    <td class="pickstats_msg center">
-                        조회된 게시물이 없습니다.
-                    </td>
-                </tr>
-            <?php 
-                } else {
-            ?>
+    <table class="search_table">
+        <thead>       
+            <tr>
+                <td class="search_head_td">
+                    <?php echo $date ?>
+                    <a class="search_out_btn" href="/todolist/src/list.php/?page=1">메인으로</a>
+                </td>
+            </tr>
+        </thead>
+        <?php if($boards_cnt === 0){ 
+        ?>   
+            <tr>
+                <td class="pickstats_msg center">
+                    조회된 게시물이 없습니다.
+                </td>
+            </tr>
+        <?php 
+            } else {
+        ?>
         <?php
             foreach ($result as $item) {
         ?>
@@ -117,11 +117,11 @@ try {
         <?php
         }
         ?>
-        <tr>
-            <td>
-                <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    <img src="/todolist/src/img/list_paper.svg" alt="" class="list_img_paper">
+                </td>
+            </tr>
         <tfoot>
             <tr>
                 <td class="center">
@@ -138,6 +138,6 @@ try {
                     </td>
             </tr>
         </tfoot>
-        </table>
+    </table>
 </body>
 </html>
