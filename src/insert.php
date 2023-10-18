@@ -16,6 +16,10 @@ if($http_method === "POST") {
         }
         $content = isset($_POST["content"]) ? trim($_POST["content"]) : ""; //content 셋팅
         // 만약 빈공간으로 보내져왔을시 오류메세지 출력
+        
+        // 오늘의 할일을 작성해서 보이는 건데 공백으로 작성된 것 자체가 비정상적인 것이고
+        // 만약 작성됐다면 유저입장에서 글 자체가 클릭이 안될 뿐더러 수정, 삭제 또한 불가능해서
+        // 공백으로 보내면 안된다.
         if($content === ""){
             $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용");
         }
