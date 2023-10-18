@@ -122,7 +122,7 @@ try {
     <table class="list_table">    
         <thead> 
             <tr>
-                <td class="list_head_td">오늘의할일                   
+                <td class="list_head_td">오늘의 할 일                   
                     <form action="/todolist/src/search.php" method="get">           
                         <label class="list_label">
                             <input type="date" name="date" required class="list_date_search_input" value="<?php echo $today; ?>" max="<?php echo $today; ?>">
