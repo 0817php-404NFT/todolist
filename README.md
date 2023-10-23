@@ -1,3 +1,4 @@
+
 # 꿀잠todolist
 > 주소 http://112.222.157.156:6004/main.php
 
@@ -50,5 +51,23 @@
   <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Slack&logoColor=black">
   <img src="https://img.shields.io/badge/VisualStudio-5C2D91?style=for-the-badge&logo=Slack&logoColor=white">
 
+
+
+# 프로젝트 일정
+> Notion의 간트차트 활용
+
+
+##  🍎꿀잠 To DO List
+
+| Week | 전원 | 완료 | 내용 |
+| ------ | -- | -- |----------- |
+| 1주차 | ☑️ | ☑️ | 공동 Git hub,및 Slack, Figma, Discorde, notion 생성하기 |
+| 1주차 | ☑️ | ☑️ | 주요 컨셉 및 특징 프로젝트 설계,기획 |
+| 1주차 | ☑️ | ☑️ | DB설계 |
+| 2주차 | ☑️ | ☑️ | 요구사항명세서 작성 |
+| 3주차 |  |  ☑️ |각페이지 제작 |
+| 4주차 | ☑️ | ☑️ |PPT 제작 |
+| 4주차 |  |  | 코드리뷰 -> 오류 코드 수정 작업  |
+| 4주차 | ☑️ | ☑️ | 테스트 및 구현 |
   
   
