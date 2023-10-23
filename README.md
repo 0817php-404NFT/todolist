@@ -55,7 +55,7 @@
 
 # 프로젝트 일정
 > Notion의 간트차트 활용
-> https://www.notion.so/7ff7e9fba62047aca5c19d9f28126c7b?v=4b60a3deb91246da9590448a0ff3ab37&pvs=4
+- https://www.notion.so/7ff7e9fba62047aca5c19d9f28126c7b?v=4b60a3deb91246da9590448a0ff3ab37&pvs=4
 
 ##  🍎꿀잠 To DO List
 
